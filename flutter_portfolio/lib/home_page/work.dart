@@ -4,8 +4,9 @@ import '../styles/text_styles.dart';
 
 class Work extends StatefulWidget {
   final double screenWidth;
+  final double screenHeight;
 
-  Work({required this.screenWidth});
+  Work({required this.screenWidth, required this.screenHeight});
 
   @override
   _Work createState() => _Work();

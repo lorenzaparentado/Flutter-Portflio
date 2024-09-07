@@ -4,8 +4,9 @@ import '../styles/text_styles.dart';
 
 class Stats extends StatefulWidget {
   final double screenWidth;
+  final double screenHeight;
 
-  Stats({required this.screenWidth});
+  Stats({required this.screenWidth, required this.screenHeight});
 
   @override
   _Stats createState() => _Stats();

@@ -4,8 +4,9 @@ import '../styles/text_styles.dart';
 
 class Projects extends StatefulWidget {
   final double screenWidth;
+  final double screenHeight;
 
-  Projects({required this.screenWidth});
+  Projects({required this.screenWidth, required this.screenHeight});
 
   @override
   _Projects createState() => _Projects();

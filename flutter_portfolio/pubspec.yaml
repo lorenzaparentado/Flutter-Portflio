@@ -64,7 +64,10 @@ flutter:
   assets:
     - assets/images/lorenz.png
     - assets/images/lorenzOutline.png
-
+    - assets/images/githubIcon.png
+    - assets/images/linkedinIcon.png
+    - assets/images/mailIcon.png
+    - assets/images/phoneIcon.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -23,6 +23,7 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
+    var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors.lightTan,
       body: Stack(
@@ -31,12 +32,12 @@ class _HomePage extends State<HomePage> {
             child: Column(
               children: [
                 SizedBox(height: 117,),
-                Landing(screenWidth: screenWidth),
-                Stats(screenWidth: screenWidth),
-                AboutMe(screenWidth: screenWidth),
-                Work(screenWidth: screenWidth),
-                Projects(screenWidth: screenWidth),
-                Footer(screenWidth: screenWidth),
+                Landing(screenWidth: screenWidth, screenHeight: screenHeight,),
+                Stats(screenWidth: screenWidth, screenHeight: screenHeight,),
+                AboutMe(screenWidth: screenWidth, screenHeight: screenHeight,),
+                Work(screenWidth: screenWidth, screenHeight: screenHeight,),
+                Projects(screenWidth: screenWidth, screenHeight: screenHeight,),
+                Footer(screenWidth: screenWidth, screenHeight: screenHeight,),
               ],
             ),
           ),
@@ -44,7 +45,7 @@ class _HomePage extends State<HomePage> {
             top: 0,
             left: 0,
             right: 0,
-            child: Header(screenWidth: screenWidth)),
+            child: Header(screenWidth: screenWidth, screenHeight: screenHeight,)),
         ],
       ),
     );

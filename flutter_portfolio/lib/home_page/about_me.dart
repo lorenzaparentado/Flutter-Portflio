@@ -4,8 +4,9 @@ import '../styles/text_styles.dart';
 
 class AboutMe extends StatefulWidget {
   final double screenWidth;
+  final double screenHeight;
 
-  AboutMe({required this.screenWidth});
+  AboutMe({required this.screenWidth, required this.screenHeight});
 
   @override
   _AboutMe createState() => _AboutMe();
