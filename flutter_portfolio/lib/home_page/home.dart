@@ -25,18 +25,27 @@ class _HomePage extends State<HomePage> {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: AppColors.lightTan,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Header(screenWidth: screenWidth),
-            Landing(screenWidth: screenWidth),
-            Stats(screenWidth: screenWidth),
-            AboutMe(screenWidth: screenWidth),
-            Work(screenWidth: screenWidth),
-            Projects(screenWidth: screenWidth),
-            Footer(screenWidth: screenWidth),
-          ],
-        ),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 117,),
+                Landing(screenWidth: screenWidth),
+                Stats(screenWidth: screenWidth),
+                AboutMe(screenWidth: screenWidth),
+                Work(screenWidth: screenWidth),
+                Projects(screenWidth: screenWidth),
+                Footer(screenWidth: screenWidth),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Header(screenWidth: screenWidth)),
+        ],
       ),
     );
   }

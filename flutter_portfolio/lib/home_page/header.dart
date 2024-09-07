@@ -21,8 +21,8 @@ class _Header extends State<Header> {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.5),
-            spreadRadius: 0,
-            blurRadius: 0,
+            spreadRadius: 5,
+            blurRadius: 5,
             offset: Offset(0, 5),
           ),
         ],
