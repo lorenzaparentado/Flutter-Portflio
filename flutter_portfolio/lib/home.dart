@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'styles/text_styles.dart';
+import 'styles/app_colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,23 +12,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
-  static Color darkestBrown = Color(0xFF251B15);
-  static Color mediumBrown = Color(0xFF573824);
-  static Color lightBrown = Color(0xFF88664A);
-  static Color darkTan = Color(0xFF88664A);
-  static Color lightTan = Color(0xFFECEAE1);
-  static Color darkestGreen = Color(0xFF1D2A14);
-  static Color mediumGreen = Color(0xFF4A5540);
-  static Color lightGreen = Color(0xFFA6AF9A);
-  static Color shadowGreen = Color(0xFF0A1700);
-  static String urban = 'Urbanist';
-  static String monster = 'Montserrat';
-
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: lightTan,
+      backgroundColor: AppColors.lightTan,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -44,16 +34,14 @@ class _HomePage extends State<HomePage> {
   Widget work(BuildContext context, double screenWidth) {
     return Container(
         height: 921,
-        color: darkestBrown,
+        color: AppColors.darkestBrown,
         child: Stack(children: [
           Padding(
             padding: EdgeInsets.only(top: 100),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 "TEST",
-                style: headerBig(lightTan),
+                style: headerBig(AppColors.lightTan),
               ),
             ]),
           )
@@ -63,7 +51,7 @@ class _HomePage extends State<HomePage> {
   Widget aboutMe(BuildContext context, double screenWidth) {
     return Container(
       height: 1000,
-      color: lightTan,
+      color: AppColors.lightTan,
       child: Stack(
         children: [
           Positioned(
@@ -73,11 +61,11 @@ class _HomePage extends State<HomePage> {
               height: 500,
               width: 400,
               decoration: BoxDecoration(
-                color: mediumGreen,
+                color: AppColors.mediumGreen,
                 borderRadius: BorderRadius.circular(25),
                 boxShadow: [
                   BoxShadow(
-                      color: shadowGreen,
+                      color: AppColors.shadowGreen,
                       offset: Offset(-10, 10),
                       blurRadius: 10,
                       blurStyle: BlurStyle.solid),
@@ -93,7 +81,7 @@ class _HomePage extends State<HomePage> {
               children: [
                 Text(
                   "About Me",
-                  style: headerBig(darkestBrown),
+                  style: headerBig(AppColors.darkestBrown),
                 )
               ],
             ),
@@ -103,34 +91,39 @@ class _HomePage extends State<HomePage> {
               top: 229,
               right: 100,
               child: Text(
-                  style: bodyMedium(darkestBrown),
+                  style: bodyMedium(AppColors.darkestBrown),
                   "Hey I’m Lorenz, a third-year Computer Science major at Drexel University, pursuing a minor in Data Science with concentrations in Software Engineering and Artificial Intelligence/Machine Learning. With four years of experience in computer science, which began in high school, I have maintained a high college GPA of 3.87 and great academic standards. I enjoy working on projects in my free time and have participated in three hackathons, winning one of them.\n\nCurrently, I am on a co-op at Neuroflow as a Flutter mobile engineer, working part-time as I start school. Initially, I focused on mobile development, creating new features and implementing existing ones onto Flutter. Now, I am working on backend development and plan to develop into a full-stack engineer.\n\nOutside of coding, I have a variety of interests. As a musician, I play around five instruments, including guitar, saxophone, ukulele, flute, and a bit of piano. As an athlete, I enjoy running almost every morning and working out every afternoon. I also embrace my nerdy side by playing video games, especially open-world RPGs like the Fallout series and Cyberpunk, and I enjoy watching movies and TV shows.")),
           Padding(
             padding: EdgeInsets.only(top: 779),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Column(
                 children: [
-                  Container(
-                    height: 56,
-                    width: 400,
-                    decoration: BoxDecoration(
-                      color: mediumGreen,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                            color: shadowGreen,
-                            offset: Offset(-10, 10),
-                            blurRadius: 10,
-                            blurStyle: BlurStyle.solid),
-                      ],
+                  GestureDetector(
+                    onTap: () {
+                      
+                    },
+                    child: Container(
+                      height: 56,
+                      width: 400,
+                      decoration: BoxDecoration(
+                        color: AppColors.mediumGreen,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                              color: AppColors.shadowGreen,
+                              offset: Offset(-10, 10),
+                              blurRadius: 10,
+                              blurStyle: BlurStyle.solid),
+                        ],
+                      ),
+                      child: Center(child: Text('Check out my resume!', style: headerSmall(AppColors.lightTan),)),
                     ),
-                    child: Center(child: Text('Image')),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 13),
                     child: Text(
                       "Last Updated Month, Year",
-                      style: bodyMedium(darkestBrown),
+                      style: bodyMedium(AppColors.darkestBrown),
                     ),
                   )
                 ],
@@ -145,7 +138,7 @@ class _HomePage extends State<HomePage> {
   Widget stats(BuildContext context, double screenWidth) {
     return Container(
       height: 700,
-      color: darkestBrown,
+      color: AppColors.darkestBrown,
     );
   }
 
@@ -158,7 +151,7 @@ class _HomePage extends State<HomePage> {
                 top: 216,
                 left: 100,
                 child: Text("Lorenz\nAparentado",
-                    style: headerBiggest(darkestBrown))),
+                    style: headerBiggest(AppColors.darkestBrown))),
             Positioned(
                 top: 182,
                 left: (screenWidth / 2) - 207 - 20,
@@ -172,7 +165,7 @@ class _HomePage extends State<HomePage> {
                 right: 99,
                 child: Text(
                     "Third Year Computer Science Student\nAspiring Software Engineer\nMobile / Fullstack Developer",
-                    style: bodyBig(darkestBrown)))
+                    style: bodyBig(AppColors.darkestBrown)))
           ],
         ));
   }
@@ -181,7 +174,7 @@ class _HomePage extends State<HomePage> {
     return Container(
       height: 117,
       decoration: BoxDecoration(
-        color: lightTan,
+        color: AppColors.lightTan,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.5),
@@ -202,7 +195,7 @@ class _HomePage extends State<HomePage> {
               child: TextButton(
                 child: Text(
                   "About Me",
-                  style: headerSmallest(darkestBrown),
+                  style: headerSmallest(AppColors.darkestBrown),
                 ),
                 onPressed: () {},
               ),
@@ -212,21 +205,21 @@ class _HomePage extends State<HomePage> {
               child: TextButton(
                 child: Text(
                   "Work",
-                  style: headerSmallest(darkestBrown),
+                  style: headerSmallest(AppColors.darkestBrown),
                 ),
                 onPressed: () {},
               ),
             ),
             Text(
               "Lorenz",
-              style: headerMedium(darkestBrown),
+              style: headerMedium(AppColors.darkestBrown),
             ),
             Padding(
               padding: EdgeInsets.only(left: 75),
               child: TextButton(
                 child: Text(
                   "Projects",
-                  style: headerSmallest(darkestBrown),
+                  style: headerSmallest(AppColors.darkestBrown),
                 ),
                 onPressed: () {},
               ),
@@ -236,7 +229,7 @@ class _HomePage extends State<HomePage> {
               child: TextButton(
                 child: Text(
                   "Contact",
-                  style: headerSmallest(darkestBrown),
+                  style: headerSmallest(AppColors.darkestBrown),
                 ),
                 onPressed: () {},
               ),
@@ -245,85 +238,5 @@ class _HomePage extends State<HomePage> {
         ),
       ),
     );
-  }
-
-  TextStyle headerBiggest(Color color) {
-    return TextStyle(
-        fontFamily: urban,
-        fontSize: 56,
-        fontWeight: FontWeight.w600,
-        height: 58.8 / 56,
-        letterSpacing: 0.02 * 56,
-        color: color);
-  }
-
-  TextStyle headerBig(Color color) {
-    return TextStyle(
-        fontFamily: urban,
-        color: color,
-        fontWeight: FontWeight.w600,
-        fontSize: 48,
-        height: 50.4 / 48,
-        letterSpacing: 0.02 / 48);
-  }
-
-  TextStyle headerMedium(Color color) {
-    return TextStyle(
-        fontFamily: urban,
-        fontSize: 40,
-        fontWeight: FontWeight.w600,
-        height: 42 / 40,
-        letterSpacing: 0.015 * 40,
-        color: color);
-  }
-
-  TextStyle headerSmall(Color color) {
-    return TextStyle(
-        fontFamily: urban,
-        fontSize: 32,
-        fontWeight: FontWeight.w600,
-        height: 33.6 / 32,
-        letterSpacing: 0.015 * 32,
-        color: color);
-  }
-
-  TextStyle headerSmallest(Color color) {
-    return TextStyle(
-        fontFamily: urban,
-        fontSize: 24,
-        fontWeight: FontWeight.w600,
-        height: 24 / 24,
-        letterSpacing: 0.01 * 24,
-        color: color);
-  }
-
-  TextStyle bodyBig(Color color) {
-    return TextStyle(
-        fontFamily: monster,
-        fontSize: 24,
-        fontWeight: FontWeight.w400,
-        height: 37.2 / 24,
-        letterSpacing: 0.02 * 24,
-        color: color);
-  }
-
-  TextStyle bodyMedium(Color color) {
-    return TextStyle(
-        fontFamily: monster,
-        color: color,
-        fontWeight: FontWeight.w400,
-        fontSize: 20,
-        height: 31 / 20,
-        letterSpacing: 0.02 / 20);
-  }
-
-  TextStyle bodySmall(Color color) {
-    return TextStyle(
-        fontFamily: monster,
-        color: color,
-        fontWeight: FontWeight.w400,
-        fontSize: 16,
-        height: 24.8 / 16,
-        letterSpacing: 0.02 / 16);
   }
 }
