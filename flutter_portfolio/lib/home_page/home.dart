@@ -11,6 +11,7 @@ import 'footer.dart';
 import 'package:flutter/material.dart';
 import '../styles/text_styles.dart';
 import '../styles/app_colors.dart';
+import '../tools.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,7 +32,7 @@ class _HomePage extends State<HomePage> {
           SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 117,),
+                SizedBox(height: responsiveHeight(screenHeight, 117),),
                 Landing(screenWidth: screenWidth, screenHeight: screenHeight,),
                 Stats(screenWidth: screenWidth, screenHeight: screenHeight,),
                 AboutMe(screenWidth: screenWidth, screenHeight: screenHeight,),

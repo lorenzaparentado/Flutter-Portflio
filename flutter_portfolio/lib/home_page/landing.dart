@@ -37,7 +37,6 @@ class _Landing extends State<Landing> {
                   width: imageWidth,
                 ),
               ),
-
           Positioned(
             top: responsiveHeight(widget.screenHeight, 216),
             right: responsiveWidth(widget.screenWidth, 99),
