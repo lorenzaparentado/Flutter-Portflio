@@ -17,37 +17,137 @@ class _Projects extends State<Projects> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 1369,
         color: AppColors.lightTan,
-        child: Stack(children: [
-          Padding(
-            padding: EdgeInsets.only(top: 100),
-            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: responsiveWidth(widget.screenWidth, 100),
+              vertical: responsiveHeight(widget.screenHeight, 100)),
+          child: Column(children: [
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 "Projects",
                 style: headerBig(AppColors.darkestBrown, context),
               ),
             ]),
-          ),
-          GridView.count(
-            primary: false,
-            childAspectRatio: (600 / 500),
-            physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.fromLTRB(100, 229, 100, 100),
-            crossAxisSpacing: 40,
-            mainAxisSpacing: 40,
-            crossAxisCount: 2,
-            children: <Widget>[
-              singleProject(),
-              singleProject(),
-              singleProject(),
-              singleProject(),
-            ],
-          ),
-        ]));
+            SizedBox(height: responsiveHeight(widget.screenHeight, 79)),
+            Row(
+              children: [
+                Column(
+                  children: [
+                    singleProject(),
+                    SizedBox(
+                      height: responsiveHeight(widget.screenHeight, 40),
+                    ),
+                    singleProject(),
+                  ],
+                ),
+                SizedBox(
+                  width: responsiveWidth(widget.screenWidth, 40),
+                ),
+                Column(
+                  children: [
+                    singleProject(),
+                    SizedBox(
+                      height: responsiveHeight(widget.screenHeight, 40),
+                    ),
+                    singleProject(),
+                  ],
+                ),
+              ],
+            )
+          ]),
+        ));
   }
 
-  Widget projectTech() {
+  Widget singleProject() {
+    return Container(
+      height: responsiveHeight(widget.screenHeight, 500),
+      width: responsiveWidth(widget.screenWidth, 600),
+      decoration: BoxDecoration(
+        color: AppColors.lightGreen,
+        borderRadius: BorderRadius.circular(25),
+        boxShadow: [
+          BoxShadow(
+              color: AppColors.mediumGreen,
+              offset: Offset(-10, 10),
+              blurRadius: 0,
+              blurStyle: BlurStyle.solid),
+        ],
+      ),
+      child: Stack(children: [
+        Padding(
+          padding: EdgeInsets.fromLTRB(responsiveWidth(widget.screenWidth, 50),
+              responsiveHeight(widget.screenHeight, 50), 0, 0),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Project Name",
+                  style: headerMedium(AppColors.darkestBrown, context),
+                ),
+                SizedBox(height: responsiveHeight(widget.screenHeight, 50)),
+                Text(
+                  "This is the project description",
+                  style: bodyMedium(AppColors.darkestBrown, context),
+                ),
+                SizedBox(height: responsiveHeight(widget.screenHeight, 27)),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: techGroup(),
+                    ),
+                    SizedBox(
+                      height: responsiveHeight(widget.screenHeight, 99),
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.darkestGreen,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                                color: AppColors.shadowGreen,
+                                offset: Offset(-5, 5),
+                                blurRadius: 0,
+                                blurStyle: BlurStyle.solid),
+                          ],
+                        ),
+                        child: Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                responsiveWidth(widget.screenWidth, 18),
+                                responsiveHeight(widget.screenHeight, 11),
+                                responsiveWidth(widget.screenWidth, 19),
+                                responsiveHeight(widget.screenHeight, 11)),
+                            child: Text(
+                              "Open Project",
+                              style: headerSmall(AppColors.lightTan, context),
+                            )),
+                      ),
+                    )
+                  ],
+                ),
+              ]),
+        ),
+        Positioned(
+            right: 0,
+            bottom: 0,
+            child: Container(
+              height: responsiveHeight(widget.screenHeight, 300),
+              width: responsiveWidth(widget.screenWidth, 300),
+              decoration: BoxDecoration(
+                color: AppColors.darkestGreen,
+                borderRadius: BorderRadius.circular(25),
+              ),
+            ))
+      ]),
+    );
+  }
+
+  Widget tech() {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.darkestGreen,
@@ -61,100 +161,34 @@ class _Projects extends State<Projects> {
         ],
       ),
       child: Padding(
-        padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
-        child: Text("Tech1", style: bodyMedium(AppColors.lightTan, context)),
-      ),
+          padding: EdgeInsets.fromLTRB(
+              responsiveWidth(widget.screenWidth, 10),
+              responsiveHeight(widget.screenHeight, 2),
+              responsiveWidth(widget.screenWidth, 10),
+              responsiveHeight(widget.screenHeight, 2)),
+          child: Text(
+            "Tech1",
+            style: bodyMedium(AppColors.lightTan, context),
+          )),
     );
   }
 
-  Widget singleProject() {
-    return Container(
-        height: 500,
-        width: 600,
-        decoration: BoxDecoration(
-          color: AppColors.lightGreen,
-          borderRadius: BorderRadius.circular(25),
-          boxShadow: [
-            BoxShadow(
-                color: AppColors.mediumGreen,
-                offset: Offset(-10, 10),
-                blurRadius: 0,
-                blurStyle: BlurStyle.solid),
+  Widget techGroup() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            tech(),
+            SizedBox(
+              width: responsiveWidth(widget.screenWidth, 25),
+            ),
+            tech(),
           ],
         ),
-        child: Stack(
-          children: [
-            Positioned(
-                top: 50,
-                left: 51,
-                child: Text(
-                  "Project Title",
-                  style: headerMedium(AppColors.darkestBrown, context),
-                )),
-            Positioned(
-                top: 142,
-                left: 51,
-                child: Text(
-                  "Project description",
-                  style: bodyMedium(AppColors.darkestBrown, context),
-                )),
-            Positioned(
-                top: 200,
-                left: 51,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        projectTech(),
-                        SizedBox(width: 25),
-                        projectTech(),
-                      ],
-                    ),
-                    SizedBox(height: 27),
-                    projectTech(),
-                  ],
-                )),
-            Positioned(
-              top: 394,
-              left: 51,
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.darkestGreen,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                          color: AppColors.shadowGreen,
-                          offset: Offset(-10, 10),
-                          blurRadius: 0,
-                          blurStyle: BlurStyle.solid),
-                    ],
-                  ),
-                  child: Center(
-                      child: Padding(
-                    padding: EdgeInsets.fromLTRB(18, 11, 18, 11),
-                    child: Text(
-                      'Open Project',
-                      style: headerSmall(AppColors.lightTan, context),
-                    ),
-                  )),
-                ),
-              ),
-            ),
-            Positioned(
-                bottom: 0,
-                right: 0,
-                child: Container(
-                  height: 300,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    color: AppColors.darkestGreen,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                )),
-          ],
-        ));
+        SizedBox(height: responsiveHeight(widget.screenHeight, 25)),
+        tech(),
+      ],
+    );
   }
 }
