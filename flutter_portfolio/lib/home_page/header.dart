@@ -17,7 +17,7 @@ class _Header extends State<Header> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: responsiveHeight(widget.screenHeight, 117),
+      //height: responsiveHeight(widget.screenHeight, 117),
       decoration: BoxDecoration(
         color: AppColors.lightTan,
         boxShadow: [
@@ -29,13 +29,11 @@ class _Header extends State<Header> {
           ),
         ],
       ),
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(
-            0,
-            responsiveHeight(widget.screenHeight, 50),
-            0,
-            responsiveHeight(widget.screenHeight, 25)),
-        child: Row(
+      child: Column(children: [
+        SizedBox(
+          height: responsiveHeight(widget.screenHeight, 50),
+        ),
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.baseline,
           textBaseline: TextBaseline.alphabetic,
@@ -90,7 +88,10 @@ class _Header extends State<Header> {
             ),
           ],
         ),
-      ),
+        SizedBox(
+          height: responsiveHeight(widget.screenHeight, 25),
+        )
+      ]),
     );
   }
 }
