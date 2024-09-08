@@ -6,8 +6,9 @@ import '../tools.dart';
 class Projects extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
+  final GlobalKey projectsKey;
 
-  Projects({required this.screenWidth, required this.screenHeight});
+  Projects({required this.projectsKey, required this.screenWidth, required this.screenHeight});
 
   @override
   _Projects createState() => _Projects();
@@ -26,6 +27,7 @@ class _Projects extends State<Projects> {
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 "Projects",
+                key: widget.projectsKey,
                 style: headerBig(AppColors.darkestBrown, context),
               ),
             ]),

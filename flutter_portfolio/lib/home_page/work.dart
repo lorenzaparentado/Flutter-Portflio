@@ -6,14 +6,16 @@ import '../tools.dart';
 class Work extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
+  final GlobalKey workKey;
 
-  Work({required this.screenWidth, required this.screenHeight});
+  Work({required this.workKey, required this.screenWidth, required this.screenHeight});
 
   @override
   _Work createState() => _Work();
 }
 
 class _Work extends State<Work> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,6 +28,7 @@ class _Work extends State<Work> {
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 "Work",
+                key: widget.workKey,
                 style: headerBig(AppColors.lightTan, context),
               ),
             ]),

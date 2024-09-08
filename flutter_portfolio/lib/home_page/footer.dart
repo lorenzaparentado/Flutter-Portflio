@@ -6,8 +6,9 @@ import '../tools.dart';
 class Footer extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
+  final GlobalKey footerKey;
 
-  Footer({required this.screenWidth, required this.screenHeight});
+  Footer({required this.footerKey, required this.screenWidth, required this.screenHeight});
 
   @override
   _Footer createState() => _Footer();
@@ -27,6 +28,7 @@ class _Footer extends State<Footer> {
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   "Contact Me",
+                  key: widget.footerKey,
                   style: headerBig(AppColors.lightTan, context),
                 ),
               ]),

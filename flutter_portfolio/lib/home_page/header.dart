@@ -6,8 +6,23 @@ import '../tools.dart';
 class Header extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
+  final Function(GlobalKey) scrollToSection;
+  final GlobalKey landingKey;
+  final GlobalKey aboutMeKey;
+  final GlobalKey workKey;
+  final GlobalKey projectsKey;
+  final GlobalKey contactKey;
 
-  Header({required this.screenWidth, required this.screenHeight});
+  Header({
+    required this.landingKey,
+    required this.screenWidth,
+    required this.screenHeight,
+    required this.scrollToSection,
+    required this.aboutMeKey,
+    required this.workKey,
+    required this.projectsKey,
+    required this.contactKey,
+  });
 
   @override
   _Header createState() => _Header();
@@ -17,7 +32,6 @@ class _Header extends State<Header> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //height: responsiveHeight(widget.screenHeight, 117),
       decoration: BoxDecoration(
         color: AppColors.lightTan,
         boxShadow: [
@@ -46,7 +60,7 @@ class _Header extends State<Header> {
                   "About Me",
                   style: headerSmallest(AppColors.darkestBrown, context),
                 ),
-                onPressed: () {},
+                onPressed: () => widget.scrollToSection(widget.aboutMeKey),
               ),
             ),
             Padding(
@@ -57,12 +71,15 @@ class _Header extends State<Header> {
                   "Work",
                   style: headerSmallest(AppColors.darkestBrown, context),
                 ),
-                onPressed: () {},
+                onPressed: () => widget.scrollToSection(widget.workKey),
               ),
             ),
-            Text(
-              "Lorenz",
-              style: headerMedium(AppColors.darkestBrown, context),
+            TextButton(
+              child: Text(
+                "Lorenz",
+                style: headerMedium(AppColors.darkestBrown, context),
+              ),
+              onPressed: () => widget.scrollToSection(widget.landingKey),
             ),
             Padding(
               padding: EdgeInsets.only(
@@ -72,7 +89,7 @@ class _Header extends State<Header> {
                   "Projects",
                   style: headerSmallest(AppColors.darkestBrown, context),
                 ),
-                onPressed: () {},
+                onPressed: () => widget.scrollToSection(widget.projectsKey),
               ),
             ),
             Padding(
@@ -83,7 +100,7 @@ class _Header extends State<Header> {
                   "Contact",
                   style: headerSmallest(AppColors.darkestBrown, context),
                 ),
-                onPressed: () {},
+                onPressed: () => widget.scrollToSection(widget.contactKey, ),
               ),
             ),
           ],

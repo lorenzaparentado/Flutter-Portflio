@@ -6,8 +6,9 @@ import '../tools.dart';
 class AboutMe extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
+  final GlobalKey aboutKey;
 
-  AboutMe({required this.screenWidth, required this.screenHeight});
+  AboutMe({required this.aboutKey, required this.screenWidth, required this.screenHeight});
 
   @override
   _AboutMe createState() => _AboutMe();
@@ -29,6 +30,7 @@ class _AboutMe extends State<AboutMe> {
               children: [
                 Text(
                   "About Me",
+                  key: widget.aboutKey,
                   style: headerBig(AppColors.darkestBrown, context),
                 )
               ],

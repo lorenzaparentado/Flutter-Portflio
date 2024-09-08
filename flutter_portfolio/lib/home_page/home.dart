@@ -21,6 +21,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey _landingKey = GlobalKey();
+  final GlobalKey _aboutMeKey = GlobalKey();
+  final GlobalKey _workKey = GlobalKey();
+  final GlobalKey _projectsKey = GlobalKey();
+  final GlobalKey _contactKey = GlobalKey();
+
+  void _scrollToSection(GlobalKey key) {
+    final context = key.currentContext;
+    if (context != null) {
+      Scrollable.ensureVisible(
+        context,
+        duration: Duration(seconds: 1),
+        curve: ElasticOutCurve(1),
+        alignment: .15,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
@@ -30,15 +49,27 @@ class _HomePage extends State<HomePage> {
       body: Stack(
         children: [
           SingleChildScrollView(
+            controller: _scrollController,
             child: Column(
               children: [
-                SizedBox(height: responsiveHeight(screenHeight, 117),),
-                Landing(screenWidth: screenWidth, screenHeight: screenHeight,),
-                Stats(screenWidth: screenWidth, screenHeight: screenHeight,),
-                AboutMe(screenWidth: screenWidth, screenHeight: screenHeight,),
-                Work(screenWidth: screenWidth, screenHeight: screenHeight,),
-                Projects(screenWidth: screenWidth, screenHeight: screenHeight,),
-                Footer(screenWidth: screenWidth, screenHeight: screenHeight,),
+                Landing(landingKey: _landingKey, screenWidth: screenWidth, screenHeight: screenHeight),
+                Stats(screenWidth: screenWidth, screenHeight: screenHeight),
+                AboutMe(
+                    aboutKey: _aboutMeKey,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight),
+                Work(
+                    workKey: _workKey,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight),
+                Projects(
+                    projectsKey: _projectsKey,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight),
+                Footer(
+                    footerKey: _contactKey,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight),
               ],
             ),
           ),
@@ -46,7 +77,17 @@ class _HomePage extends State<HomePage> {
             top: 0,
             left: 0,
             right: 0,
-            child: Header(screenWidth: screenWidth, screenHeight: screenHeight,)),
+            child: Header(
+              screenWidth: screenWidth,
+              screenHeight: screenHeight,
+              scrollToSection: _scrollToSection,
+              landingKey: _landingKey,
+              aboutMeKey: _aboutMeKey,
+              workKey: _workKey,
+              projectsKey: _projectsKey,
+              contactKey: _contactKey,
+            ),
+          ),
         ],
       ),
     );

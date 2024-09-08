@@ -6,8 +6,9 @@ import '../tools.dart';
 class Landing extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
+  final GlobalKey landingKey;
 
-  Landing({required this.screenWidth, required this.screenHeight});
+  Landing({required this.landingKey, required this.screenWidth, required this.screenHeight});
 
   @override
   _Landing createState() => _Landing();
@@ -18,11 +19,12 @@ class _Landing extends State<Landing> {
   Widget build(BuildContext context) {
     double imageWidth = widget.screenWidth >= 1440 ? 434 : widget.screenWidth * 0.3;
     return Container(
-      height: responsiveHeight(widget.screenHeight, 729),
+      key: widget.landingKey,
+      height: responsiveHeight(widget.screenHeight, 729 + 117),
       child: Stack(
         children: [
           Positioned(
-            top: responsiveHeight(widget.screenHeight, 216),
+            top: responsiveHeight(widget.screenHeight, 216 + 117),
             left: responsiveWidth(widget.screenWidth, 100),
             child: Text(
               "Lorenz\nAparentado",
@@ -38,7 +40,7 @@ class _Landing extends State<Landing> {
                 ),
               ),
           Positioned(
-            top: responsiveHeight(widget.screenHeight, 216),
+            top: responsiveHeight(widget.screenHeight, 216 + 117),
             right: responsiveWidth(widget.screenWidth, 99),
             child: Container(
               child: Text(
