@@ -21,7 +21,7 @@ class _Work extends State<Work> {
         child: Padding(
           padding: EdgeInsets.symmetric(
               horizontal: responsiveWidth(widget.screenWidth, 100),
-              vertical: responsiveWidth(widget.screenWidth, 100)),
+              vertical: responsiveHeight(widget.screenHeight, 100)),
           child: Column(children: [
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
