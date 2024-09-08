@@ -26,7 +26,7 @@ class _Landing extends State<Landing> {
             left: responsiveWidth(widget.screenWidth, 100),
             child: Text(
               "Lorenz\nAparentado",
-              style: headerBiggest(AppColors.darkestBrown),
+              style: headerBiggest(AppColors.darkestBrown, context),
             ),
           ),
           Positioned(
@@ -44,7 +44,7 @@ class _Landing extends State<Landing> {
             child: Container(
               child: Text(
                 "Third Year Computer Science Student\nAspiring Software Engineer\nMobile / Fullstack Developer",
-                style: bodyBig(AppColors.darkestBrown),
+                style: bodyBig(AppColors.darkestBrown, context),
               ),
             ),
           ),

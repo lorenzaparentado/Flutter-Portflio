@@ -24,7 +24,7 @@ class _Projects extends State<Projects> {
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 "Projects",
-                style: headerBig(AppColors.darkestBrown),
+                style: headerBig(AppColors.darkestBrown, context),
               ),
             ]),
           ),
@@ -61,7 +61,7 @@ class _Projects extends State<Projects> {
       ),
       child: Padding(
         padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
-        child: Text("Tech1", style: bodyMedium(AppColors.lightTan)),
+        child: Text("Tech1", style: bodyMedium(AppColors.lightTan, context)),
       ),
     );
   }
@@ -88,14 +88,14 @@ class _Projects extends State<Projects> {
                 left: 51,
                 child: Text(
                   "Project Title",
-                  style: headerMedium(AppColors.darkestBrown),
+                  style: headerMedium(AppColors.darkestBrown, context),
                 )),
             Positioned(
                 top: 142,
                 left: 51,
                 child: Text(
                   "Project description",
-                  style: bodyMedium(AppColors.darkestBrown),
+                  style: bodyMedium(AppColors.darkestBrown, context),
                 )),
             Positioned(
                 top: 200,
@@ -136,7 +136,7 @@ class _Projects extends State<Projects> {
                     padding: EdgeInsets.fromLTRB(18, 11, 18, 11),
                     child: Text(
                       'Open Project',
-                      style: headerSmall(AppColors.lightTan),
+                      style: headerSmall(AppColors.lightTan, context),
                     ),
                   )),
                 ),

@@ -26,7 +26,7 @@ class _Footer extends State<Footer> {
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   "Contact Me",
-                  style: headerBig(AppColors.lightTan),
+                  style: headerBig(AppColors.lightTan, context),
                 ),
               ]),
             ),
@@ -37,7 +37,7 @@ class _Footer extends State<Footer> {
               padding: EdgeInsets.symmetric(horizontal: 320),
               child: Text(
                   textAlign: TextAlign.center,
-                  style: bodyMedium(AppColors.lightTan),
+                  style: bodyMedium(AppColors.lightTan, context),
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."),
             ),
             SizedBox(
@@ -71,7 +71,7 @@ class _Footer extends State<Footer> {
             SizedBox(
               height: 50,
             ),
-            Text("Last Updated Month, Year", style: bodySmall(AppColors.lightTan),)
+            Text("Last Updated Month, Year", style: bodySmall(AppColors.lightTan, context),)
           ],
         ));
   }
@@ -99,7 +99,7 @@ class _Footer extends State<Footer> {
             ),
             Text(
               text,
-              style: bodyMedium(AppColors.darkestBrown),
+              style: bodyMedium(AppColors.darkestBrown, context),
             )
           ],
         ),

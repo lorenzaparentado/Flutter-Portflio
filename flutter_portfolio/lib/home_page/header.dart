@@ -30,51 +30,60 @@ class _Header extends State<Header> {
         ],
       ),
       child: Padding(
-        padding: EdgeInsets.fromLTRB(0, responsiveHeight(widget.screenHeight, 50), 0, responsiveHeight(widget.screenHeight, 25)),
+        padding: EdgeInsets.fromLTRB(
+            0,
+            responsiveHeight(widget.screenHeight, 50),
+            0,
+            responsiveHeight(widget.screenHeight, 25)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
           children: [
             Padding(
-              padding: EdgeInsets.only(right: responsiveWidth(widget.screenWidth, 75)),
+              padding: EdgeInsets.only(
+                  right: responsiveWidth(widget.screenWidth, 75)),
               child: TextButton(
                 child: Text(
                   "About Me",
-                  style: headerSmallest(AppColors.darkestBrown),
+                  style: headerSmallest(AppColors.darkestBrown, context),
                 ),
                 onPressed: () {},
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(right: responsiveWidth(widget.screenWidth, 75)),
+              padding: EdgeInsets.only(
+                  right: responsiveWidth(widget.screenWidth, 75)),
               child: TextButton(
                 child: Text(
                   "Work",
-                  style: headerSmallest(AppColors.darkestBrown),
+                  style: headerSmallest(AppColors.darkestBrown, context),
                 ),
                 onPressed: () {},
               ),
             ),
             Text(
               "Lorenz",
-              style: headerMedium(AppColors.darkestBrown),
+              style: headerMedium(AppColors.darkestBrown, context),
             ),
             Padding(
-              padding: EdgeInsets.only(left: responsiveWidth(widget.screenWidth, 75)),
+              padding: EdgeInsets.only(
+                  left: responsiveWidth(widget.screenWidth, 75)),
               child: TextButton(
                 child: Text(
                   "Projects",
-                  style: headerSmallest(AppColors.darkestBrown),
+                  style: headerSmallest(AppColors.darkestBrown, context),
                 ),
                 onPressed: () {},
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: responsiveWidth(widget.screenWidth, 75)),
+              padding: EdgeInsets.only(
+                  left: responsiveWidth(widget.screenWidth, 75)),
               child: TextButton(
                 child: Text(
                   "Contact",
-                  style: headerSmallest(AppColors.darkestBrown),
+                  style: headerSmallest(AppColors.darkestBrown, context),
                 ),
                 onPressed: () {},
               ),
