@@ -62,27 +62,19 @@ class _Footer extends State<Footer> {
                     );
                   }),
                   SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
-                  contactButton("+1 (484) 350-8039", 'assets/images/phoneIcon.png',
-                      () {
+                  contactButton(
+                      "+1 (484) 350-8039", 'assets/images/phoneIcon.png', () {
                     _sendingSMS();
                   }),
                   SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
                   contactButton("laparentado", 'assets/images/linkedinIcon.png',
                       () {
-                    launchEmail(
-                      toEmail: 'example@example.com',
-                      subject: 'Hello Flutter',
-                      body: 'Hi! I\'m Flutter Developer',
-                    );
+                    _launchURL("https://www.linkedin.com/in/laparentado/");
                   }),
                   SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
                   contactButton(
                       "lorenzaparentado", 'assets/images/githubIcon.png', () {
-                    launchEmail(
-                      toEmail: 'example@example.com',
-                      subject: 'Hello Flutter',
-                      body: 'Hi! I\'m Flutter Developer',
-                    );
+                    _launchURL("https://www.linkedin.com/in/laparentado/");
                   }),
                 ],
               ),
@@ -148,10 +140,11 @@ class _Footer extends State<Footer> {
       required String subject,
       required String body}) async {
     final Uri emailUri = Uri(
-    scheme: 'mailto',
-    path: toEmail,
-    query: 'subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}',
-  );
+      scheme: 'mailto',
+      path: toEmail,
+      query:
+          'subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}',
+    );
 
     if (await canLaunch(emailUri.toString())) {
       await launchUrl(emailUri);
@@ -161,11 +154,19 @@ class _Footer extends State<Footer> {
   }
 
   void _sendingSMS() async {
-  var url = Uri.parse("sms:4843508039");
-  if (await canLaunchUrl(url)) {
-    await launchUrl(url);
-  } else {
-    throw 'Could not launch $url';
+    var url = Uri.parse("sms:4843508039");
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
-}
+
+  void _launchURL(String url) async {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
 }
