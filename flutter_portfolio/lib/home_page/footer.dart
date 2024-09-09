@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import '../styles/app_colors.dart';
 import '../styles/text_styles.dart';
 import '../tools.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Footer extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
   final GlobalKey footerKey;
 
-  Footer({required this.footerKey, required this.screenWidth, required this.screenHeight});
+  Footer(
+      {required this.footerKey,
+      required this.screenWidth,
+      required this.screenHeight});
 
   @override
   _Footer createState() => _Footer();
@@ -50,16 +54,36 @@ class _Footer extends State<Footer> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   contactButton("lorenzaparentado@gmail.com",
-                      'assets/images/mailIcon.png'),
+                      'assets/images/mailIcon.png', () {
+                    launchEmail(
+                      toEmail: 'lorenzaparentado@gmail.com',
+                      subject: 'From Portfolio:',
+                      body: 'Write me a message!',
+                    );
+                  }),
+                  SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
+                  contactButton("+1 (484) 350-8039", 'assets/images/phoneIcon.png',
+                      () {
+                    _sendingSMS();
+                  }),
+                  SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
+                  contactButton("laparentado", 'assets/images/linkedinIcon.png',
+                      () {
+                    launchEmail(
+                      toEmail: 'example@example.com',
+                      subject: 'Hello Flutter',
+                      body: 'Hi! I\'m Flutter Developer',
+                    );
+                  }),
                   SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
                   contactButton(
-                      "(484) 350-8039", 'assets/images/phoneIcon.png'),
-                  SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
-                  contactButton(
-                      "laparentado", 'assets/images/linkedinIcon.png'),
-                  SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
-                  contactButton(
-                      "lorenzaparentado", 'assets/images/githubIcon.png'),
+                      "lorenzaparentado", 'assets/images/githubIcon.png', () {
+                    launchEmail(
+                      toEmail: 'example@example.com',
+                      subject: 'Hello Flutter',
+                      body: 'Hi! I\'m Flutter Developer',
+                    );
+                  }),
                 ],
               ),
               SizedBox(
@@ -81,36 +105,67 @@ class _Footer extends State<Footer> {
         ));
   }
 
-  Widget contactButton(String text, String icon) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.lightGreen,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-              color: AppColors.mediumGreen,
-              offset: Offset(-8, 8),
-              blurRadius: 0,
-              blurStyle: BlurStyle.solid),
-        ],
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: responsiveHeight(widget.screenHeight, 15),
-            horizontal: responsiveWidth(widget.screenWidth, 15)),
-        child: Row(
-          children: [
-            Image.asset(icon),
-            SizedBox(
-              width: responsiveWidth(widget.screenWidth, 10),
-            ),
-            Text(
-              text,
-              style: bodyMedium(AppColors.darkestBrown, context),
-            )
+  Widget contactButton(String text, String icon, Function onPress) {
+    return InkWell(
+      onTap: () async {
+        onPress();
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.lightGreen,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+                color: AppColors.mediumGreen,
+                offset: Offset(-8, 8),
+                blurRadius: 0,
+                blurStyle: BlurStyle.solid),
           ],
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              vertical: responsiveHeight(widget.screenHeight, 15),
+              horizontal: responsiveWidth(widget.screenWidth, 15)),
+          child: Row(
+            children: [
+              Image.asset(icon),
+              SizedBox(
+                width: responsiveWidth(widget.screenWidth, 10),
+              ),
+              Text(
+                text,
+                style: bodyMedium(AppColors.darkestBrown, context),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
+
+  void launchEmail(
+      {required String toEmail,
+      required String subject,
+      required String body}) async {
+    final Uri emailUri = Uri(
+    scheme: 'mailto',
+    path: toEmail,
+    query: 'subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}',
+  );
+
+    if (await canLaunch(emailUri.toString())) {
+      await launchUrl(emailUri);
+    } else {
+      throw 'Could not launch $emailUri';
+    }
+  }
+
+  void _sendingSMS() async {
+  var url = Uri.parse("sms:4843508039");
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 }
