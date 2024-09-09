@@ -69,12 +69,12 @@ class _Footer extends State<Footer> {
                   SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
                   contactButton("laparentado", 'assets/images/linkedinIcon.png',
                       () {
-                    _launchURL("https://www.linkedin.com/in/laparentado/");
+                    _launchURL("https://www.linkedin.com/in/laparentado");
                   }),
                   SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
                   contactButton(
                       "lorenzaparentado", 'assets/images/githubIcon.png', () {
-                    _launchURL("https://www.linkedin.com/in/laparentado/");
+                    _launchURL("https://github.com/lorenzaparentado");
                   }),
                 ],
               ),
