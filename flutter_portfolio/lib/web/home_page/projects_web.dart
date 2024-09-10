@@ -8,7 +8,10 @@ class ProjectsWeb extends StatefulWidget {
   final double screenHeight;
   final GlobalKey projectsKey;
 
-  ProjectsWeb({required this.projectsKey, required this.screenWidth, required this.screenHeight});
+  ProjectsWeb(
+      {required this.projectsKey,
+      required this.screenWidth,
+      required this.screenHeight});
 
   @override
   _ProjectsWeb createState() => _ProjectsWeb();
@@ -36,11 +39,33 @@ class _ProjectsWeb extends State<ProjectsWeb> {
               children: [
                 Column(
                   children: [
-                    singleProject(),
+                    singleProject(
+                        "title",
+                        "description",
+                        "tech1",
+                        "tech2",
+                        "tech3",
+                        AppColors.lightBrown,
+                        AppColors.mediumBrown,
+                        AppColors.mediumGreen,
+                        AppColors.darkestGreen,
+                        AppColors.lightTan,
+                        AppColors.darkestGreen),
                     SizedBox(
                       height: responsiveHeight(widget.screenHeight, 40),
                     ),
-                    singleProject(),
+                    singleProject(
+                        "title",
+                        "description",
+                        "tech1",
+                        "tech2",
+                        "tech3",
+                        AppColors.mediumGreen,
+                        AppColors.darkestGreen,
+                        AppColors.darkTan,
+                        AppColors.lightBrown,
+                        AppColors.darkestBrown,
+                        AppColors.darkestBrown),
                   ],
                 ),
                 SizedBox(
@@ -48,11 +73,33 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                 ),
                 Column(
                   children: [
-                    singleProject(),
+                    singleProject(
+                        "title",
+                        "description",
+                        "tech1",
+                        "tech2",
+                        "tech3",
+                        AppColors.mediumGreen,
+                        AppColors.darkestGreen,
+                        AppColors.darkTan,
+                        AppColors.lightBrown,
+                        AppColors.darkestBrown,
+                        AppColors.darkestBrown),
                     SizedBox(
                       height: responsiveHeight(widget.screenHeight, 40),
                     ),
-                    singleProject(),
+                    singleProject(
+                        "title",
+                        "description",
+                        "tech1",
+                        "tech2",
+                        "tech3",
+                        AppColors.lightBrown,
+                        AppColors.mediumBrown,
+                        AppColors.mediumGreen,
+                        AppColors.darkestGreen,
+                        AppColors.lightTan,
+                        AppColors.darkestGreen),
                   ],
                 ),
               ],
@@ -61,16 +108,27 @@ class _ProjectsWeb extends State<ProjectsWeb> {
         ));
   }
 
-  Widget singleProject() {
+  Widget singleProject(
+      String title,
+      String description,
+      String tech1,
+      String tech2,
+      String tech3,
+      Color backgroundColor,
+      Color backgroundShadowColor,
+      Color buttonColor,
+      Color buttonShadowColor,
+      Color buttonTextColor,
+      Color imageColor) {
     return Container(
       height: responsiveHeight(widget.screenHeight, 500),
       width: responsiveWidth(widget.screenWidth, 600),
       decoration: BoxDecoration(
-        color: AppColors.lightGreen,
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(25),
         boxShadow: [
           BoxShadow(
-              color: AppColors.mediumGreen,
+              color: backgroundShadowColor,
               offset: Offset(-10, 10),
               blurRadius: 0,
               blurStyle: BlurStyle.solid),
@@ -85,13 +143,13 @@ class _ProjectsWeb extends State<ProjectsWeb> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Project Name",
-                  style: headerMedium(AppColors.darkestBrown, context),
+                  title,
+                  style: headerMedium(AppColors.lightTan, context),
                 ),
                 SizedBox(height: responsiveHeight(widget.screenHeight, 50)),
                 Text(
-                  "This is the project description",
-                  style: bodyMedium(AppColors.darkestBrown, context),
+                  description,
+                  style: bodyMedium(AppColors.lightTan, context),
                 ),
                 SizedBox(height: responsiveHeight(widget.screenHeight, 27)),
                 Column(
@@ -99,7 +157,8 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      child: techGroup(),
+                      child: techGroup(tech1, tech2, tech3, buttonColor,
+                          buttonShadowColor, buttonTextColor),
                     ),
                     SizedBox(
                       height: responsiveHeight(widget.screenHeight, 99),
@@ -108,11 +167,11 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                       onTap: () {},
                       child: Container(
                         decoration: BoxDecoration(
-                          color: AppColors.darkestGreen,
+                          color: buttonColor,
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
-                                color: AppColors.shadowGreen,
+                                color: buttonShadowColor,
                                 offset: Offset(-5, 5),
                                 blurRadius: 0,
                                 blurStyle: BlurStyle.solid),
@@ -126,7 +185,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                                 responsiveHeight(widget.screenHeight, 11)),
                             child: Text(
                               "Open Project",
-                              style: headerSmall(AppColors.lightTan, context),
+                              style: headerSmall(buttonTextColor, context),
                             )),
                       ),
                     )
@@ -141,7 +200,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
               height: responsiveHeight(widget.screenHeight, 300),
               width: responsiveWidth(widget.screenWidth, 300),
               decoration: BoxDecoration(
-                color: AppColors.darkestGreen,
+                color: imageColor,
                 borderRadius: BorderRadius.circular(25),
               ),
             ))
@@ -149,14 +208,15 @@ class _ProjectsWeb extends State<ProjectsWeb> {
     );
   }
 
-  Widget tech() {
+  Widget tech(String techName, Color buttonColor, Color buttonShadowColor,
+      Color buttonTextColor) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.darkestGreen,
+        color: buttonColor,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-              color: AppColors.shadowGreen,
+              color: buttonShadowColor,
               offset: Offset(-5, 5),
               blurRadius: 0,
               blurStyle: BlurStyle.solid),
@@ -169,27 +229,28 @@ class _ProjectsWeb extends State<ProjectsWeb> {
               responsiveWidth(widget.screenWidth, 10),
               responsiveHeight(widget.screenHeight, 2)),
           child: Text(
-            "Tech1",
-            style: bodyMedium(AppColors.lightTan, context),
+            techName,
+            style: bodyMedium(buttonTextColor, context),
           )),
     );
   }
 
-  Widget techGroup() {
+  Widget techGroup(String tech1, String tech2, String tech3, Color buttonColor,
+      Color buttonShadowColor, Color buttonTextColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            tech(),
+            tech(tech1, buttonColor, buttonShadowColor, buttonTextColor),
             SizedBox(
               width: responsiveWidth(widget.screenWidth, 25),
             ),
-            tech(),
+            tech(tech2, buttonColor, buttonShadowColor, buttonTextColor),
           ],
         ),
         SizedBox(height: responsiveHeight(widget.screenHeight, 25)),
-        tech(),
+        tech(tech3, buttonColor, buttonShadowColor, buttonTextColor),
       ],
     );
   }

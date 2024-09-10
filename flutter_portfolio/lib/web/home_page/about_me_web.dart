@@ -94,7 +94,7 @@ class _AboutMeWeb extends State<AboutMeWeb> {
               padding: EdgeInsets.only(
                   top: responsiveHeight(widget.screenHeight, 13)),
               child: Text(
-                "Last Updated Month, Year",
+                "Last Updated September, 2024",
                 style: bodyMedium(AppColors.darkestBrown, context),
               ),
             )
