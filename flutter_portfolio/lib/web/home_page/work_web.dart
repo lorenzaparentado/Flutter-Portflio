@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import '../styles/app_colors.dart';
-import '../styles/text_styles.dart';
-import '../tools.dart';
+import '../../styles/app_colors.dart';
+import '../../styles/text_styles.dart';
+import '../../tools.dart';
 
-class Work extends StatefulWidget {
+class WorkWeb extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
   final GlobalKey workKey;
 
-  Work({required this.workKey, required this.screenWidth, required this.screenHeight});
+  WorkWeb({required this.workKey, required this.screenWidth, required this.screenHeight});
 
   @override
-  _Work createState() => _Work();
+  _WorkWeb createState() => _WorkWeb();
 }
 
-class _Work extends State<Work> {
+class _WorkWeb extends State<WorkWeb> {
 
   @override
   Widget build(BuildContext context) {

@@ -1,26 +1,22 @@
-import 'dart:io';
-
-import 'header.dart';
-import 'landing.dart';
-import 'stats.dart';
-import 'about_me.dart';
-import 'work.dart';
-import 'projects.dart';
-import 'footer.dart';
+import 'header_web.dart';
+import 'landing_web.dart';
+import 'stats_web.dart';
+import 'about_me_web.dart';
+import 'work_web.dart';
+import 'projects_web.dart';
+import 'footer_web.dart';
 
 import 'package:flutter/material.dart';
-import '../styles/text_styles.dart';
-import '../styles/app_colors.dart';
-import '../tools.dart';
+import '../../styles/app_colors.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePageWeb extends StatefulWidget {
+  const HomePageWeb({super.key});
 
   @override
-  State<StatefulWidget> createState() => _HomePage();
+  State<StatefulWidget> createState() => _HomePageWeb();
 }
 
-class _HomePage extends State<HomePage> {
+class _HomePageWeb extends State<HomePageWeb> {
   final ScrollController _scrollController = ScrollController();
   final GlobalKey _landingKey = GlobalKey();
   final GlobalKey _aboutMeKey = GlobalKey();
@@ -52,21 +48,21 @@ class _HomePage extends State<HomePage> {
             controller: _scrollController,
             child: Column(
               children: [
-                Landing(landingKey: _landingKey, screenWidth: screenWidth, screenHeight: screenHeight),
-                Stats(screenWidth: screenWidth, screenHeight: screenHeight),
-                AboutMe(
+                LandingWeb(landingKey: _landingKey, screenWidth: screenWidth, screenHeight: screenHeight),
+                StatsWeb(screenWidth: screenWidth, screenHeight: screenHeight),
+                AboutMeWeb(
                     aboutKey: _aboutMeKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
-                Work(
+                WorkWeb(
                     workKey: _workKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
-                Projects(
+                ProjectsWeb(
                     projectsKey: _projectsKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
-                Footer(
+                FooterWeb(
                     footerKey: _contactKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
@@ -77,7 +73,7 @@ class _HomePage extends State<HomePage> {
             top: 0,
             left: 0,
             right: 0,
-            child: Header(
+            child: HeaderWeb(
               screenWidth: screenWidth,
               screenHeight: screenHeight,
               scrollToSection: _scrollToSection,

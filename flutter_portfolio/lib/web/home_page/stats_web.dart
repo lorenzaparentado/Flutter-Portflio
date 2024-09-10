@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import '../styles/app_colors.dart';
-import '../styles/text_styles.dart';
-import '../tools.dart';
+import '../../styles/app_colors.dart';
+import '../../tools.dart';
 
-class Stats extends StatefulWidget {
+class StatsWeb extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
 
-  Stats({required this.screenWidth, required this.screenHeight});
+  StatsWeb({required this.screenWidth, required this.screenHeight});
 
   @override
-  _Stats createState() => _Stats();
+  _StatsWeb createState() => _StatsWeb();
 }
 
-class _Stats extends State<Stats> {
+class _StatsWeb extends State<StatsWeb> {
   @override
   Widget build(BuildContext context) {
     return Container(

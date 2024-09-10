@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import '../styles/app_colors.dart';
-import '../styles/text_styles.dart';
-import '../tools.dart';
+import '../../styles/app_colors.dart';
+import '../../styles/text_styles.dart';
+import '../../tools.dart';
 
-class Landing extends StatefulWidget {
+class LandingWeb extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
   final GlobalKey landingKey;
 
-  Landing({required this.landingKey, required this.screenWidth, required this.screenHeight});
+  LandingWeb({required this.landingKey, required this.screenWidth, required this.screenHeight});
 
   @override
-  _Landing createState() => _Landing();
+  _LandingWeb createState() => _LandingWeb();
 }
 
-class _Landing extends State<Landing> {
+class _LandingWeb extends State<LandingWeb> {
   @override
   Widget build(BuildContext context) {
     double imageWidth = widget.screenWidth >= 1440 ? 434 : widget.screenWidth * 0.3;

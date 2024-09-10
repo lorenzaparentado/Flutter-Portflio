@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../styles/app_colors.dart';
-import '../styles/text_styles.dart';
-import '../tools.dart';
+import '../../styles/app_colors.dart';
+import '../../styles/text_styles.dart';
+import '../../tools.dart';
 
-class Header extends StatefulWidget {
+class HeaderWeb extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
   final Function(GlobalKey) scrollToSection;
@@ -13,7 +13,7 @@ class Header extends StatefulWidget {
   final GlobalKey projectsKey;
   final GlobalKey contactKey;
 
-  Header({
+  HeaderWeb({
     required this.landingKey,
     required this.screenWidth,
     required this.screenHeight,
@@ -25,10 +25,10 @@ class Header extends StatefulWidget {
   });
 
   @override
-  _Header createState() => _Header();
+  _HeaderWeb createState() => _HeaderWeb();
 }
 
-class _Header extends State<Header> {
+class _HeaderWeb extends State<HeaderWeb> {
   @override
   Widget build(BuildContext context) {
     return Container(

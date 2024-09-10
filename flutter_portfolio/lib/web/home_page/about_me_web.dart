@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import '../styles/app_colors.dart';
-import '../styles/text_styles.dart';
-import '../tools.dart';
+import '../../styles/app_colors.dart';
+import '../../styles/text_styles.dart';
+import '../../tools.dart';
 
-class AboutMe extends StatefulWidget {
+class AboutMeWeb extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
   final GlobalKey aboutKey;
 
-  AboutMe({required this.aboutKey, required this.screenWidth, required this.screenHeight});
+  AboutMeWeb({required this.aboutKey, required this.screenWidth, required this.screenHeight});
 
   @override
-  _AboutMe createState() => _AboutMe();
+  _AboutMeWeb createState() => _AboutMeWeb();
 }
 
-class _AboutMe extends State<AboutMe> {
+class _AboutMeWeb extends State<AboutMeWeb> {
   @override
   Widget build(BuildContext context) {
     return Container(

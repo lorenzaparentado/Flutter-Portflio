@@ -1,24 +1,26 @@
+import 'dart:html' as html;
+
 import 'package:flutter/material.dart';
-import '../styles/app_colors.dart';
-import '../styles/text_styles.dart';
-import '../tools.dart';
+import '../../styles/app_colors.dart';
+import '../../styles/text_styles.dart';
+import '../../tools.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Footer extends StatefulWidget {
+class FooterWeb extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
   final GlobalKey footerKey;
 
-  Footer(
+  FooterWeb(
       {required this.footerKey,
       required this.screenWidth,
       required this.screenHeight});
 
   @override
-  _Footer createState() => _Footer();
+  _FooterWeb createState() => _FooterWeb();
 }
 
-class _Footer extends State<Footer> {
+class _FooterWeb extends State<FooterWeb> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -64,7 +66,11 @@ class _Footer extends State<Footer> {
                   SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
                   contactButton(
                       "+1 (484) 350-8039", 'assets/images/phoneIcon.png', () {
-                    _sendingSMS();
+                    if (isWindows()) {
+                      showAlert(context, 'Alert', 'Cannot perform SMS functions on Windows!');
+                    } else {
+                      _sendingSMS();
+                    }
                   }),
                   SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
                   contactButton("laparentado", 'assets/images/linkedinIcon.png',
@@ -163,10 +169,46 @@ class _Footer extends State<Footer> {
   }
 
   void _launchURL(String url) async {
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
     }
+  }
+
+  bool isWindows() {
+    return html.window.navigator.platform?.toLowerCase().contains('win') ??
+        false;
+  }
+
+  void showAlert(BuildContext context, String title, String content) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          elevation: 50,
+          backgroundColor: AppColors.mediumGreen,
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+          title: Text(
+            title,
+            style: headerSmall(AppColors.lightTan, context),
+          ),
+          content: Text(
+            content,
+            style: bodyMedium(AppColors.lightTan, context),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK', style: bodyMedium(AppColors.lightTan, context)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
