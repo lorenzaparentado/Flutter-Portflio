@@ -10,7 +10,9 @@ class Responsive extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth < 1000) {
-          return const HomePageMobile();
+          // TODO: turn this into HomePageMobile() when implemented
+          // return const HomePageMobile();
+          return const HomePageWeb();
         } else {
           return const HomePageWeb();
         }
