@@ -1,6 +1,8 @@
 import 'dart:html' as html;
+import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/web/home_page/common_widgets_web.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles.dart';
 import '../../tools.dart';
@@ -67,7 +69,8 @@ class _FooterWeb extends State<FooterWeb> {
                   contactButton(
                       "+1 (484) 350-8039", 'assets/images/phoneIcon.png', () {
                     if (isWindows()) {
-                      showAlert(context, 'Alert', 'Cannot perform SMS functions on Windows!');
+                      showAlert(context, 'Alert',
+                          'Cannot perform SMS functions on Windows!');
                     } else {
                       _sendingSMS();
                     }
@@ -108,18 +111,7 @@ class _FooterWeb extends State<FooterWeb> {
       onTap: () async {
         onPress();
       },
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.lightGreen,
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: [
-            BoxShadow(
-                color: AppColors.mediumGreen,
-                offset: Offset(-8, 8),
-                blurRadius: 0,
-                blurStyle: BlurStyle.solid),
-          ],
-        ),
+      child: CustomContainer(
         child: Padding(
           padding: EdgeInsets.symmetric(
               vertical: responsiveHeight(widget.screenHeight, 15),
@@ -137,6 +129,11 @@ class _FooterWeb extends State<FooterWeb> {
             ],
           ),
         ),
+        boxColor: AppColors.lightGreen,
+        boxShadowColor: AppColors.mediumGreen,
+        offset: min(responsiveHeight(widget.screenHeight, 8),
+            responsiveWidth(widget.screenWidth, 8)),
+        borderRadius: 15,
       ),
     );
   }
@@ -189,8 +186,8 @@ class _FooterWeb extends State<FooterWeb> {
           elevation: 50,
           backgroundColor: AppColors.mediumGreen,
           shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
+            borderRadius: BorderRadius.circular(15.0),
+          ),
           title: Text(
             title,
             style: headerSmall(AppColors.lightTan, context),

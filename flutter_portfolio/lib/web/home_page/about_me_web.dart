@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/web/home_page/common_widgets_web.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles.dart';
 import '../../tools.dart';
@@ -8,7 +11,10 @@ class AboutMeWeb extends StatefulWidget {
   final double screenHeight;
   final GlobalKey aboutKey;
 
-  AboutMeWeb({required this.aboutKey, required this.screenWidth, required this.screenHeight});
+  AboutMeWeb(
+      {required this.aboutKey,
+      required this.screenWidth,
+      required this.screenHeight});
 
   @override
   _AboutMeWeb createState() => _AboutMeWeb();
@@ -40,21 +46,15 @@ class _AboutMeWeb extends State<AboutMeWeb> {
             ),
             Row(
               children: [
-                Container(
+                CustomContainer(
                   height: responsiveHeight(widget.screenHeight, 500),
                   width: responsiveWidth(widget.screenWidth, 400),
-                  decoration: BoxDecoration(
-                    color: AppColors.mediumGreen,
-                    borderRadius: BorderRadius.circular(25),
-                    boxShadow: [
-                      BoxShadow(
-                          color: AppColors.shadowGreen,
-                          offset: Offset(-10, 10),
-                          blurRadius: 0,
-                          blurStyle: BlurStyle.solid),
-                    ],
-                  ),
                   child: Center(child: Text('Image')),
+                  boxColor: AppColors.mediumGreen,
+                  boxShadowColor: AppColors.shadowGreen,
+                  offset: min(responsiveHeight(widget.screenHeight, 10),
+                      responsiveWidth(widget.screenWidth, 10)),
+                  borderRadius: 25,
                 ),
                 SizedBox(
                   width: responsiveWidth(widget.screenWidth, 40),
@@ -69,26 +69,20 @@ class _AboutMeWeb extends State<AboutMeWeb> {
             SizedBox(height: responsiveHeight(widget.screenHeight, 40)),
             GestureDetector(
               onTap: () {},
-              child: Container(
-                height: responsiveHeight(widget.screenHeight, 56),
-                width: responsiveWidth(widget.screenWidth, 400),
-                decoration: BoxDecoration(
-                  color: AppColors.mediumGreen,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                        color: AppColors.shadowGreen,
-                        offset: Offset(-10, 10),
-                        blurRadius: 0,
-                        blurStyle: BlurStyle.solid),
-                  ],
-                ),
-                child: Center(
+              child: CustomContainer(
+                  height: responsiveHeight(widget.screenHeight, 56),
+                  width: responsiveWidth(widget.screenWidth, 400),
+                  child: Center(
                     child: Text(
                   'Check out my resume!',
                   style: headerSmall(AppColors.lightTan, context),
-                )),
-              ),
+                ),),
+                  boxColor: AppColors.mediumGreen,
+                  boxShadowColor: AppColors.shadowGreen,
+                  offset: min(responsiveHeight(widget.screenHeight, 10),
+                      responsiveWidth(widget.screenWidth, 10)),
+                  borderRadius: 15,
+                ),
             ),
             Padding(
               padding: EdgeInsets.only(

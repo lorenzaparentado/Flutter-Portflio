@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/web/home_page/common_widgets_web.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles.dart';
 import '../../tools.dart';
@@ -43,20 +46,14 @@ class _WorkWeb extends State<WorkWeb> {
                 SizedBox(
                   width: responsiveWidth(widget.screenWidth, 40),
                 ),
-                Container(
+                CustomContainer(
                   height: responsiveHeight(widget.screenHeight, 230),
                   width: responsiveWidth(widget.screenWidth, 300),
-                  decoration: BoxDecoration(
-                    color: AppColors.lightGreen,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                          color: AppColors.mediumGreen,
-                          offset: Offset(-10, 10),
-                          blurRadius: 0,
-                          blurStyle: BlurStyle.solid),
-                    ],
-                  ),
+                  boxColor: AppColors.lightGreen,
+                  boxShadowColor: AppColors.mediumGreen,
+                  offset: min(responsiveHeight(widget.screenHeight, 10),
+                      responsiveWidth(widget.screenWidth, 10)),
+                  borderRadius: 10,
                   child: Center(child: Text('Image')),
                 ),
               ],
@@ -64,20 +61,14 @@ class _WorkWeb extends State<WorkWeb> {
             SizedBox(height: responsiveHeight(widget.screenHeight, 50)),
             Row(
               children: [
-                Container(
+                CustomContainer(
                   height: responsiveHeight(widget.screenHeight, 230),
                   width: responsiveWidth(widget.screenWidth, 400),
-                  decoration: BoxDecoration(
-                    color: AppColors.lightGreen,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                          color: AppColors.mediumGreen,
-                          offset: Offset(-10, 10),
-                          blurRadius: 0,
-                          blurStyle: BlurStyle.solid),
-                    ],
-                  ),
+                  boxColor: AppColors.lightGreen,
+                  boxShadowColor: AppColors.mediumGreen,
+                  offset: min(responsiveHeight(widget.screenHeight, 10),
+                      responsiveWidth(widget.screenWidth, 10)),
+                  borderRadius: 10,
                   child: Center(child: Text('Image')),
                 ),
                 SizedBox(

@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/web/home_page/common_widgets_web.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles.dart';
 import '../../tools.dart';
@@ -116,24 +119,18 @@ class _ProjectsWeb extends State<ProjectsWeb> {
       String tech3,
       Color backgroundColor,
       Color backgroundShadowColor,
-      Color buttonColor,
-      Color buttonShadowColor,
+      Color boxColor,
+      Color boxShadowColor,
       Color buttonTextColor,
       Color imageColor) {
-    return Container(
+    return CustomContainer(
       height: responsiveHeight(widget.screenHeight, 500),
       width: responsiveWidth(widget.screenWidth, 600),
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(25),
-        boxShadow: [
-          BoxShadow(
-              color: backgroundShadowColor,
-              offset: Offset(-10, 10),
-              blurRadius: 0,
-              blurStyle: BlurStyle.solid),
-        ],
-      ),
+      boxColor: backgroundColor,
+      boxShadowColor: backgroundShadowColor,
+      borderRadius: 25,
+      offset: min(responsiveHeight(widget.screenHeight, 10),
+          responsiveWidth(widget.screenWidth, 10)),
       child: Stack(children: [
         Padding(
           padding: EdgeInsets.fromLTRB(responsiveWidth(widget.screenWidth, 50),
@@ -157,26 +154,20 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      child: techGroup(tech1, tech2, tech3, buttonColor,
-                          buttonShadowColor, buttonTextColor),
+                      child: techGroup(tech1, tech2, tech3, boxColor,
+                          boxShadowColor, buttonTextColor),
                     ),
                     SizedBox(
                       height: responsiveHeight(widget.screenHeight, 99),
                     ),
                     GestureDetector(
                       onTap: () {},
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: buttonColor,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                                color: buttonShadowColor,
-                                offset: Offset(-5, 5),
-                                blurRadius: 0,
-                                blurStyle: BlurStyle.solid),
-                          ],
-                        ),
+                      child: CustomContainer(
+                        boxColor: boxColor,
+                        boxShadowColor: boxShadowColor,
+                        borderRadius: 10,
+                        offset: min(responsiveHeight(widget.screenHeight, 5),
+                            responsiveWidth(widget.screenWidth, 5)),
                         child: Padding(
                             padding: EdgeInsets.fromLTRB(
                                 responsiveWidth(widget.screenWidth, 18),
@@ -208,20 +199,14 @@ class _ProjectsWeb extends State<ProjectsWeb> {
     );
   }
 
-  Widget tech(String techName, Color buttonColor, Color buttonShadowColor,
+  Widget tech(String techName, Color boxColor, Color boxShadowColor,
       Color buttonTextColor) {
-    return Container(
-      decoration: BoxDecoration(
-        color: buttonColor,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-              color: buttonShadowColor,
-              offset: Offset(-5, 5),
-              blurRadius: 0,
-              blurStyle: BlurStyle.solid),
-        ],
-      ),
+    return CustomContainer(
+      boxColor: boxColor,
+      boxShadowColor: boxShadowColor,
+      offset: min(responsiveHeight(widget.screenHeight, 5),
+                      responsiveWidth(widget.screenWidth, 5)),
+      borderRadius: 10,
       child: Padding(
           padding: EdgeInsets.fromLTRB(
               responsiveWidth(widget.screenWidth, 10),
@@ -235,22 +220,22 @@ class _ProjectsWeb extends State<ProjectsWeb> {
     );
   }
 
-  Widget techGroup(String tech1, String tech2, String tech3, Color buttonColor,
-      Color buttonShadowColor, Color buttonTextColor) {
+  Widget techGroup(String tech1, String tech2, String tech3, Color boxColor,
+      Color boxShadowColor, Color buttonTextColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            tech(tech1, buttonColor, buttonShadowColor, buttonTextColor),
+            tech(tech1, boxColor, boxShadowColor, buttonTextColor),
             SizedBox(
               width: responsiveWidth(widget.screenWidth, 25),
             ),
-            tech(tech2, buttonColor, buttonShadowColor, buttonTextColor),
+            tech(tech2, boxColor, boxShadowColor, buttonTextColor),
           ],
         ),
         SizedBox(height: responsiveHeight(widget.screenHeight, 25)),
-        tech(tech3, buttonColor, buttonShadowColor, buttonTextColor),
+        tech(tech3, boxColor, boxShadowColor, buttonTextColor),
       ],
     );
   }

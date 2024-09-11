@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/web/home_page/common_widgets_web.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles.dart';
 import '../../tools.dart';
@@ -50,20 +53,14 @@ class _StatsWeb extends State<StatsWeb> {
 
   Widget statBoxes(
       String num, String description, Color boxColor, Color shadowColor) {
-    return Container(
+    return CustomContainer(
       height: responsiveHeight(widget.screenHeight, 150),
       width: responsiveWidth(widget.screenWidth, 275),
-      decoration: BoxDecoration(
-        color: boxColor,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-              color: shadowColor,
-              offset: Offset(-10, 10),
-              blurRadius: 0,
-              blurStyle: BlurStyle.solid),
-        ],
-      ),
+      boxColor: boxColor,
+      boxShadowColor: shadowColor,
+      offset: min(responsiveHeight(widget.screenHeight, 10),
+                      responsiveWidth(widget.screenWidth, 10)),
+      borderRadius: 10,
       child: Padding(
         padding: EdgeInsets.fromLTRB(
             responsiveWidth(widget.screenWidth, 37),
