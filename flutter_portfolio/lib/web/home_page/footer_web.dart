@@ -2,9 +2,9 @@ import 'dart:html' as html;
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio/web/home_page/common_widgets_web.dart';
+import 'package:flutter_portfolio/common_widgets.dart';
 import '../../styles/app_colors.dart';
-import '../../styles/text_styles.dart';
+import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,30 +29,30 @@ class _FooterWeb extends State<FooterWeb> {
         color: AppColors.darkestBrown,
         child: Padding(
           padding: EdgeInsets.only(
-              top: responsiveHeight(widget.screenHeight, 100),
-              bottom: responsiveHeight(widget.screenHeight, 50)),
+              top: responsiveWebHeight(widget.screenHeight, 100),
+              bottom: responsiveWebHeight(widget.screenHeight, 50)),
           child: Column(
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   "Contact Me",
                   key: widget.footerKey,
-                  style: headerBig(AppColors.lightTan, context),
+                  style: headerBigWeb(AppColors.lightTan, context),
                 ),
               ]),
               SizedBox(
-                height: responsiveHeight(widget.screenHeight, 50),
+                height: responsiveWebHeight(widget.screenHeight, 50),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: responsiveWidth(widget.screenWidth, 320)),
+                    horizontal: responsiveWebWidth(widget.screenWidth, 320)),
                 child: Text(
                     textAlign: TextAlign.center,
-                    style: bodyMedium(AppColors.lightTan, context),
+                    style: bodyMediumWeb(AppColors.lightTan, context),
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."),
               ),
               SizedBox(
-                height: responsiveHeight(widget.screenHeight, 50),
+                height: responsiveWebHeight(widget.screenHeight, 50),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +65,7 @@ class _FooterWeb extends State<FooterWeb> {
                       body: 'Write me a message!',
                     );
                   }),
-                  SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
+                  SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
                   contactButton(
                       "+1 (484) 350-8039", 'assets/images/phoneIcon.png', () {
                     if (isWindows()) {
@@ -75,12 +75,12 @@ class _FooterWeb extends State<FooterWeb> {
                       _sendingSMS();
                     }
                   }),
-                  SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
+                  SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
                   contactButton("laparentado", 'assets/images/linkedinIcon.png',
                       () {
                     _launchURL("https://www.linkedin.com/in/laparentado");
                   }),
-                  SizedBox(width: responsiveWidth(widget.screenWidth, 50)),
+                  SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
                   contactButton(
                       "lorenzaparentado", 'assets/images/githubIcon.png', () {
                     _launchURL("https://github.com/lorenzaparentado");
@@ -88,18 +88,18 @@ class _FooterWeb extends State<FooterWeb> {
                 ],
               ),
               SizedBox(
-                height: responsiveHeight(widget.screenHeight, 50),
+                height: responsiveWebHeight(widget.screenHeight, 50),
               ),
               Divider(
                 color: AppColors.mediumGreen,
                 thickness: 1,
               ),
               SizedBox(
-                height: responsiveHeight(widget.screenHeight, 50),
+                height: responsiveWebHeight(widget.screenHeight, 50),
               ),
               Text(
                 "Last Updated Month, Year",
-                style: bodySmall(AppColors.lightTan, context),
+                style: bodySmallWeb(AppColors.lightTan, context),
               )
             ],
           ),
@@ -114,25 +114,25 @@ class _FooterWeb extends State<FooterWeb> {
       child: CustomContainer(
         child: Padding(
           padding: EdgeInsets.symmetric(
-              vertical: responsiveHeight(widget.screenHeight, 15),
-              horizontal: responsiveWidth(widget.screenWidth, 15)),
+              vertical: responsiveWebHeight(widget.screenHeight, 15),
+              horizontal: responsiveWebWidth(widget.screenWidth, 15)),
           child: Row(
             children: [
               Image.asset(icon),
               SizedBox(
-                width: responsiveWidth(widget.screenWidth, 10),
+                width: responsiveWebWidth(widget.screenWidth, 10),
               ),
               Text(
                 text,
-                style: bodyMedium(AppColors.darkestBrown, context),
+                style: bodyMediumWeb(AppColors.darkestBrown, context),
               )
             ],
           ),
         ),
         boxColor: AppColors.lightGreen,
         boxShadowColor: AppColors.mediumGreen,
-        offset: min(responsiveHeight(widget.screenHeight, 8),
-            responsiveWidth(widget.screenWidth, 8)),
+        offset: min(responsiveWebHeight(widget.screenHeight, 8),
+            responsiveWebWidth(widget.screenWidth, 8)),
         borderRadius: 15,
       ),
     );
@@ -190,15 +190,15 @@ class _FooterWeb extends State<FooterWeb> {
           ),
           title: Text(
             title,
-            style: headerSmall(AppColors.lightTan, context),
+            style: headerSmallWeb(AppColors.lightTan, context),
           ),
           content: Text(
             content,
-            style: bodyMedium(AppColors.lightTan, context),
+            style: bodyMediumWeb(AppColors.lightTan, context),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('OK', style: bodyMedium(AppColors.lightTan, context)),
+              child: Text('OK', style: bodyMediumWeb(AppColors.lightTan, context)),
               onPressed: () {
                 Navigator.of(context).pop();
               },

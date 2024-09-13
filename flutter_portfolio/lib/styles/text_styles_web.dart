@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import '../tools.dart';
 import 'dart:math';
 
-TextStyle headerBiggest(Color color, BuildContext context) {
+TextStyle headerBiggestWeb(Color color, BuildContext context) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  double fontSize = min(responsiveWidth(screenWidth, 56), responsiveHeight(screenHeight, 56));
-
+  double fontSize = min(responsiveWebWidth(screenWidth, 56),
+      responsiveWebHeight(screenHeight, 56));
 
   return TextStyle(
       fontFamily: 'Urbanist',
@@ -17,14 +17,13 @@ TextStyle headerBiggest(Color color, BuildContext context) {
       color: color);
 }
 
-class Math {
-}
+class Math {}
 
-TextStyle headerBig(Color color, BuildContext context) {
+TextStyle headerBigWeb(Color color, BuildContext context) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  double fontSize = min(responsiveWidth(screenWidth, 48), responsiveHeight(screenHeight, 48));
-
+  double fontSize = min(responsiveWebWidth(screenWidth, 48),
+      responsiveWebHeight(screenHeight, 48));
 
   return TextStyle(
       fontFamily: 'Urbanist',
@@ -35,11 +34,11 @@ TextStyle headerBig(Color color, BuildContext context) {
       letterSpacing: 0.02 * fontSize);
 }
 
-TextStyle headerMedium(Color color, BuildContext context) {
+TextStyle headerMediumWeb(Color color, BuildContext context) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  double fontSize = min(responsiveWidth(screenWidth, 40), responsiveHeight(screenHeight, 40));
-
+  double fontSize = min(responsiveWebWidth(screenWidth, 40),
+      responsiveWebHeight(screenHeight, 40));
 
   return TextStyle(
       fontFamily: 'Urbanist',
@@ -50,10 +49,11 @@ TextStyle headerMedium(Color color, BuildContext context) {
       color: color);
 }
 
-TextStyle headerSmall(Color color, BuildContext context) {
+TextStyle headerSmallWeb(Color color, BuildContext context) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  double fontSize = min(responsiveWidth(screenWidth, 32), responsiveHeight(screenHeight, 32));
+  double fontSize = min(responsiveWebWidth(screenWidth, 32),
+      responsiveWebHeight(screenHeight, 32));
 
   return TextStyle(
       fontFamily: 'Urbanist',
@@ -64,10 +64,11 @@ TextStyle headerSmall(Color color, BuildContext context) {
       color: color);
 }
 
-TextStyle headerSmallest(Color color, BuildContext context) {
+TextStyle headerSmallestWeb(Color color, BuildContext context) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  double fontSize = min(responsiveWidth(screenWidth, 24), responsiveHeight(screenHeight, 24));
+  double fontSize = min(responsiveWebWidth(screenWidth, 24),
+      responsiveWebHeight(screenHeight, 24));
 
   return TextStyle(
       fontFamily: 'Urbanist',
@@ -78,10 +79,11 @@ TextStyle headerSmallest(Color color, BuildContext context) {
       color: color);
 }
 
-TextStyle bodyBig(Color color, BuildContext context) {
+TextStyle bodyBigWeb(Color color, BuildContext context) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  double fontSize = min(responsiveWidth(screenWidth, 24), responsiveHeight(screenHeight, 24));
+  double fontSize = min(responsiveWebWidth(screenWidth, 24),
+      responsiveWebHeight(screenHeight, 24));
 
   return TextStyle(
       fontFamily: 'Montserrat',
@@ -92,10 +94,11 @@ TextStyle bodyBig(Color color, BuildContext context) {
       color: color);
 }
 
-TextStyle bodyMedium(Color color, BuildContext context) {
+TextStyle bodyMediumWeb(Color color, BuildContext context) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  double fontSize = min(responsiveWidth(screenWidth, 20), responsiveHeight(screenHeight, 20));
+  double fontSize = min(responsiveWebWidth(screenWidth, 20),
+      responsiveWebHeight(screenHeight, 20));
 
   return TextStyle(
       fontFamily: 'Montserrat',
@@ -106,10 +109,11 @@ TextStyle bodyMedium(Color color, BuildContext context) {
       letterSpacing: 0.02 * fontSize);
 }
 
-TextStyle bodySmall(Color color, BuildContext context) {
+TextStyle bodySmallWeb(Color color, BuildContext context) {
   double screenWidth = MediaQuery.of(context).size.width;
   double screenHeight = MediaQuery.of(context).size.height;
-  double fontSize = min(responsiveWidth(screenWidth, 16), responsiveHeight(screenHeight, 16));
+  double fontSize = min(responsiveWebWidth(screenWidth, 16),
+      responsiveWebHeight(screenHeight, 16));
 
   return TextStyle(
       fontFamily: 'Montserrat',
@@ -119,3 +123,5 @@ TextStyle bodySmall(Color color, BuildContext context) {
       height: 24.8 / 16,
       letterSpacing: 0.02 * fontSize);
 }
+
+

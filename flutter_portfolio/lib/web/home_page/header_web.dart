@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../styles/app_colors.dart';
-import '../../styles/text_styles.dart';
+import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
 
 class HeaderWeb extends StatefulWidget {
@@ -45,7 +45,7 @@ class _HeaderWeb extends State<HeaderWeb> {
       ),
       child: Column(children: [
         SizedBox(
-          height: responsiveHeight(widget.screenHeight, 50),
+          height: responsiveWebHeight(widget.screenHeight, 50),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,22 +54,22 @@ class _HeaderWeb extends State<HeaderWeb> {
           children: [
             Padding(
               padding: EdgeInsets.only(
-                  right: responsiveWidth(widget.screenWidth, 75)),
+                  right: responsiveWebWidth(widget.screenWidth, 75)),
               child: TextButton(
                 child: Text(
                   "About Me",
-                  style: headerSmallest(AppColors.darkestBrown, context),
+                  style: headerSmallestWeb(AppColors.darkestBrown, context),
                 ),
                 onPressed: () => widget.scrollToSection(widget.aboutMeKey),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(
-                  right: responsiveWidth(widget.screenWidth, 75)),
+                  right: responsiveWebWidth(widget.screenWidth, 75)),
               child: TextButton(
                 child: Text(
                   "Work",
-                  style: headerSmallest(AppColors.darkestBrown, context),
+                  style: headerSmallestWeb(AppColors.darkestBrown, context),
                 ),
                 onPressed: () => widget.scrollToSection(widget.workKey),
               ),
@@ -77,28 +77,28 @@ class _HeaderWeb extends State<HeaderWeb> {
             TextButton(
               child: Text(
                 "Lorenz",
-                style: headerMedium(AppColors.darkestBrown, context),
+                style: headerMediumWeb(AppColors.darkestBrown, context),
               ),
               onPressed: () => widget.scrollToSection(widget.landingKey),
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: responsiveWidth(widget.screenWidth, 75)),
+                  left: responsiveWebWidth(widget.screenWidth, 75)),
               child: TextButton(
                 child: Text(
                   "Projects",
-                  style: headerSmallest(AppColors.darkestBrown, context),
+                  style: headerSmallestWeb(AppColors.darkestBrown, context),
                 ),
                 onPressed: () => widget.scrollToSection(widget.projectsKey),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: responsiveWidth(widget.screenWidth, 75)),
+                  left: responsiveWebWidth(widget.screenWidth, 75)),
               child: TextButton(
                 child: Text(
                   "Contact",
-                  style: headerSmallest(AppColors.darkestBrown, context),
+                  style: headerSmallestWeb(AppColors.darkestBrown, context),
                 ),
                 onPressed: () => widget.scrollToSection(widget.contactKey, ),
               ),
@@ -106,7 +106,7 @@ class _HeaderWeb extends State<HeaderWeb> {
           ],
         ),
         SizedBox(
-          height: responsiveHeight(widget.screenHeight, 25),
+          height: responsiveWebHeight(widget.screenHeight, 25),
         )
       ]),
     );

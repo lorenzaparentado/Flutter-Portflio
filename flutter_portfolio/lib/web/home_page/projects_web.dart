@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio/web/home_page/common_widgets_web.dart';
+import 'package:flutter_portfolio/common_widgets.dart';
 import '../../styles/app_colors.dart';
-import '../../styles/text_styles.dart';
+import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
 
 class ProjectsWeb extends StatefulWidget {
@@ -27,17 +27,17 @@ class _ProjectsWeb extends State<ProjectsWeb> {
         color: AppColors.lightTan,
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: responsiveWidth(widget.screenWidth, 100),
-              vertical: responsiveHeight(widget.screenHeight, 100)),
+              horizontal: responsiveWebWidth(widget.screenWidth, 100),
+              vertical: responsiveWebHeight(widget.screenHeight, 100)),
           child: Column(children: [
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 "Projects",
                 key: widget.projectsKey,
-                style: headerBig(AppColors.darkestBrown, context),
+                style: headerBigWeb(AppColors.darkestBrown, context),
               ),
             ]),
-            SizedBox(height: responsiveHeight(widget.screenHeight, 79)),
+            SizedBox(height: responsiveWebHeight(widget.screenHeight, 79)),
             Row(
               children: [
                 Column(
@@ -55,7 +55,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                         AppColors.lightTan,
                         AppColors.darkestGreen),
                     SizedBox(
-                      height: responsiveHeight(widget.screenHeight, 40),
+                      height: responsiveWebHeight(widget.screenHeight, 40),
                     ),
                     singleProject(
                         "title",
@@ -72,7 +72,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                   ],
                 ),
                 SizedBox(
-                  width: responsiveWidth(widget.screenWidth, 40),
+                  width: responsiveWebWidth(widget.screenWidth, 40),
                 ),
                 Column(
                   children: [
@@ -89,7 +89,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                         AppColors.darkestBrown,
                         AppColors.darkestBrown),
                     SizedBox(
-                      height: responsiveHeight(widget.screenHeight, 40),
+                      height: responsiveWebHeight(widget.screenHeight, 40),
                     ),
                     singleProject(
                         "title",
@@ -124,31 +124,31 @@ class _ProjectsWeb extends State<ProjectsWeb> {
       Color buttonTextColor,
       Color imageColor) {
     return CustomContainer(
-      height: responsiveHeight(widget.screenHeight, 500),
-      width: responsiveWidth(widget.screenWidth, 600),
+      height: responsiveWebHeight(widget.screenHeight, 500),
+      width: responsiveWebWidth(widget.screenWidth, 600),
       boxColor: backgroundColor,
       boxShadowColor: backgroundShadowColor,
       borderRadius: 25,
-      offset: min(responsiveHeight(widget.screenHeight, 10),
-          responsiveWidth(widget.screenWidth, 10)),
+      offset: min(responsiveWebHeight(widget.screenHeight, 10),
+          responsiveWebWidth(widget.screenWidth, 10)),
       child: Stack(children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(responsiveWidth(widget.screenWidth, 50),
-              responsiveHeight(widget.screenHeight, 50), 0, 0),
+          padding: EdgeInsets.fromLTRB(responsiveWebWidth(widget.screenWidth, 50),
+              responsiveWebHeight(widget.screenHeight, 50), 0, 0),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  style: headerMedium(AppColors.lightTan, context),
+                  style: headerMediumWeb(AppColors.lightTan, context),
                 ),
-                SizedBox(height: responsiveHeight(widget.screenHeight, 50)),
+                SizedBox(height: responsiveWebHeight(widget.screenHeight, 50)),
                 Text(
                   description,
-                  style: bodyMedium(AppColors.lightTan, context),
+                  style: bodyMediumWeb(AppColors.lightTan, context),
                 ),
-                SizedBox(height: responsiveHeight(widget.screenHeight, 27)),
+                SizedBox(height: responsiveWebHeight(widget.screenHeight, 27)),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,7 +158,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                           boxShadowColor, buttonTextColor),
                     ),
                     SizedBox(
-                      height: responsiveHeight(widget.screenHeight, 99),
+                      height: responsiveWebHeight(widget.screenHeight, 99),
                     ),
                     GestureDetector(
                       onTap: () {},
@@ -166,17 +166,17 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                         boxColor: boxColor,
                         boxShadowColor: boxShadowColor,
                         borderRadius: 10,
-                        offset: min(responsiveHeight(widget.screenHeight, 5),
-                            responsiveWidth(widget.screenWidth, 5)),
+                        offset: min(responsiveWebHeight(widget.screenHeight, 5),
+                            responsiveWebWidth(widget.screenWidth, 5)),
                         child: Padding(
                             padding: EdgeInsets.fromLTRB(
-                                responsiveWidth(widget.screenWidth, 18),
-                                responsiveHeight(widget.screenHeight, 11),
-                                responsiveWidth(widget.screenWidth, 19),
-                                responsiveHeight(widget.screenHeight, 11)),
+                                responsiveWebWidth(widget.screenWidth, 18),
+                                responsiveWebHeight(widget.screenHeight, 11),
+                                responsiveWebWidth(widget.screenWidth, 19),
+                                responsiveWebHeight(widget.screenHeight, 11)),
                             child: Text(
                               "Open Project",
-                              style: headerSmall(buttonTextColor, context),
+                              style: headerSmallWeb(buttonTextColor, context),
                             )),
                       ),
                     )
@@ -188,8 +188,8 @@ class _ProjectsWeb extends State<ProjectsWeb> {
             right: 0,
             bottom: 0,
             child: Container(
-              height: responsiveHeight(widget.screenHeight, 300),
-              width: responsiveWidth(widget.screenWidth, 300),
+              height: responsiveWebHeight(widget.screenHeight, 300),
+              width: responsiveWebWidth(widget.screenWidth, 300),
               decoration: BoxDecoration(
                 color: imageColor,
                 borderRadius: BorderRadius.circular(25),
@@ -204,18 +204,18 @@ class _ProjectsWeb extends State<ProjectsWeb> {
     return CustomContainer(
       boxColor: boxColor,
       boxShadowColor: boxShadowColor,
-      offset: min(responsiveHeight(widget.screenHeight, 5),
-                      responsiveWidth(widget.screenWidth, 5)),
+      offset: min(responsiveWebHeight(widget.screenHeight, 5),
+                      responsiveWebWidth(widget.screenWidth, 5)),
       borderRadius: 10,
       child: Padding(
           padding: EdgeInsets.fromLTRB(
-              responsiveWidth(widget.screenWidth, 10),
-              responsiveHeight(widget.screenHeight, 2),
-              responsiveWidth(widget.screenWidth, 10),
-              responsiveHeight(widget.screenHeight, 2)),
+              responsiveWebWidth(widget.screenWidth, 10),
+              responsiveWebHeight(widget.screenHeight, 2),
+              responsiveWebWidth(widget.screenWidth, 10),
+              responsiveWebHeight(widget.screenHeight, 2)),
           child: Text(
             techName,
-            style: bodyMedium(buttonTextColor, context),
+            style: bodyMediumWeb(buttonTextColor, context),
           )),
     );
   }
@@ -229,12 +229,12 @@ class _ProjectsWeb extends State<ProjectsWeb> {
           children: [
             tech(tech1, boxColor, boxShadowColor, buttonTextColor),
             SizedBox(
-              width: responsiveWidth(widget.screenWidth, 25),
+              width: responsiveWebWidth(widget.screenWidth, 25),
             ),
             tech(tech2, boxColor, boxShadowColor, buttonTextColor),
           ],
         ),
-        SizedBox(height: responsiveHeight(widget.screenHeight, 25)),
+        SizedBox(height: responsiveWebHeight(widget.screenHeight, 25)),
         tech(tech3, boxColor, boxShadowColor, buttonTextColor),
       ],
     );

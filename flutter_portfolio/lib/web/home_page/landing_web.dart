@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import '../../styles/app_colors.dart';
-import '../../styles/text_styles.dart';
+import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
 
 class LandingWeb extends StatefulWidget {
@@ -33,8 +33,8 @@ class _LandingWeb extends State<LandingWeb> {
         children: [
           Positioned(
             bottom: 0,
-            left: responsiveWidth(widget.screenWidth, 100),
-            right: responsiveWidth(widget.screenWidth, 100),
+            left: responsiveWebWidth(widget.screenWidth, 100),
+            right: responsiveWebWidth(widget.screenWidth, 100),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -42,7 +42,7 @@ class _LandingWeb extends State<LandingWeb> {
                   padding: EdgeInsets.only(bottom: imageHeight * .5),
                   child: Text(
                     "Lorenz\nAparentado",
-                    style: headerBiggest(AppColors.darkestBrown, context),
+                    style: headerBiggestWeb(AppColors.darkestBrown, context),
                   ),
                 ),
                 Image.asset(
@@ -53,7 +53,7 @@ class _LandingWeb extends State<LandingWeb> {
                   padding: EdgeInsets.only(bottom: imageHeight * .5),
                   child: Text(
                     "Third Year Computer Science Student\nAspiring Software Engineer\nMobile / Fullstack Developer",
-                    style: bodyBig(AppColors.darkestBrown, context),
+                    style: bodyBigWeb(AppColors.darkestBrown, context),
                   ),
                 ),
               ],
