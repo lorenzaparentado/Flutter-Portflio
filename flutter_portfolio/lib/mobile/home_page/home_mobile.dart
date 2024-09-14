@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/mobile/home_page/about_me_mobile.dart';
+import 'package:flutter_portfolio/mobile/home_page/footer_mobile.dart';
 import 'package:flutter_portfolio/mobile/home_page/header_mobile.dart';
 import 'package:flutter_portfolio/mobile/home_page/landing_mobile.dart';
 import 'package:flutter_portfolio/mobile/home_page/projects_mobile.dart';
@@ -29,7 +30,8 @@ class _HomePageMobile extends State<HomePageMobile> {
               StatsMobile(screenWidth: screenWidth, screenHeight: screenHeight),
               AboutMeMobile(screenWidth: screenWidth, screenHeight: screenHeight),
               WorkMobile(screenWidth: screenWidth, screenHeight: screenHeight),
-              ProjectsMobile(screenWidth: screenWidth, screenHeight: screenHeight)
+              ProjectsMobile(screenWidth: screenWidth, screenHeight: screenHeight),
+              FooterMobile(screenWidth: screenWidth, screenHeight: screenHeight)
             ],
           ),
         ),

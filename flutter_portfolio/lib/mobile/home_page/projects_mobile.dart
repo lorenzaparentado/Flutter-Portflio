@@ -67,12 +67,12 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                   "tech1",
                   "tech2",
                   "tech3",
+                  AppColors.lightBrown,
+                  AppColors.mediumBrown,
                   AppColors.mediumGreen,
                   AppColors.darkestGreen,
-                  AppColors.darkTan,
-                  AppColors.lightBrown,
-                  AppColors.darkestBrown,
-                  AppColors.darkestBrown),
+                  AppColors.lightTan,
+                  AppColors.darkestGreen),
               SizedBox(height: responsiveMobileHeight(widget.screenHeight, 10)),
               singleProject(
                   "title",
@@ -159,11 +159,11 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                                 responsiveMobileWidth(widget.screenWidth, 10),
                                 responsiveMobileHeight(widget.screenHeight, 5),
                                 responsiveMobileWidth(widget.screenWidth, 10),
-                                responsiveMobileHeight(
-                                    widget.screenHeight, 5)),
+                                responsiveMobileHeight(widget.screenHeight, 5)),
                             child: Text(
                               "Open Project",
-                              style: headerSmallMobile(buttonTextColor, context),
+                              style:
+                                  headerSmallMobile(buttonTextColor, context),
                             )),
                       ),
                     )
