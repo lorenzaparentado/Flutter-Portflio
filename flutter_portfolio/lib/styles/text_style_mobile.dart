@@ -62,3 +62,18 @@ TextStyle bodyMobile(Color color, BuildContext context) {
       letterSpacing: 0.02 * fontSize,
       color: color);
 }
+
+TextStyle bodySmallMobile(Color color, BuildContext context) {
+  double screenWidth = MediaQuery.of(context).size.width;
+  double screenHeight = MediaQuery.of(context).size.height;
+  double fontSize = min(responsiveMobileWidth(screenWidth, 12),
+      responsiveMobileHeight(screenHeight, 12));
+
+  return TextStyle(
+      fontFamily: 'Montserrat',
+      fontSize: fontSize,
+      fontWeight: FontWeight.w400,
+      height: 18 / 12,
+      letterSpacing: 0.02 * fontSize,
+      color: color);
+}

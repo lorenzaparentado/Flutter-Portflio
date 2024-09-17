@@ -120,7 +120,7 @@ class _FooterMobile extends State<FooterMobile> {
               ),
               Text(
                 text,
-                style: bodyMobile(AppColors.darkestBrown, context),
+                style: bodySmallMobile(AppColors.darkestBrown, context),
               )
             ],
           ),

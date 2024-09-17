@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import '../../tools.dart';
 
@@ -16,9 +18,9 @@ class _LandingMobile extends State<LandingMobile> {
   Widget build(BuildContext context) {
     double imageWidth =
         widget.screenWidth * 197 / 320;
-    double imageHeight = 257 * (imageWidth / 196);
+    double imageHeight = min((257 * (imageWidth / 196)), 257);
     return Container(
-      height: imageHeight * 1.5,
+      height: (widget.screenWidth >= 700) ? imageHeight * 2 : imageHeight * 1.6 ,
       child: Stack(
         children: [
           Positioned(
