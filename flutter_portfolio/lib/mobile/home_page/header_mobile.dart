@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/strings.dart';
 import 'package:flutter_portfolio/styles/text_style_mobile.dart';
 import '../../styles/app_colors.dart';
 import '../../tools.dart';
@@ -55,7 +56,7 @@ class _HeaderMobile extends State<HeaderMobile> {
               Padding(
                 padding: EdgeInsets.symmetric(
                     vertical: responsiveMobileHeight(widget.screenHeight, 4)),
-                child: Text("Lorenz\nAparentado",
+                child: Text(AppStrings.headerFullName,
                     style:
                         headerBigMobile(AppColors.darkestBrown, context)),
               ),

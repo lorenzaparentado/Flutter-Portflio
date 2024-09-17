@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/strings.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
@@ -57,7 +58,7 @@ class _HeaderWeb extends State<HeaderWeb> {
                   right: responsiveWebWidth(widget.screenWidth, 75)),
               child: TextButton(
                 child: Text(
-                  "About Me",
+                  AppStrings.aboutMe,
                   style: headerSmallestWeb(AppColors.darkestBrown, context),
                 ),
                 onPressed: () => widget.scrollToSection(widget.aboutMeKey),
@@ -68,7 +69,7 @@ class _HeaderWeb extends State<HeaderWeb> {
                   right: responsiveWebWidth(widget.screenWidth, 75)),
               child: TextButton(
                 child: Text(
-                  "Work",
+                  AppStrings.work,
                   style: headerSmallestWeb(AppColors.darkestBrown, context),
                 ),
                 onPressed: () => widget.scrollToSection(widget.workKey),
@@ -76,7 +77,7 @@ class _HeaderWeb extends State<HeaderWeb> {
             ),
             TextButton(
               child: Text(
-                "Lorenz",
+                AppStrings.headerName,
                 style: headerMediumWeb(AppColors.darkestBrown, context),
               ),
               onPressed: () => widget.scrollToSection(widget.landingKey),
@@ -86,7 +87,7 @@ class _HeaderWeb extends State<HeaderWeb> {
                   left: responsiveWebWidth(widget.screenWidth, 75)),
               child: TextButton(
                 child: Text(
-                  "Projects",
+                  AppStrings.projects,
                   style: headerSmallestWeb(AppColors.darkestBrown, context),
                 ),
                 onPressed: () => widget.scrollToSection(widget.projectsKey),
@@ -97,7 +98,7 @@ class _HeaderWeb extends State<HeaderWeb> {
                   left: responsiveWebWidth(widget.screenWidth, 75)),
               child: TextButton(
                 child: Text(
-                  "Contact",
+                  AppStrings.contactMe,
                   style: headerSmallestWeb(AppColors.darkestBrown, context),
                 ),
                 onPressed: () => widget.scrollToSection(widget.contactKey, ),

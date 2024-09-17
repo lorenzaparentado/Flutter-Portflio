@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
+import 'package:flutter_portfolio/strings.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
@@ -32,7 +33,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
           child: Column(children: [
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
-                "Projects",
+                AppStrings.projects,
                 key: widget.projectsKey,
                 style: headerBigWeb(AppColors.darkestBrown, context),
               ),
@@ -43,11 +44,11 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                 Column(
                   children: [
                     singleProject(
-                        "title",
-                        "description",
-                        "tech1",
-                        "tech2",
-                        "tech3",
+                        AppStrings.project1Title,
+                        AppStrings.project1Description,
+                        AppStrings.project1Tech1,
+                        AppStrings.project1Tech2,
+                        AppStrings.project1Tech3,
                         AppColors.lightBrown,
                         AppColors.mediumBrown,
                         AppColors.mediumGreen,
@@ -58,11 +59,11 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                       height: responsiveWebHeight(widget.screenHeight, 40),
                     ),
                     singleProject(
-                        "title",
-                        "description",
-                        "tech1",
-                        "tech2",
-                        "tech3",
+                        AppStrings.project2Title,
+                        AppStrings.project2Description,
+                        AppStrings.project2Tech1,
+                        AppStrings.project2Tech2,
+                        AppStrings.project2Tech3,
                         AppColors.mediumGreen,
                         AppColors.darkestGreen,
                         AppColors.darkTan,
@@ -77,11 +78,11 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                 Column(
                   children: [
                     singleProject(
-                        "title",
-                        "description",
-                        "tech1",
-                        "tech2",
-                        "tech3",
+                        AppStrings.project3Title,
+                        AppStrings.project3Description,
+                        AppStrings.project3Tech1,
+                        AppStrings.project3Tech2,
+                        AppStrings.project3Tech3,
                         AppColors.mediumGreen,
                         AppColors.darkestGreen,
                         AppColors.darkTan,
@@ -92,11 +93,11 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                       height: responsiveWebHeight(widget.screenHeight, 40),
                     ),
                     singleProject(
-                        "title",
-                        "description",
-                        "tech1",
-                        "tech2",
-                        "tech3",
+                        AppStrings.project4Title,
+                        AppStrings.project4Description,
+                        AppStrings.project4Tech1,
+                        AppStrings.project4Tech2,
+                        AppStrings.project4Tech3,
                         AppColors.lightBrown,
                         AppColors.mediumBrown,
                         AppColors.mediumGreen,
@@ -133,8 +134,11 @@ class _ProjectsWeb extends State<ProjectsWeb> {
           responsiveWebWidth(widget.screenWidth, 10)),
       child: Stack(children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(responsiveWebWidth(widget.screenWidth, 50),
-              responsiveWebHeight(widget.screenHeight, 50), 0, 0),
+          padding: EdgeInsets.fromLTRB(
+              responsiveWebWidth(widget.screenWidth, 50),
+              responsiveWebHeight(widget.screenHeight, 50),
+              0,
+              0),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -175,7 +179,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                                 responsiveWebWidth(widget.screenWidth, 19),
                                 responsiveWebHeight(widget.screenHeight, 11)),
                             child: Text(
-                              "Open Project",
+                              AppStrings.projectOpen,
                               style: headerSmallWeb(buttonTextColor, context),
                             )),
                       ),
@@ -205,7 +209,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
       boxColor: boxColor,
       boxShadowColor: boxShadowColor,
       offset: min(responsiveWebHeight(widget.screenHeight, 5),
-                      responsiveWebWidth(widget.screenWidth, 5)),
+          responsiveWebWidth(widget.screenWidth, 5)),
       borderRadius: 10,
       child: Padding(
           padding: EdgeInsets.fromLTRB(

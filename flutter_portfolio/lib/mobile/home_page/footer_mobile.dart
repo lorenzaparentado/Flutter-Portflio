@@ -3,9 +3,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
+import 'package:flutter_portfolio/strings.dart';
 import 'package:flutter_portfolio/styles/text_style_mobile.dart';
 import '../../styles/app_colors.dart';
-import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -32,7 +32,7 @@ class _FooterMobile extends State<FooterMobile> {
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
-                  "Contact Me",
+                  AppStrings.contactMe,
                   style: headerBigMobile(AppColors.lightTan, context),
                 ),
               ]),
@@ -43,27 +43,27 @@ class _FooterMobile extends State<FooterMobile> {
                   textAlign: TextAlign.center,
                   softWrap: true,
                   style: bodyMobile(AppColors.lightTan, context),
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+                  AppStrings.contactDescription),
               SizedBox(
                 height: responsiveMobileHeight(widget.screenHeight, 10),
               ),
               contactButton(
-                  "lorenzaparentado@gmail.com", 'assets/images/mailIcon.png',
+                  AppStrings.email, 'assets/images/mailIcon.png',
                   () {
                 launchEmail(
-                  toEmail: 'lorenzaparentado@gmail.com',
-                  subject: 'From Portfolio:',
-                  body: 'Write me a message!',
+                  toEmail: AppStrings.email,
+                  subject: AppStrings.emailSubject,
+                  body: AppStrings.emailBody,
                 );
               }),
               SizedBox(
                 height: responsiveMobileHeight(widget.screenHeight, 10),
               ),
-              contactButton("+1 (484) 350-8039", 'assets/images/phoneIcon.png',
+              contactButton(AppStrings.phoneNumber, 'assets/images/phoneIcon.png',
                   () {
                 if (isWindows()) {
-                  showAlert(context, 'Alert',
-                      'Cannot perform SMS functions on Windows!');
+                  showAlert(context, AppStrings.alert,
+                      AppStrings.smsWindows);
                 } else {
                   _sendingSMS();
                 }
@@ -71,16 +71,16 @@ class _FooterMobile extends State<FooterMobile> {
               SizedBox(
                 height: responsiveMobileHeight(widget.screenHeight, 10),
               ),
-              contactButton("laparentado", 'assets/images/linkedinIcon.png',
+              contactButton(AppStrings.linkedIn, 'assets/images/linkedinIcon.png',
                   () {
-                _launchURL("https://www.linkedin.com/in/laparentado");
+                _launchURL(AppStrings.linkedInLink);
               }),
               SizedBox(
                 height: responsiveMobileHeight(widget.screenHeight, 10),
               ),
-              contactButton("lorenzaparentado", 'assets/images/githubIcon.png',
+              contactButton(AppStrings.gitHub, 'assets/images/githubIcon.png',
                   () {
-                _launchURL("https://github.com/lorenzaparentado");
+                _launchURL(AppStrings.gitHubLink);
               }),
               SizedBox(
                 height: responsiveMobileHeight(widget.screenHeight, 10),
@@ -93,7 +93,7 @@ class _FooterMobile extends State<FooterMobile> {
                 height: responsiveMobileHeight(widget.screenHeight, 10),
               ),
               Text(
-                "Last Updated Month, Year",
+                AppStrings.websiteUpdated,
                 style: bodyMobile(AppColors.lightTan, context),
               )
             ],
@@ -195,7 +195,7 @@ class _FooterMobile extends State<FooterMobile> {
           actions: <Widget>[
             TextButton(
               child:
-                  Text('OK', style: bodyMobile(AppColors.lightTan, context)),
+                  Text(AppStrings.ok, style: bodyMobile(AppColors.lightTan, context)),
               onPressed: () {
                 Navigator.of(context).pop();
               },

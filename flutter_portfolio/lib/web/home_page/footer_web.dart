@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
+import 'package:flutter_portfolio/strings.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
@@ -35,7 +36,7 @@ class _FooterWeb extends State<FooterWeb> {
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
-                  "Contact Me",
+                  AppStrings.contactMe,
                   key: widget.footerKey,
                   style: headerBigWeb(AppColors.lightTan, context),
                 ),
@@ -49,7 +50,7 @@ class _FooterWeb extends State<FooterWeb> {
                 child: Text(
                     textAlign: TextAlign.center,
                     style: bodyMediumWeb(AppColors.lightTan, context),
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."),
+                    AppStrings.contactDescription),
               ),
               SizedBox(
                 height: responsiveWebHeight(widget.screenHeight, 50),
@@ -57,33 +58,33 @@ class _FooterWeb extends State<FooterWeb> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  contactButton("lorenzaparentado@gmail.com",
+                  contactButton(AppStrings.email,
                       'assets/images/mailIcon.png', () {
                     launchEmail(
-                      toEmail: 'lorenzaparentado@gmail.com',
-                      subject: 'From Portfolio:',
-                      body: 'Write me a message!',
+                      toEmail: AppStrings.email,
+                      subject: AppStrings.emailSubject,
+                      body: AppStrings.emailBody,
                     );
                   }),
                   SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
                   contactButton(
-                      "+1 (484) 350-8039", 'assets/images/phoneIcon.png', () {
+                      AppStrings.phoneNumber, 'assets/images/phoneIcon.png', () {
                     if (isWindows()) {
-                      showAlert(context, 'Alert',
-                          'Cannot perform SMS functions on Windows!');
+                      showAlert(context, AppStrings.alert,
+                          AppStrings.smsWindows);
                     } else {
                       _sendingSMS();
                     }
                   }),
                   SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
-                  contactButton("laparentado", 'assets/images/linkedinIcon.png',
+                  contactButton(AppStrings.linkedIn, 'assets/images/linkedinIcon.png',
                       () {
-                    _launchURL("https://www.linkedin.com/in/laparentado");
+                    _launchURL(AppStrings.linkedInLink);
                   }),
                   SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
                   contactButton(
-                      "lorenzaparentado", 'assets/images/githubIcon.png', () {
-                    _launchURL("https://github.com/lorenzaparentado");
+                      AppStrings.gitHub, 'assets/images/githubIcon.png', () {
+                    _launchURL(AppStrings.gitHubLink);
                   }),
                 ],
               ),
@@ -98,7 +99,7 @@ class _FooterWeb extends State<FooterWeb> {
                 height: responsiveWebHeight(widget.screenHeight, 50),
               ),
               Text(
-                "Last Updated Month, Year",
+                AppStrings.websiteUpdated,
                 style: bodySmallWeb(AppColors.lightTan, context),
               )
             ],
@@ -198,7 +199,7 @@ class _FooterWeb extends State<FooterWeb> {
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('OK', style: bodyMediumWeb(AppColors.lightTan, context)),
+              child: Text(AppStrings.ok, style: bodyMediumWeb(AppColors.lightTan, context)),
               onPressed: () {
                 Navigator.of(context).pop();
               },

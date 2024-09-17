@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
+import 'package:flutter_portfolio/strings.dart';
 import 'package:flutter_portfolio/styles/text_style_mobile.dart';
 import '../../styles/app_colors.dart';
 import '../../tools.dart';
@@ -30,12 +31,12 @@ class _StatsMobile extends State<StatsMobile> {
           children: [
             Column(
               children: [
-                statBoxes("XX", "Lorem ipsum dolor sit amet",
+                statBoxes(AppStrings.stat1Num, AppStrings.stat1Text,
                     AppColors.lightGreen, AppColors.mediumGreen),
                 SizedBox(
                   height: responsiveMobileHeight(widget.screenHeight, 24),
                 ),
-                statBoxes("XX", "Lorem ipsum dolor sit amet", AppColors.darkTan,
+                statBoxes(AppStrings.stat2Num, AppStrings.stat2Text, AppColors.darkTan,
                     AppColors.lightBrown),
               ],
             ),
@@ -44,12 +45,12 @@ class _StatsMobile extends State<StatsMobile> {
             ),
             Column(
               children: [
-                statBoxes("XX", "Lorem ipsum dolor sit amet", AppColors.darkTan,
+                statBoxes(AppStrings.stat3Num, AppStrings.stat3Text, AppColors.darkTan,
                     AppColors.lightBrown),
                 SizedBox(
                   height: responsiveMobileHeight(widget.screenHeight, 24),
                 ),
-                statBoxes("XX", "Lorem ipsum dolor sit amet",
+                statBoxes(AppStrings.stat4Num, AppStrings.stat4Text,
                     AppColors.lightGreen, AppColors.mediumGreen),
               ],
             ),

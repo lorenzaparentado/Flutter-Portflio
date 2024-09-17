@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
+import 'package:flutter_portfolio/strings.dart';
 import 'package:flutter_portfolio/styles/text_style_mobile.dart';
 import '../../styles/app_colors.dart';
 import '../../tools.dart';
@@ -31,7 +32,7 @@ class _WorkMobile extends State<WorkMobile> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "About Me",
+                  AppStrings.work,
                   style: headerBigMobile(AppColors.lightTan, context),
                 )
               ],
@@ -54,7 +55,8 @@ class _WorkMobile extends State<WorkMobile> {
             ),
             Text(softWrap: true,
                 style: bodyMobile(AppColors.lightTan, context),
-                "I am currently a Flutter Mobile Associate in the final month of my six-month co-op at Neuroflow. I connected with the company because of its mission to “create a happier and healthier world,” which resonated with my desire to make a positive impact through my work.\n\nIn my first three months, I focused solely on mobile development. During this time, I learned Flutter, Swift for iOS development, and Kotlin for Android development. I also familiarized myself with industry standards for mobile apps, ensuring my code was clean, up-to-date, and well-tested. I worked on multiple projects, including a PDF viewer for users’ homework, the settings and notifications page, and the onboarding flow."),
+                AppStrings.workText1
+                ),
             SizedBox(
               height: responsiveMobileHeight(widget.screenHeight, 10),
             ),
@@ -72,8 +74,8 @@ class _WorkMobile extends State<WorkMobile> {
               height: responsiveMobileHeight(widget.screenWidth, 15),
             ),
             Text(softWrap: true,
-                style: bodyMobile(AppColors.lightTan, context),
-                "For the past three months, I have been working on the backend. I learned Flask for our web app and SQL for our database. My tasks have included optimizing API calls to improve app performance, fixing bugs across the full stack to ensure a good user experience, and creating AWS Lambdas. As I continue to learn more about our codebase, I plan to delve into our frontend development as well.\n\nBeyond technical skills, I have gained many other valuable skills. I have learned how to collaborate effectively with other engineers and maintain a high-quality product together. Working in a multi-faceted team that includes Design, QA, Product, and all engineers has taught me about the various roles involved in developing a software product. Additionally, I have learned Agile methodology and Scrum, which have improved my ability to work with and interact with others."),
+                style: bodyMobile(AppColors.lightTan, context), AppStrings.workText2
+                ),
             SizedBox(
               height: responsiveMobileHeight(widget.screenHeight, 10),
             ),

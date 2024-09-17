@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
+import 'package:flutter_portfolio/strings.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
@@ -28,22 +29,22 @@ class _StatsWeb extends State<StatsWeb> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            statBoxes("XX", "Lorem ipsum dolor sit amet", AppColors.lightGreen,
+            statBoxes(AppStrings.stat1Num, AppStrings.stat1Text, AppColors.lightGreen,
                 AppColors.mediumGreen),
             SizedBox(
               width: responsiveWebWidth(widget.screenWidth, 46),
             ),
-            statBoxes("XX", "Lorem ipsum dolor sit amet", AppColors.darkTan,
+            statBoxes(AppStrings.stat2Num, AppStrings.stat2Text, AppColors.darkTan,
                 AppColors.lightBrown),
             SizedBox(
               width: responsiveWebWidth(widget.screenWidth, 46),
             ),
-            statBoxes("XX", "Lorem ipsum dolor sit amet", AppColors.lightGreen,
+            statBoxes(AppStrings.stat3Num, AppStrings.stat3Text, AppColors.lightGreen,
                 AppColors.mediumGreen),
             SizedBox(
               width: responsiveWebWidth(widget.screenWidth, 46),
             ),
-            statBoxes("XX", "Lorem ipsum dolor sit amet", AppColors.darkTan,
+            statBoxes(AppStrings.stat4Num, AppStrings.stat4Text, AppColors.darkTan,
                 AppColors.lightBrown),
           ],
         ),

@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
+import 'package:flutter_portfolio/strings.dart';
 import 'package:flutter_portfolio/styles/text_style_mobile.dart';
 import '../../styles/app_colors.dart';
-import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
 
 class ProjectsMobile extends StatefulWidget {
@@ -30,17 +30,17 @@ class _ProjectsMobile extends State<ProjectsMobile> {
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
-                  "Projects",
+                  AppStrings.projects,
                   style: headerBigMobile(AppColors.darkestBrown, context),
                 ),
               ]),
               SizedBox(height: responsiveMobileHeight(widget.screenHeight, 10)),
               singleProject(
-                  "title",
-                  "description",
-                  "tech1",
-                  "tech2",
-                  "tech3",
+                  AppStrings.project1Title,
+                  AppStrings.project1Description,
+                  AppStrings.project1Tech1,
+                  AppStrings.project1Tech2,
+                  AppStrings.project1Tech3,
                   AppColors.lightBrown,
                   AppColors.mediumBrown,
                   AppColors.mediumGreen,
@@ -49,11 +49,11 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                   AppColors.darkestGreen),
               SizedBox(height: responsiveMobileHeight(widget.screenHeight, 10)),
               singleProject(
-                  "title",
-                  "description",
-                  "tech1",
-                  "tech2",
-                  "tech3",
+                  AppStrings.project2Title,
+                  AppStrings.project2Description,
+                  AppStrings.project2Tech1,
+                  AppStrings.project2Tech2,
+                  AppStrings.project2Tech3,
                   AppColors.mediumGreen,
                   AppColors.darkestGreen,
                   AppColors.darkTan,
@@ -62,11 +62,11 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                   AppColors.darkestBrown),
               SizedBox(height: responsiveMobileHeight(widget.screenHeight, 10)),
               singleProject(
-                  "title",
-                  "description",
-                  "tech1",
-                  "tech2",
-                  "tech3",
+                  AppStrings.project3Title,
+                  AppStrings.project3Description,
+                  AppStrings.project3Tech1,
+                  AppStrings.project3Tech2,
+                  AppStrings.project3Tech3,
                   AppColors.lightBrown,
                   AppColors.mediumBrown,
                   AppColors.mediumGreen,
@@ -75,11 +75,11 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                   AppColors.darkestGreen),
               SizedBox(height: responsiveMobileHeight(widget.screenHeight, 10)),
               singleProject(
-                  "title",
-                  "description",
-                  "tech1",
-                  "tech2",
-                  "tech3",
+                  AppStrings.project4Title,
+                  AppStrings.project4Description,
+                  AppStrings.project4Tech1,
+                  AppStrings.project4Tech2,
+                  AppStrings.project4Tech3,
                   AppColors.mediumGreen,
                   AppColors.darkestGreen,
                   AppColors.darkTan,
@@ -161,7 +161,7 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                                 responsiveMobileWidth(widget.screenWidth, 10),
                                 responsiveMobileHeight(widget.screenHeight, 5)),
                             child: Text(
-                              "Open Project",
+                              AppStrings.projectOpen,
                               style:
                                   headerSmallMobile(buttonTextColor, context),
                             )),

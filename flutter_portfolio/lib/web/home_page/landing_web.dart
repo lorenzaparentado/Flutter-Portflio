@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/strings.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
@@ -41,7 +42,7 @@ class _LandingWeb extends State<LandingWeb> {
                 Padding(
                   padding: EdgeInsets.only(bottom: imageHeight * .5),
                   child: Text(
-                    "Lorenz\nAparentado",
+                    AppStrings.headerFullName,
                     style: headerBiggestWeb(AppColors.darkestBrown, context),
                   ),
                 ),
@@ -52,7 +53,7 @@ class _LandingWeb extends State<LandingWeb> {
                 Padding(
                   padding: EdgeInsets.only(bottom: imageHeight * .5),
                   child: Text(
-                    "Third Year Computer Science Student\nAspiring Software Engineer\nMobile / Fullstack Developer",
+                    AppStrings.landingText,
                     style: bodyBigWeb(AppColors.darkestBrown, context),
                   ),
                 ),

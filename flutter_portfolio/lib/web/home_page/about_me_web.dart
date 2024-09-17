@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
+import 'package:flutter_portfolio/strings.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
@@ -35,7 +36,7 @@ class _AboutMeWeb extends State<AboutMeWeb> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "About Me",
+                  AppStrings.aboutMe,
                   key: widget.aboutKey,
                   style: headerBigWeb(AppColors.darkestBrown, context),
                 )
@@ -62,7 +63,7 @@ class _AboutMeWeb extends State<AboutMeWeb> {
                 Expanded(
                   child: Text(
                       style: bodyMediumWeb(AppColors.darkestBrown, context),
-                      "Hey I’m Lorenz, a third-year Computer Science major at Drexel University, pursuing a minor in Data Science with concentrations in Software Engineering and Artificial Intelligence/Machine Learning. With four years of experience in computer science, which began in high school, I have maintained a high college GPA of 3.87 and great academic standards. I enjoy working on projects in my free time and have participated in three hackathons, winning one of them.\n\nCurrently, I am on a co-op at Neuroflow as a Flutter mobile engineer, working part-time as I start school. Initially, I focused on mobile development, creating new features and implementing existing ones onto Flutter. Now, I am working on backend development and plan to develop into a full-stack engineer.\n\nOutside of coding, I have a variety of interests. As a musician, I play around five instruments, including guitar, saxophone, ukulele, flute, and a bit of piano. As an athlete, I enjoy running almost every morning and working out every afternoon. I also embrace my nerdy side by playing video games, especially open-world RPGs like the Fallout series and Cyberpunk, and I enjoy watching movies and TV shows."),
+                      AppStrings.aboutMeText),
                 )
               ],
             ),
@@ -74,7 +75,7 @@ class _AboutMeWeb extends State<AboutMeWeb> {
                   width: responsiveWebWidth(widget.screenWidth, 400),
                   child: Center(
                     child: Text(
-                  'Check out my resume!',
+                  AppStrings.aboutMeResumeButton,
                   style: headerSmallWeb(AppColors.lightTan, context),
                 ),),
                   boxColor: AppColors.mediumGreen,
@@ -88,7 +89,7 @@ class _AboutMeWeb extends State<AboutMeWeb> {
               padding: EdgeInsets.only(
                   top: responsiveWebHeight(widget.screenHeight, 13)),
               child: Text(
-                "Last Updated September, 2024",
+                AppStrings.aboutMeUpdated,
                 style: bodyMediumWeb(AppColors.darkestBrown, context),
               ),
             )
