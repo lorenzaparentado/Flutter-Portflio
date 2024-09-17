@@ -1,9 +1,13 @@
 // main.dart
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_portfolio/responsive.dart';
 import 'package:flutter_portfolio/styles/app_colors.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: AppColors.lightTan,
+  ));
   runApp(const MyApp());
 }
 

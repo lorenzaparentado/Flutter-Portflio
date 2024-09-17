@@ -53,7 +53,8 @@ class _AboutMeMobile extends State<AboutMeMobile> {
             SizedBox(
               height: responsiveMobileHeight(widget.screenWidth, 15),
             ),
-            Text(softWrap: true,
+            Text(
+                softWrap: true,
                 style: bodyMobile(AppColors.darkestBrown, context),
                 AppStrings.aboutMeText),
             SizedBox(

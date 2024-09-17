@@ -7,10 +7,13 @@ class AppStrings {
   //Stats
   static const String stat1Num = "3";
   static const String stat1Text = "Years of experience";
+
   static const String stat2Num = "5";
   static const String stat2Text = "Projects completed";
+
   static const String stat3Num = "10";
   static const String stat3Text = "Languages learned";
+
   static const String stat4Num = "6";
   static const String stat4Text = "Mon. industry experience";
 
@@ -32,29 +35,29 @@ class AppStrings {
   static const String projects = "Projects";
   static const String projectOpen = "Open Project";
 
-  static const String project1Title = "Title";
-  static const String project1Description = "This is the description";
-  static const String project1Tech1 = "tech";
-  static const String project1Tech2 = "tech";
-  static const String project1Tech3 = "tech";
+  static const String project1Title = "BioXplorer";
+  static const String project1Description = "Web app for interactive learning and animal detection";
+  static const String project1Tech1 = "Python";
+  static const String project1Tech2 = "OpenAI";
+  static const String project1Tech3 = "Firebase";
 
-  static const String project2Title = "Title";
-  static const String project2Description = "This is the description";
-  static const String project2Tech1 = "tech";
-  static const String project2Tech2 = "tech";
-  static const String project2Tech3 = "tech";
+  static const String project2Title = "DeTect";
+  static const String project2Description = "Fitness tools website";
+  static const String project2Tech1 = "Python";
+  static const String project2Tech2 = "OpenAI";
+  static const String project2Tech3 = "Firebase";
 
-  static const String project3Title = "Title";
+  static const String project3Title = "GoJim!";
   static const String project3Description = "This is the description";
-  static const String project3Tech1 = "tech";
-  static const String project3Tech2 = "tech";
-  static const String project3Tech3 = "tech";
+  static const String project3Tech1 = "JavaScript";
+  static const String project3Tech2 = "HTML";
+  static const String project3Tech3 = "Firebase";
 
-  static const String project4Title = "Title";
+  static const String project4Title = "Discord Assistant";
   static const String project4Description = "This is the description";
-  static const String project4Tech1 = "tech";
-  static const String project4Tech2 = "tech";
-  static const String project4Tech3 = "tech";
+  static const String project4Tech1 = "Python";
+  static const String project4Tech2 = "Firebase";
+  static const String project4Tech3 = "Openweather";
 
   //Contact & Footer
   static const String contactMe = "Contact Me";
