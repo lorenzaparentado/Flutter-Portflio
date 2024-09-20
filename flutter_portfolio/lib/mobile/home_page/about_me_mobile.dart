@@ -61,24 +61,27 @@ class _AboutMeMobile extends State<AboutMeMobile> {
             SizedBox(
               height: responsiveMobileHeight(widget.screenWidth, 15),
             ),
-            GestureDetector(
+            InkWell(
               onTap: () {
                 _openResume();
               },
-              child: CustomContainer(
-                height: responsiveMobileHeight(widget.screenHeight, 40),
-                width: responsiveMobileWidth(widget.screenWidth, 234),
-                child: Center(
-                  child: Text(
-                    AppStrings.aboutMeResumeButton,
-                    style: headerMediumMobile(AppColors.lightTan, context),
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: CustomContainer(
+                  height: responsiveMobileHeight(widget.screenHeight, 40),
+                  width: responsiveMobileWidth(widget.screenWidth, 234),
+                  child: Center(
+                    child: Text(
+                      AppStrings.aboutMeResumeButton,
+                      style: headerMediumMobile(AppColors.lightTan, context),
+                    ),
                   ),
+                  boxColor: AppColors.mediumGreen,
+                  boxShadowColor: AppColors.shadowGreen,
+                  offset: min(responsiveMobileHeight(widget.screenHeight, 4),
+                      responsiveMobileWidth(widget.screenWidth, 4)),
+                  borderRadius: 10,
                 ),
-                boxColor: AppColors.mediumGreen,
-                boxShadowColor: AppColors.shadowGreen,
-                offset: min(responsiveMobileHeight(widget.screenHeight, 4),
-                    responsiveMobileWidth(widget.screenWidth, 4)),
-                borderRadius: 10,
               ),
             ),
             Padding(

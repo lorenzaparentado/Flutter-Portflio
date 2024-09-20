@@ -47,9 +47,7 @@ class _FooterMobile extends State<FooterMobile> {
               SizedBox(
                 height: responsiveMobileHeight(widget.screenHeight, 10),
               ),
-              contactButton(
-                  AppStrings.email, 'assets/images/mailIcon.png',
-                  () {
+              contactButton(AppStrings.email, 'assets/images/mailIcon.png', () {
                 launchEmail(
                   toEmail: AppStrings.email,
                   subject: AppStrings.emailSubject,
@@ -59,11 +57,10 @@ class _FooterMobile extends State<FooterMobile> {
               SizedBox(
                 height: responsiveMobileHeight(widget.screenHeight, 10),
               ),
-              contactButton(AppStrings.phoneNumber, 'assets/images/phoneIcon.png',
-                  () {
+              contactButton(
+                  AppStrings.phoneNumber, 'assets/images/phoneIcon.png', () {
                 if (isWindows()) {
-                  showAlert(context, AppStrings.alert,
-                      AppStrings.smsWindows);
+                  showAlert(context, AppStrings.alert, AppStrings.smsWindows);
                 } else {
                   _sendingSMS();
                 }
@@ -71,8 +68,8 @@ class _FooterMobile extends State<FooterMobile> {
               SizedBox(
                 height: responsiveMobileHeight(widget.screenHeight, 10),
               ),
-              contactButton(AppStrings.linkedIn, 'assets/images/linkedinIcon.png',
-                  () {
+              contactButton(
+                  AppStrings.linkedIn, 'assets/images/linkedinIcon.png', () {
                 _launchURL(AppStrings.linkedInLink);
               }),
               SizedBox(
@@ -106,30 +103,36 @@ class _FooterMobile extends State<FooterMobile> {
       onTap: () async {
         onPress();
       },
-      child: CustomContainer(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: responsiveMobileHeight(widget.screenHeight, 10),
-              horizontal: responsiveMobileWidth(widget.screenWidth, 10)),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset(icon, height: responsiveMobileHeight(widget.screenHeight, 20),),
-              SizedBox(
-                width: responsiveMobileWidth(widget.screenWidth, 5),
-              ),
-              Text(
-                text,
-                style: bodySmallMobile(AppColors.darkestBrown, context),
-              )
-            ],
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: CustomContainer(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: responsiveMobileHeight(widget.screenHeight, 10),
+                horizontal: responsiveMobileWidth(widget.screenWidth, 10)),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  icon,
+                  height: responsiveMobileHeight(widget.screenHeight, 20),
+                ),
+                SizedBox(
+                  width: responsiveMobileWidth(widget.screenWidth, 5),
+                ),
+                Text(
+                  text,
+                  style: bodySmallMobile(AppColors.darkestBrown, context),
+                )
+              ],
+            ),
           ),
+          boxColor: AppColors.lightGreen,
+          boxShadowColor: AppColors.mediumGreen,
+          offset: min(responsiveMobileHeight(widget.screenHeight, 2),
+              responsiveMobileWidth(widget.screenWidth, 2)),
+          borderRadius: 15,
         ),
-        boxColor: AppColors.lightGreen,
-        boxShadowColor: AppColors.mediumGreen,
-        offset: min(responsiveMobileHeight(widget.screenHeight, 2),
-            responsiveMobileWidth(widget.screenWidth, 2)),
-        borderRadius: 15,
       ),
     );
   }
@@ -194,8 +197,10 @@ class _FooterMobile extends State<FooterMobile> {
           ),
           actions: <Widget>[
             TextButton(
-              child:
-                  Text(AppStrings.ok, style: bodyMobile(AppColors.lightTan, context)),
+              child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Text(AppStrings.ok,
+                      style: bodyMobile(AppColors.lightTan, context))),
               onPressed: () {
                 Navigator.of(context).pop();
               },

@@ -69,22 +69,25 @@ class _AboutMeWeb extends State<AboutMeWeb> {
               ],
             ),
             SizedBox(height: responsiveWebHeight(widget.screenHeight, 40)),
-            GestureDetector(
+            InkWell(
               onTap: () {_openResume();},
-              child: CustomContainer(
-                  height: responsiveWebHeight(widget.screenHeight, 56),
-                  width: responsiveWebWidth(widget.screenWidth, 400),
-                  child: Center(
-                    child: Text(
-                  AppStrings.aboutMeResumeButton,
-                  style: headerSmallWeb(AppColors.lightTan, context),
-                ),),
-                  boxColor: AppColors.mediumGreen,
-                  boxShadowColor: AppColors.shadowGreen,
-                  offset: min(responsiveWebHeight(widget.screenHeight, 10),
-                      responsiveWebWidth(widget.screenWidth, 10)),
-                  borderRadius: 15,
-                ),
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: CustomContainer(
+                    height: responsiveWebHeight(widget.screenHeight, 56),
+                    width: responsiveWebWidth(widget.screenWidth, 400),
+                    child: Center(
+                      child: Text(
+                    AppStrings.aboutMeResumeButton,
+                    style: headerSmallWeb(AppColors.lightTan, context),
+                  ),),
+                    boxColor: AppColors.mediumGreen,
+                    boxShadowColor: AppColors.shadowGreen,
+                    offset: min(responsiveWebHeight(widget.screenHeight, 10),
+                        responsiveWebWidth(widget.screenWidth, 10)),
+                    borderRadius: 15,
+                  ),
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(

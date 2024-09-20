@@ -58,8 +58,8 @@ class _FooterWeb extends State<FooterWeb> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  contactButton(AppStrings.email,
-                      'assets/images/mailIcon.png', () {
+                  contactButton(AppStrings.email, 'assets/images/mailIcon.png',
+                      () {
                     launchEmail(
                       toEmail: AppStrings.email,
                       subject: AppStrings.emailSubject,
@@ -68,16 +68,18 @@ class _FooterWeb extends State<FooterWeb> {
                   }),
                   SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
                   contactButton(
-                      AppStrings.phoneNumber, 'assets/images/phoneIcon.png', () {
+                      AppStrings.phoneNumber, 'assets/images/phoneIcon.png',
+                      () {
                     if (isWindows()) {
-                      showAlert(context, AppStrings.alert,
-                          AppStrings.smsWindows);
+                      showAlert(
+                          context, AppStrings.alert, AppStrings.smsWindows);
                     } else {
                       _sendingSMS();
                     }
                   }),
                   SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
-                  contactButton(AppStrings.linkedIn, 'assets/images/linkedinIcon.png',
+                  contactButton(
+                      AppStrings.linkedIn, 'assets/images/linkedinIcon.png',
                       () {
                     _launchURL(AppStrings.linkedInLink);
                   }),
@@ -112,29 +114,32 @@ class _FooterWeb extends State<FooterWeb> {
       onTap: () async {
         onPress();
       },
-      child: CustomContainer(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: responsiveWebHeight(widget.screenHeight, 15),
-              horizontal: responsiveWebWidth(widget.screenWidth, 15)),
-          child: Row(
-            children: [
-              Image.asset(icon),
-              SizedBox(
-                width: responsiveWebWidth(widget.screenWidth, 10),
-              ),
-              Text(
-                text,
-                style: bodyMediumWeb(AppColors.darkestBrown, context),
-              )
-            ],
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: CustomContainer(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: responsiveWebHeight(widget.screenHeight, 15),
+                horizontal: responsiveWebWidth(widget.screenWidth, 15)),
+            child: Row(
+              children: [
+                Image.asset(icon),
+                SizedBox(
+                  width: responsiveWebWidth(widget.screenWidth, 10),
+                ),
+                Text(
+                  text,
+                  style: bodyMediumWeb(AppColors.darkestBrown, context),
+                )
+              ],
+            ),
           ),
+          boxColor: AppColors.lightGreen,
+          boxShadowColor: AppColors.mediumGreen,
+          offset: min(responsiveWebHeight(widget.screenHeight, 8),
+              responsiveWebWidth(widget.screenWidth, 8)),
+          borderRadius: 15,
         ),
-        boxColor: AppColors.lightGreen,
-        boxShadowColor: AppColors.mediumGreen,
-        offset: min(responsiveWebHeight(widget.screenHeight, 8),
-            responsiveWebWidth(widget.screenWidth, 8)),
-        borderRadius: 15,
       ),
     );
   }
@@ -199,7 +204,10 @@ class _FooterWeb extends State<FooterWeb> {
           ),
           actions: <Widget>[
             TextButton(
-              child: Text(AppStrings.ok, style: bodyMediumWeb(AppColors.lightTan, context)),
+              child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Text(AppStrings.ok,
+                      style: bodyMediumWeb(AppColors.lightTan, context))),
               onPressed: () {
                 Navigator.of(context).pop();
               },

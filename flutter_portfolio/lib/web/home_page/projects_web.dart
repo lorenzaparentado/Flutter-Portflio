@@ -164,24 +164,27 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                     SizedBox(
                       height: responsiveWebHeight(widget.screenHeight, 99),
                     ),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {},
-                      child: CustomContainer(
-                        boxColor: boxColor,
-                        boxShadowColor: boxShadowColor,
-                        borderRadius: 10,
-                        offset: min(responsiveWebHeight(widget.screenHeight, 5),
-                            responsiveWebWidth(widget.screenWidth, 5)),
-                        child: Padding(
-                            padding: EdgeInsets.fromLTRB(
-                                responsiveWebWidth(widget.screenWidth, 18),
-                                responsiveWebHeight(widget.screenHeight, 11),
-                                responsiveWebWidth(widget.screenWidth, 19),
-                                responsiveWebHeight(widget.screenHeight, 11)),
-                            child: Text(
-                              AppStrings.projectOpen,
-                              style: headerSmallWeb(buttonTextColor, context),
-                            )),
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: CustomContainer(
+                          boxColor: boxColor,
+                          boxShadowColor: boxShadowColor,
+                          borderRadius: 10,
+                          offset: min(responsiveWebHeight(widget.screenHeight, 5),
+                              responsiveWebWidth(widget.screenWidth, 5)),
+                          child: Padding(
+                              padding: EdgeInsets.fromLTRB(
+                                  responsiveWebWidth(widget.screenWidth, 18),
+                                  responsiveWebHeight(widget.screenHeight, 11),
+                                  responsiveWebWidth(widget.screenWidth, 19),
+                                  responsiveWebHeight(widget.screenHeight, 11)),
+                              child: Text(
+                                AppStrings.projectOpen,
+                                style: headerSmallWeb(buttonTextColor, context),
+                              )),
+                        ),
                       ),
                     )
                   ],

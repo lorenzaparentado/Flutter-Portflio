@@ -59,8 +59,11 @@ class _HomePageWeb extends State<HomePageWeb> {
           ),
           actions: <Widget>[
             TextButton(
-              child: Text(AppStrings.ok,
-                  style: bodyMediumWeb(AppColors.lightTan, context)),
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: Text(AppStrings.ok,
+                    style: bodyMediumWeb(AppColors.lightTan, context)),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },

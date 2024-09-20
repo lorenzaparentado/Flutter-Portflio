@@ -56,52 +56,67 @@ class _HeaderWeb extends State<HeaderWeb> {
             Padding(
               padding: EdgeInsets.only(
                   right: responsiveWebWidth(widget.screenWidth, 75)),
-              child: TextButton(
-                child: Text(
-                  AppStrings.aboutMe,
-                  style: headerSmallestWeb(AppColors.darkestBrown, context),
+              child: InkWell(
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Text(
+                    AppStrings.aboutMe,
+                    style: headerSmallestWeb(AppColors.darkestBrown, context),
+                  ),
                 ),
-                onPressed: () => widget.scrollToSection(widget.aboutMeKey),
+                onTap: () => widget.scrollToSection(widget.aboutMeKey),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(
                   right: responsiveWebWidth(widget.screenWidth, 75)),
-              child: TextButton(
-                child: Text(
-                  AppStrings.work,
-                  style: headerSmallestWeb(AppColors.darkestBrown, context),
+              child: InkWell(
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Text(
+                    AppStrings.work,
+                    style: headerSmallestWeb(AppColors.darkestBrown, context),
+                  ),
                 ),
-                onPressed: () => widget.scrollToSection(widget.workKey),
+                onTap: () => widget.scrollToSection(widget.workKey),
               ),
             ),
-            TextButton(
-              child: Text(
-                AppStrings.headerName,
-                style: headerMediumWeb(AppColors.darkestBrown, context),
-              ),
-              onPressed: () => widget.scrollToSection(widget.landingKey),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: responsiveWebWidth(widget.screenWidth, 75)),
-              child: TextButton(
+            InkWell(
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
                 child: Text(
-                  AppStrings.projects,
-                  style: headerSmallestWeb(AppColors.darkestBrown, context),
+                  AppStrings.headerName,
+                  style: headerMediumWeb(AppColors.darkestBrown, context),
                 ),
-                onPressed: () => widget.scrollToSection(widget.projectsKey),
               ),
+              onTap: () => widget.scrollToSection(widget.landingKey),
             ),
             Padding(
               padding: EdgeInsets.only(
                   left: responsiveWebWidth(widget.screenWidth, 75)),
-              child: TextButton(
-                child: Text(
-                  AppStrings.contactMe,
-                  style: headerSmallestWeb(AppColors.darkestBrown, context),
+              child: InkWell(
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Text(
+                    AppStrings.projects,
+                    style: headerSmallestWeb(AppColors.darkestBrown, context),
+                  ),
                 ),
-                onPressed: () => widget.scrollToSection(widget.contactKey, ),
+                onTap: () => widget.scrollToSection(widget.projectsKey),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                  left: responsiveWebWidth(widget.screenWidth, 75)),
+              child: InkWell(
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Text(
+                    AppStrings.contactMe,
+                    style: headerSmallestWeb(AppColors.darkestBrown, context),
+                  ),
+                ),
+                onTap: () => widget.scrollToSection(widget.contactKey, ),
               ),
             ),
           ],

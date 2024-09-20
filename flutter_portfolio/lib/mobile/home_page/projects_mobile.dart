@@ -145,26 +145,29 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                     SizedBox(
                       height: responsiveMobileHeight(widget.screenHeight, 25),
                     ),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {},
-                      child: CustomContainer(
-                        boxColor: boxColor,
-                        boxShadowColor: boxShadowColor,
-                        borderRadius: 10,
-                        offset: min(
-                            responsiveMobileHeight(widget.screenHeight, 2),
-                            responsiveMobileWidth(widget.screenWidth, 2)),
-                        child: Padding(
-                            padding: EdgeInsets.fromLTRB(
-                                responsiveMobileWidth(widget.screenWidth, 10),
-                                responsiveMobileHeight(widget.screenHeight, 5),
-                                responsiveMobileWidth(widget.screenWidth, 10),
-                                responsiveMobileHeight(widget.screenHeight, 5)),
-                            child: Text(
-                              AppStrings.projectOpen,
-                              style:
-                                  headerSmallMobile(buttonTextColor, context),
-                            )),
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: CustomContainer(
+                          boxColor: boxColor,
+                          boxShadowColor: boxShadowColor,
+                          borderRadius: 10,
+                          offset: min(
+                              responsiveMobileHeight(widget.screenHeight, 2),
+                              responsiveMobileWidth(widget.screenWidth, 2)),
+                          child: Padding(
+                              padding: EdgeInsets.fromLTRB(
+                                  responsiveMobileWidth(widget.screenWidth, 10),
+                                  responsiveMobileHeight(widget.screenHeight, 5),
+                                  responsiveMobileWidth(widget.screenWidth, 10),
+                                  responsiveMobileHeight(widget.screenHeight, 5)),
+                              child: Text(
+                                AppStrings.projectOpen,
+                                style:
+                                    headerSmallMobile(buttonTextColor, context),
+                              )),
+                        ),
                       ),
                     )
                   ],

@@ -46,8 +46,10 @@ class _HomePageMobile extends State<HomePageMobile> {
           ),
           actions: <Widget>[
             TextButton(
-              child:
-                  Text(AppStrings.ok, style: bodyMobile(AppColors.lightTan, context)),
+              child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Text(AppStrings.ok,
+                      style: bodyMobile(AppColors.lightTan, context))),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -57,36 +59,39 @@ class _HomePageMobile extends State<HomePageMobile> {
       },
     );
   }
-  
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors.lightTan,
-      body: Stack(
-        children: [SingleChildScrollView(
+      body: Stack(children: [
+        SingleChildScrollView(
           child: Column(
             children: [
-              LandingMobile(screenWidth: screenWidth, screenHeight: screenHeight),
+              LandingMobile(
+                  screenWidth: screenWidth, screenHeight: screenHeight),
               StatsMobile(screenWidth: screenWidth, screenHeight: screenHeight),
-              AboutMeMobile(screenWidth: screenWidth, screenHeight: screenHeight),
+              AboutMeMobile(
+                  screenWidth: screenWidth, screenHeight: screenHeight),
               WorkMobile(screenWidth: screenWidth, screenHeight: screenHeight),
-              ProjectsMobile(screenWidth: screenWidth, screenHeight: screenHeight),
+              ProjectsMobile(
+                  screenWidth: screenWidth, screenHeight: screenHeight),
               FooterMobile(screenWidth: screenWidth, screenHeight: screenHeight)
             ],
           ),
         ),
         Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: HeaderMobile(
-              screenWidth: screenWidth,
-              screenHeight: screenHeight,
-            ),),
-        ]
-      ),
+          top: 0,
+          left: 0,
+          right: 0,
+          child: HeaderMobile(
+            screenWidth: screenWidth,
+            screenHeight: screenHeight,
+          ),
+        ),
+      ]),
     );
   }
 }
