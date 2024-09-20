@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
 import 'package:flutter_portfolio/styles/text_style_mobile.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../styles/app_colors.dart';
 import '../../tools.dart';
 import '../../strings.dart';
@@ -61,7 +62,9 @@ class _AboutMeMobile extends State<AboutMeMobile> {
               height: responsiveMobileHeight(widget.screenWidth, 15),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                _openResume();
+              },
               child: CustomContainer(
                 height: responsiveMobileHeight(widget.screenHeight, 40),
                 width: responsiveMobileWidth(widget.screenWidth, 234),
@@ -90,5 +93,15 @@ class _AboutMeMobile extends State<AboutMeMobile> {
         ),
       ),
     );
+  }
+
+  void _openResume() async {
+    const url =
+        'https://drive.google.com/file/d/1gQWW-SPIzdRrfiK8DQmMy3cWoXPgAVbj/view?usp=sharing'; // Replace with your resume URL
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

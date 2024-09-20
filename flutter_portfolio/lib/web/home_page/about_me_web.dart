@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
 import 'package:flutter_portfolio/strings.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles_web.dart';
 import '../../tools.dart';
@@ -69,7 +70,7 @@ class _AboutMeWeb extends State<AboutMeWeb> {
             ),
             SizedBox(height: responsiveWebHeight(widget.screenHeight, 40)),
             GestureDetector(
-              onTap: () {},
+              onTap: () {_openResume();},
               child: CustomContainer(
                   height: responsiveWebHeight(widget.screenHeight, 56),
                   width: responsiveWebWidth(widget.screenWidth, 400),
@@ -97,5 +98,15 @@ class _AboutMeWeb extends State<AboutMeWeb> {
         ),
       ),
     );
+  }
+
+  void _openResume() async {
+    const url =
+        'https://drive.google.com/file/d/1gQWW-SPIzdRrfiK8DQmMy3cWoXPgAVbj/view?usp=sharing'; // Replace with your resume URL
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
