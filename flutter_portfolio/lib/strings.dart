@@ -1,4 +1,8 @@
 class AppStrings {
+  //Dialog
+  static const String welcome = "Welcome to my Portfolio!";
+  static const String wip = "This website is currently under development, so the content you see may not fully reflect my complete portfolio.";
+
   //Header & Landing
   static const String headerFullName = "Lorenz\nAparentado";
   static const String headerName = "Lorenz";

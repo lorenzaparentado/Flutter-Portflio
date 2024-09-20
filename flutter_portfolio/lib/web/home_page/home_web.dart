@@ -1,3 +1,7 @@
+import 'package:flutter_portfolio/strings.dart';
+import 'package:flutter_portfolio/styles/text_styles_web.dart';
+import 'package:flutter_portfolio/tools.dart';
+
 import 'header_web.dart';
 import 'landing_web.dart';
 import 'stats_web.dart';
@@ -24,6 +28,49 @@ class _HomePageWeb extends State<HomePageWeb> {
   final GlobalKey _projectsKey = GlobalKey();
   final GlobalKey _contactKey = GlobalKey();
 
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _showDialog(context, AppStrings.welcome, AppStrings.wip);
+    });
+  }
+
+  void _showDialog(BuildContext context, String title, String content) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          elevation: 50,
+          backgroundColor: AppColors.mediumGreen,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          title: Text(
+            title,
+            style: headerSmallWeb(AppColors.lightTan, context),
+          ),
+          content: SizedBox(
+            width: responsiveWebWidth(MediaQuery.of(context).size.width, 500),
+            child: Text(
+              content,
+              style: bodyMediumWeb(AppColors.lightTan, context),
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text(AppStrings.ok,
+                  style: bodyMediumWeb(AppColors.lightTan, context)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   void _scrollToSection(GlobalKey key) {
     final context = key.currentContext;
     if (context != null) {
@@ -48,7 +95,10 @@ class _HomePageWeb extends State<HomePageWeb> {
             controller: _scrollController,
             child: Column(
               children: [
-                LandingWeb(landingKey: _landingKey, screenWidth: screenWidth, screenHeight: screenHeight),
+                LandingWeb(
+                    landingKey: _landingKey,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight),
                 StatsWeb(screenWidth: screenWidth, screenHeight: screenHeight),
                 AboutMeWeb(
                     aboutKey: _aboutMeKey,

@@ -6,6 +6,8 @@ import 'package:flutter_portfolio/mobile/home_page/landing_mobile.dart';
 import 'package:flutter_portfolio/mobile/home_page/projects_mobile.dart';
 import 'package:flutter_portfolio/mobile/home_page/stats_mobile.dart';
 import 'package:flutter_portfolio/mobile/home_page/work_mobile.dart';
+import 'package:flutter_portfolio/strings.dart';
+import 'package:flutter_portfolio/styles/text_style_mobile.dart';
 import '../../styles/app_colors.dart';
 
 class HomePageMobile extends StatefulWidget {
@@ -16,6 +18,46 @@ class HomePageMobile extends StatefulWidget {
 }
 
 class _HomePageMobile extends State<HomePageMobile> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _showDialog(context, AppStrings.welcome, AppStrings.wip);
+    });
+  }
+
+  void _showDialog(BuildContext context, String title, String content) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          elevation: 50,
+          backgroundColor: AppColors.mediumGreen,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          title: Text(
+            title,
+            style: headerBigMobile(AppColors.lightTan, context),
+          ),
+          content: Text(
+            content,
+            style: bodyMobile(AppColors.lightTan, context),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child:
+                  Text(AppStrings.ok, style: bodyMobile(AppColors.lightTan, context)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+  
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
