@@ -7,6 +7,7 @@ import '../../tools.dart';
 class HeaderMobile extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
+  final VoidCallback onHeaderPress;
   // final Function(GlobalKey) scrollToSection;
   // final GlobalKey landingKey;
   // final GlobalKey aboutMeKey;
@@ -18,6 +19,7 @@ class HeaderMobile extends StatefulWidget {
     // required this.landingKey,
     required this.screenWidth,
     required this.screenHeight,
+    required this.onHeaderPress,
     // required this.scrollToSection,
     // required this.aboutMeKey,
     // required this.workKey,
@@ -57,13 +59,19 @@ class _HeaderMobile extends State<HeaderMobile> {
                 padding: EdgeInsets.symmetric(
                     vertical: responsiveMobileHeight(widget.screenHeight, 4)),
                 child: Text(AppStrings.headerFullName,
-                    style:
-                        headerBigMobile(AppColors.darkestBrown, context)),
+                    style: headerBigMobile(AppColors.darkestBrown, context)),
               ),
-              Image.asset(
-                "assets/images/hamburgerIcon.png",
-                width: responsiveMobileWidth(widget.screenWidth, 70),
-              ),
+              InkWell(
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Image.asset(
+                      "assets/images/hamburgerIcon.png",
+                      width: responsiveMobileWidth(widget.screenWidth, 70),
+                    ),
+                  ),
+                  onTap: () {
+                    widget.onHeaderPress();
+                  }),
             ],
           ),
         ));
