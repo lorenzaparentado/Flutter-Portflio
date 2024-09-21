@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter_portfolio/strings.dart';
 import 'package:flutter_portfolio/styles/text_styles_web.dart';
 import 'package:flutter_portfolio/tools.dart';
@@ -40,35 +42,38 @@ class _HomePageWeb extends State<HomePageWeb> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          elevation: 50,
-          backgroundColor: AppColors.mediumGreen,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          title: Text(
-            title,
-            style: headerSmallWeb(AppColors.lightTan, context),
-          ),
-          content: SizedBox(
-            width: responsiveWebWidth(MediaQuery.of(context).size.width, 500),
-            child: Text(
-              content,
-              style: bodyMediumWeb(AppColors.lightTan, context),
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+          child: AlertDialog(
+            elevation: 50,
+            backgroundColor: AppColors.mediumGreen,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
             ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: Text(AppStrings.ok,
-                    style: bodyMediumWeb(AppColors.lightTan, context)),
+            title: Text(
+              title,
+              style: headerSmallWeb(AppColors.lightTan, context),
+            ),
+            content: SizedBox(
+              width: responsiveWebWidth(MediaQuery.of(context).size.width, 500),
+              child: Text(
+                content,
+                style: bodyMediumWeb(AppColors.lightTan, context),
               ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
             ),
-          ],
+            actions: <Widget>[
+              TextButton(
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Text(AppStrings.ok,
+                      style: bodyMediumWeb(AppColors.lightTan, context)),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
         );
       },
     );

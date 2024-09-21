@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'dart:html' as html;
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
@@ -363,31 +364,34 @@ class _DrawerMobile extends State<DrawerMobile> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          elevation: 50,
-          backgroundColor: AppColors.mediumGreen,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          title: Text(
-            title,
-            style: headerBigMobile(AppColors.lightTan, context),
-          ),
-          content: Text(
-            content,
-            style: bodyMobile(AppColors.lightTan, context),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: Text(AppStrings.ok,
-                      style: bodyMobile(AppColors.lightTan, context))),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+          child: AlertDialog(
+            elevation: 50,
+            backgroundColor: AppColors.mediumGreen,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
             ),
-          ],
+            title: Text(
+              title,
+              style: headerBigMobile(AppColors.lightTan, context),
+            ),
+            content: Text(
+              content,
+              style: bodyMobile(AppColors.lightTan, context),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Text(AppStrings.ok,
+                        style: bodyMobile(AppColors.lightTan, context))),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
         );
       },
     );
