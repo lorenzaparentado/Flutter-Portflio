@@ -10,8 +10,9 @@ import '../../tools.dart';
 class WorkMobile extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
+  final GlobalKey workKey;
 
-  WorkMobile({required this.screenWidth, required this.screenHeight});
+  WorkMobile({required this.workKey,required this.screenWidth, required this.screenHeight});
 
   @override
   _WorkMobile createState() => _WorkMobile();
@@ -33,6 +34,7 @@ class _WorkMobile extends State<WorkMobile> {
               children: [
                 Text(
                   AppStrings.work,
+                  key: widget.workKey,
                   style: headerBigMobile(AppColors.lightTan, context),
                 )
               ],

@@ -10,8 +10,9 @@ import '../../tools.dart';
 class ProjectsMobile extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
+  final GlobalKey projectsKey;
 
-  ProjectsMobile({required this.screenWidth, required this.screenHeight});
+  ProjectsMobile({required this.projectsKey,required this.screenWidth, required this.screenHeight});
 
   @override
   _ProjectsMobile createState() => _ProjectsMobile();
@@ -31,6 +32,7 @@ class _ProjectsMobile extends State<ProjectsMobile> {
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   AppStrings.projects,
+                  key: widget.projectsKey,
                   style: headerBigMobile(AppColors.darkestBrown, context),
                 ),
               ]),

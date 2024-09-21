@@ -22,11 +22,11 @@ class HomePageWeb extends StatefulWidget {
 
 class _HomePageWeb extends State<HomePageWeb> {
   final ScrollController _scrollController = ScrollController();
-  final GlobalKey _landingKey = GlobalKey();
-  final GlobalKey _aboutMeKey = GlobalKey();
-  final GlobalKey _workKey = GlobalKey();
-  final GlobalKey _projectsKey = GlobalKey();
-  final GlobalKey _contactKey = GlobalKey();
+  final GlobalKey _landingWebKey = GlobalKey();
+  final GlobalKey _aboutMeWebKey = GlobalKey();
+  final GlobalKey _workWebKey = GlobalKey();
+  final GlobalKey _projectsWebKey = GlobalKey();
+  final GlobalKey _contactWebKey = GlobalKey();
 
   @override
   void initState() {
@@ -99,24 +99,24 @@ class _HomePageWeb extends State<HomePageWeb> {
             child: Column(
               children: [
                 LandingWeb(
-                    landingKey: _landingKey,
+                    landingKey: _landingWebKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
                 StatsWeb(screenWidth: screenWidth, screenHeight: screenHeight),
                 AboutMeWeb(
-                    aboutKey: _aboutMeKey,
+                    aboutKey: _aboutMeWebKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
                 WorkWeb(
-                    workKey: _workKey,
+                    workKey: _workWebKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
                 ProjectsWeb(
-                    projectsKey: _projectsKey,
+                    projectsKey: _projectsWebKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
                 FooterWeb(
-                    footerKey: _contactKey,
+                    footerKey: _contactWebKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
               ],
@@ -130,11 +130,11 @@ class _HomePageWeb extends State<HomePageWeb> {
               screenWidth: screenWidth,
               screenHeight: screenHeight,
               scrollToSection: _scrollToSection,
-              landingKey: _landingKey,
-              aboutMeKey: _aboutMeKey,
-              workKey: _workKey,
-              projectsKey: _projectsKey,
-              contactKey: _contactKey,
+              landingKey: _landingWebKey,
+              aboutMeKey: _aboutMeWebKey,
+              workKey: _workWebKey,
+              projectsKey: _projectsWebKey,
+              contactKey: _contactWebKey,
             ),
           ),
         ],

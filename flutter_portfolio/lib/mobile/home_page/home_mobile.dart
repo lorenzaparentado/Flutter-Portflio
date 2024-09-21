@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portfolio/bloc/drawer_bloc.dart';
 import 'package:flutter_portfolio/mobile/home_page/about_me_mobile.dart';
+import 'package:flutter_portfolio/mobile/home_page/drawer_mobile.dart';
 import 'package:flutter_portfolio/mobile/home_page/footer_mobile.dart';
 import 'package:flutter_portfolio/mobile/home_page/header_mobile.dart';
 import 'package:flutter_portfolio/mobile/home_page/landing_mobile.dart';
@@ -23,6 +24,12 @@ class HomePageMobile extends StatefulWidget {
 
 class _HomePageMobile extends State<HomePageMobile> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey _landingMobileKey = GlobalKey();
+  final GlobalKey _aboutMeMobileKey = GlobalKey();
+  final GlobalKey _workMobileKey = GlobalKey();
+  final GlobalKey _projectsMobileKey = GlobalKey();
+  final GlobalKey _contactMobileKey = GlobalKey();
   late DrawerBloc drawerBloc;
 
   @override
@@ -68,82 +75,110 @@ class _HomePageMobile extends State<HomePageMobile> {
     );
   }
 
+  void _scrollToSection(GlobalKey key) {
+    final context = key.currentContext;
+    if (context != null) {
+      Scrollable.ensureVisible(
+        context,
+        duration: Duration(seconds: 1),
+        curve: ElasticOutCurve(1),
+        alignment: .2,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      key: _scaffoldKey,
-      backgroundColor: AppColors.lightTan,
-      body: Stack(children: [
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              LandingMobile(
-                  screenWidth: screenWidth, screenHeight: screenHeight),
-              StatsMobile(screenWidth: screenWidth, screenHeight: screenHeight),
-              AboutMeMobile(
-                  screenWidth: screenWidth, screenHeight: screenHeight),
-              WorkMobile(screenWidth: screenWidth, screenHeight: screenHeight),
-              ProjectsMobile(
-                  screenWidth: screenWidth, screenHeight: screenHeight),
-              FooterMobile(screenWidth: screenWidth, screenHeight: screenHeight)
-            ],
-          ),
-        ),
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: HeaderMobile(
-            screenWidth: screenWidth,
-            screenHeight: screenHeight,
-            onHeaderPress: openDrawer,
-          ),
-        ),
-        BlocProvider(
-          create: (context) => drawerBloc,
-          child: BlocConsumer<DrawerBloc, DrawerState>(
-              listener: (context, state) => state.maybeWhen(orElse: () {}),
-              buildWhen: (previousState, currentState) {
-                return currentState is Opened || currentState is Closed;
-              },
-              builder: (context, state) => state.maybeWhen(
-                    opened: () {
-                      return BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                        child: const SizedBox.expand(),
-                      );
-                    },
-                    orElse: () {
-                      return const SizedBox.shrink();
-                    },
-                  )),
-        ),
-      ]),
-      endDrawer: Drawer(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(0), bottomRight: Radius.circular(0)),
-        ),
-        clipBehavior: Clip.hardEdge,
-        width: 2 * screenWidth / 3,
+        key: _scaffoldKey,
         backgroundColor: AppColors.lightTan,
-        child: Container(
-          child: TextButton(
-            child: Text("test"),
-            onPressed: () {
-              closeDrawer();
-            },
+        body: Stack(children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                LandingMobile(
+                    landingKey: _landingMobileKey,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight),
+                StatsMobile(
+                    screenWidth: screenWidth, screenHeight: screenHeight),
+                AboutMeMobile(
+                    aboutKey: _aboutMeMobileKey,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight),
+                WorkMobile(
+                    workKey: _workMobileKey,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight),
+                ProjectsMobile(
+                    projectsKey: _projectsMobileKey,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight),
+                FooterMobile(
+                    footerKey: _contactMobileKey,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight)
+              ],
+            ),
           ),
-        ),
-      ),
-      onEndDrawerChanged: (isOpen) {
-        if (!isOpen) {
-          drawerBloc.add(DrawerEvent.close());
-        }
-      }
-    );
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: HeaderMobile(
+              screenWidth: screenWidth,
+              screenHeight: screenHeight,
+              onHeaderPress: openDrawer,
+              scrollToSection: _scrollToSection,
+              landingKey: _landingMobileKey,
+            ),
+          ),
+          BlocProvider(
+            create: (context) => drawerBloc,
+            child: BlocConsumer<DrawerBloc, DrawerState>(
+                listener: (context, state) => state.maybeWhen(orElse: () {}),
+                buildWhen: (previousState, currentState) {
+                  return currentState is Opened || currentState is Closed;
+                },
+                builder: (context, state) => state.maybeWhen(
+                      opened: () {
+                        return BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                          child: const SizedBox.expand(),
+                        );
+                      },
+                      orElse: () {
+                        return const SizedBox.shrink();
+                      },
+                    )),
+          ),
+        ]),
+        endDrawer: Drawer(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(0),
+                  bottomRight: Radius.circular(0)),
+            ),
+            clipBehavior: Clip.hardEdge,
+            width: 2 * screenWidth / 3,
+            backgroundColor: AppColors.lightTan,
+            child: DrawerMobile(
+              screenWidth: screenWidth,
+              screenHeight: screenHeight,
+              onClose: closeDrawer,
+              scrollToSection: _scrollToSection,
+              aboutMeKey: _aboutMeMobileKey,
+              workKey: _workMobileKey,
+              projectsKey: _projectsMobileKey,
+              contactKey: _contactMobileKey,
+            )),
+        onEndDrawerChanged: (isOpen) {
+          if (!isOpen) {
+            drawerBloc.add(DrawerEvent.close());
+          }
+        });
   }
 
   void openDrawer() {

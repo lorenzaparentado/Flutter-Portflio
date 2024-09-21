@@ -8,23 +8,15 @@ class HeaderMobile extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
   final VoidCallback onHeaderPress;
-  // final Function(GlobalKey) scrollToSection;
-  // final GlobalKey landingKey;
-  // final GlobalKey aboutMeKey;
-  // final GlobalKey workKey;
-  // final GlobalKey projectsKey;
-  // final GlobalKey contactKey;
+  final Function(GlobalKey) scrollToSection;
+  final GlobalKey landingKey;
 
   HeaderMobile({
-    // required this.landingKey,
+    required this.landingKey,
     required this.screenWidth,
     required this.screenHeight,
     required this.onHeaderPress,
-    // required this.scrollToSection,
-    // required this.aboutMeKey,
-    // required this.workKey,
-    // required this.projectsKey,
-    // required this.contactKey,
+    required this.scrollToSection,
   });
 
   @override
@@ -58,8 +50,11 @@ class _HeaderMobile extends State<HeaderMobile> {
               Padding(
                 padding: EdgeInsets.symmetric(
                     vertical: responsiveMobileHeight(widget.screenHeight, 4)),
-                child: Text(AppStrings.headerFullName,
-                    style: headerBigMobile(AppColors.darkestBrown, context)),
+                child: InkWell(
+                  onTap: () => widget.scrollToSection(widget.landingKey),
+                  child: Text(AppStrings.headerFullName,
+                      style: headerBigMobile(AppColors.darkestBrown, context)),
+                ),
               ),
               InkWell(
                   child: MouseRegion(

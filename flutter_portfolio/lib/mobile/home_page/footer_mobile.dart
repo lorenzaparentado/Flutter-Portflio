@@ -12,8 +12,12 @@ import 'package:url_launcher/url_launcher.dart';
 class FooterMobile extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
+  final GlobalKey footerKey;
 
-  FooterMobile({required this.screenWidth, required this.screenHeight});
+  FooterMobile(
+      {required this.footerKey,
+      required this.screenWidth,
+      required this.screenHeight});
 
   @override
   _FooterMobile createState() => _FooterMobile();
@@ -33,6 +37,7 @@ class _FooterMobile extends State<FooterMobile> {
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   AppStrings.contactMe,
+                  key: widget.footerKey,
                   style: headerBigMobile(AppColors.lightTan, context),
                 ),
               ]),

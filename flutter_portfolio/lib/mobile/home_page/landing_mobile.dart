@@ -6,8 +6,12 @@ import '../../tools.dart';
 class LandingMobile extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
+  final GlobalKey landingKey;
 
-  LandingMobile({required this.screenWidth, required this.screenHeight});
+  LandingMobile(
+      {required this.landingKey,
+      required this.screenWidth,
+      required this.screenHeight});
 
   @override
   _LandingMobile createState() => _LandingMobile();
@@ -16,11 +20,11 @@ class LandingMobile extends StatefulWidget {
 class _LandingMobile extends State<LandingMobile> {
   @override
   Widget build(BuildContext context) {
-    double imageWidth =
-        widget.screenWidth * 197 / 320;
+    double imageWidth = widget.screenWidth * 197 / 320;
     double imageHeight = min((257 * (imageWidth / 196)), 257);
     return Container(
-      height: (widget.screenWidth >= 700) ? imageHeight * 2 : imageHeight * 1.6 ,
+      key: widget.landingKey,
+      height: (widget.screenWidth >= 700) ? imageHeight * 2 : imageHeight * 1.6,
       child: Stack(
         children: [
           Positioned(

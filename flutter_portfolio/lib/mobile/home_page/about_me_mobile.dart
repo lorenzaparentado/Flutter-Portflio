@@ -11,8 +11,12 @@ import '../../strings.dart';
 class AboutMeMobile extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
+  final GlobalKey aboutKey;
 
-  AboutMeMobile({required this.screenWidth, required this.screenHeight});
+  AboutMeMobile(
+      {required this.aboutKey,
+      required this.screenWidth,
+      required this.screenHeight});
 
   @override
   _AboutMeMobile createState() => _AboutMeMobile();
@@ -34,6 +38,7 @@ class _AboutMeMobile extends State<AboutMeMobile> {
               children: [
                 Text(
                   AppStrings.aboutMe,
+                  key: widget.aboutKey,
                   style: headerBigMobile(AppColors.darkestBrown, context),
                 )
               ],
