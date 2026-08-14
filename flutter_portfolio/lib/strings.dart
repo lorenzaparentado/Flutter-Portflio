@@ -139,6 +139,7 @@ class AppStrings {
         'Helped productionize VaR data pipelines with broader product coverage, position tracking, logging, and downstream research datasets.',
         'Scaled AI-assisted code review across 12+ repositories and contributed to a multi-team instrument-authoring platform.',
       ],
+      imageAsset: AppAssets.sigTeamPhoto,
     ),
     PortfolioDetail(
       title: 'Comcast',
@@ -161,6 +162,7 @@ class AppStrings {
         'Partnered on iOS, Android, web, and TV prototypes for a future Comcast rollout.',
         'Led a Twitch-style live-chat hackathon prototype designed around thousands of concurrent users and co-created an Xfinity WiFi safety demo for senior leadership.',
       ],
+      imageAsset: AppAssets.comcastTeamPhoto,
     ),
     PortfolioDetail(
       title: 'NeuroFlow',
@@ -184,6 +186,7 @@ class AppStrings {
         'Delivered 40+ production merge requests across frontend, backend, and mobile repositories.',
         'Helped shape a 3-4 month Flutter roadmap and mentored a new developer to full productivity in two weeks.',
       ],
+      imageAsset: AppAssets.neuroFlowTeamPhoto,
     ),
     PortfolioDetail(
       title: 'Selected Projects',
@@ -205,8 +208,6 @@ class AppStrings {
         'Guess Me: a couples game centered on quick answer, guess, and reveal rounds with categories, scoring, and streaks.',
       ],
       links: [
-        DetailLink(
-            'BioXplorer', 'https://github.com/lorenzaparentado/BioXplorer'),
         DetailLink('Eventify', 'https://github.com/lorenzaparentado/Eventify'),
         DetailLink('Hidden Gems',
             'https://github.com/lorenzaparentado/hidden-gems-v1'),
@@ -221,4 +222,9 @@ class AppAssets {
   static const String comcastLogo = 'assets/images/company_logos/comcast.png';
   static const String neuroFlowLogo =
       'assets/images/company_logos/neuroflow.png';
+  static const String sigTeamPhoto = 'assets/images/experience/sig-team.jpg';
+  static const String comcastTeamPhoto =
+      'assets/images/experience/comcast-team.jpg';
+  static const String neuroFlowTeamPhoto =
+      'assets/images/experience/neuroflow-team.jpg';
 }

@@ -13,6 +13,7 @@ class PortfolioDetail {
     required this.overview,
     required this.technologies,
     required this.highlights,
+    this.imageAsset,
     this.links = const [],
   });
 
@@ -22,5 +23,6 @@ class PortfolioDetail {
   final String overview;
   final List<String> technologies;
   final List<String> highlights;
+  final String? imageAsset;
   final List<DetailLink> links;
 }

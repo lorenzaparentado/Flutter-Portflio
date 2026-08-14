@@ -197,10 +197,19 @@ class DetailPage extends StatelessWidget {
         boxShadowColor: AppColors.shadowGreen,
         offset: compact ? 5 : 8,
         borderRadius: compact ? 20 : 28,
-        child: Center(
-          child: Icon(Icons.work_outline_rounded,
-              color: AppColors.lightTan.withValues(alpha: .35),
-              size: compact ? 58 : 82),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(compact ? 20 : 28),
+          child: detail.imageAsset == null
+              ? Center(
+                  child: Icon(Icons.work_outline_rounded,
+                      color: AppColors.lightTan.withValues(alpha: .35),
+                      size: compact ? 58 : 82),
+                )
+              : Image.asset(
+                  detail.imageAsset!,
+                  fit: BoxFit.cover,
+                  filterQuality: FilterQuality.high,
+                ),
         ),
       ),
     );
