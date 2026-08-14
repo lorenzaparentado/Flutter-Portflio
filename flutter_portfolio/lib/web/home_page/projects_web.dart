@@ -136,89 +136,88 @@ class _ProjectsWeb extends State<ProjectsWeb> {
       Color buttonTextColor,
       String? logoAsset) {
     return CustomContainer(
-      height: max(550, responsiveWebHeight(widget.screenHeight, 500)),
       width: responsiveWebWidth(widget.screenWidth, 600),
       boxColor: backgroundColor,
       boxShadowColor: backgroundShadowColor,
       borderRadius: 25,
       offset: min(responsiveWebHeight(widget.screenHeight, 10),
           responsiveWebWidth(widget.screenWidth, 10)),
-      child: Stack(children: [
-        Padding(
-          padding: EdgeInsets.fromLTRB(
-              responsiveWebWidth(widget.screenWidth, 50),
-              responsiveWebHeight(widget.screenHeight, 35),
-              logoAsset == null
-                  ? 0
-                  : responsiveWebWidth(widget.screenWidth, 280),
-              0),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: headerMediumWeb(AppColors.lightTan, context),
-                ),
-                SizedBox(height: responsiveWebHeight(widget.screenHeight, 30)),
-                Text(
-                  description,
-                  style: bodyMediumWeb(AppColors.lightTan, context),
-                ),
-                SizedBox(height: responsiveWebHeight(widget.screenHeight, 20)),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      child: techGroup(tech1, tech2, tech3, boxColor,
-                          boxShadowColor, buttonTextColor),
-                    ),
-                  ],
-                ),
-              ]),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: responsiveWebWidth(widget.screenWidth, 50),
+          vertical: responsiveWebHeight(widget.screenHeight, 35),
         ),
-        if (logoAsset != null)
-          Positioned(
-            right: responsiveWebWidth(widget.screenWidth, 28),
-            bottom: max(28, responsiveWebHeight(widget.screenHeight, 30)),
-            child: _logoPanel(logoAsset, backgroundShadowColor),
-          ),
-        Positioned(
-          left: responsiveWebWidth(widget.screenWidth, 50),
-          bottom: responsiveWebHeight(widget.screenHeight, 35),
-          child: InkWell(
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => DetailPage(
-                    detail: AppStrings.experienceDetails[detailIndex]),
-              ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(title, style: headerMediumWeb(AppColors.lightTan, context)),
+            SizedBox(height: responsiveWebHeight(widget.screenHeight, 30)),
+            Text(
+              description,
+              style: bodyMediumWeb(AppColors.lightTan, context),
             ),
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: CustomContainer(
-                boxColor: boxColor,
-                boxShadowColor: boxShadowColor,
-                borderRadius: 10,
-                offset: min(responsiveWebHeight(widget.screenHeight, 5),
-                    responsiveWebWidth(widget.screenWidth, 5)),
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(
-                    responsiveWebWidth(widget.screenWidth, 18),
-                    responsiveWebHeight(widget.screenHeight, 11),
-                    responsiveWebWidth(widget.screenWidth, 19),
-                    responsiveWebHeight(widget.screenHeight, 11),
-                  ),
-                  child: Text(
-                    buttonText,
-                    style: headerSmallWeb(buttonTextColor, context),
-                  ),
-                ),
+            SizedBox(height: responsiveWebHeight(widget.screenHeight, 20)),
+            techGroup(
+                tech1, tech2, tech3, boxColor, boxShadowColor, buttonTextColor),
+            SizedBox(height: responsiveWebHeight(widget.screenHeight, 30)),
+            _cardFooter(
+              _detailsButton(detailIndex, buttonText, boxColor, boxShadowColor,
+                  buttonTextColor),
+              logoAsset,
+              backgroundShadowColor,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _detailsButton(int detailIndex, String buttonText, Color boxColor,
+          Color boxShadowColor, Color buttonTextColor) =>
+      InkWell(
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) =>
+                DetailPage(detail: AppStrings.experienceDetails[detailIndex]),
+          ),
+        ),
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: CustomContainer(
+            boxColor: boxColor,
+            boxShadowColor: boxShadowColor,
+            borderRadius: 10,
+            offset: min(responsiveWebHeight(widget.screenHeight, 5),
+                responsiveWebWidth(widget.screenWidth, 5)),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                responsiveWebWidth(widget.screenWidth, 18),
+                responsiveWebHeight(widget.screenHeight, 11),
+                responsiveWebWidth(widget.screenWidth, 19),
+                responsiveWebHeight(widget.screenHeight, 11),
+              ),
+              child: Text(
+                buttonText,
+                style: headerSmallWeb(buttonTextColor, context),
               ),
             ),
           ),
         ),
-      ]),
+      );
+
+  Widget _cardFooter(
+      Widget action, String? logoAsset, Color backgroundShadowColor) {
+    if (logoAsset == null) return action;
+
+    return Wrap(
+      alignment: WrapAlignment.spaceBetween,
+      crossAxisAlignment: WrapCrossAlignment.end,
+      runSpacing: 20,
+      children: [
+        action,
+        _logoPanel(logoAsset, backgroundShadowColor),
+      ],
     );
   }
 

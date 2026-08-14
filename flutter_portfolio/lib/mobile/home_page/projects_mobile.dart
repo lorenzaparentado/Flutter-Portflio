@@ -120,91 +120,91 @@ class _ProjectsMobile extends State<ProjectsMobile> {
       Color buttonTextColor,
       String? logoAsset) {
     return CustomContainer(
-      height: max(290, responsiveMobileHeight(widget.screenHeight, 255)),
       width: responsiveMobileWidth(widget.screenWidth, 280),
       boxColor: backgroundColor,
       boxShadowColor: backgroundShadowColor,
       borderRadius: 10,
       offset: min(responsiveMobileHeight(widget.screenHeight, 2),
           responsiveMobileWidth(widget.screenWidth, 2)),
-      child: Stack(children: [
-        Padding(
-          padding: EdgeInsets.fromLTRB(
-              responsiveMobileWidth(widget.screenWidth, 16),
-              responsiveMobileHeight(widget.screenHeight, 15),
-              logoAsset == null
-                  ? 0
-                  : responsiveMobileWidth(widget.screenWidth, 98),
-              0),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: headerMediumMobile(AppColors.lightTan, context),
-                ),
-                SizedBox(
-                    height: responsiveMobileHeight(widget.screenHeight, 15)),
-                Text(
-                  description,
-                  style: bodyMobile(AppColors.lightTan, context),
-                ),
-                SizedBox(
-                    height: responsiveMobileHeight(widget.screenHeight, 13)),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      child: techGroup(tech1, tech2, tech3, boxColor,
-                          boxShadowColor, buttonTextColor),
-                    ),
-                  ],
-                ),
-              ]),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: responsiveMobileWidth(widget.screenWidth, 16),
+          vertical: responsiveMobileHeight(widget.screenHeight, 15),
         ),
-        Positioned(
-          left: responsiveMobileWidth(widget.screenWidth, 16),
-          bottom: responsiveMobileHeight(widget.screenHeight, 15),
-          child: InkWell(
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => DetailPage(
-                    detail: AppStrings.experienceDetails[detailIndex]),
-              ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: headerMediumMobile(AppColors.lightTan, context),
             ),
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: CustomContainer(
-                boxColor: boxColor,
-                boxShadowColor: boxShadowColor,
-                borderRadius: 10,
-                offset: min(responsiveMobileHeight(widget.screenHeight, 2),
-                    responsiveMobileWidth(widget.screenWidth, 2)),
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(
-                    responsiveMobileWidth(widget.screenWidth, 10),
-                    responsiveMobileHeight(widget.screenHeight, 5),
-                    responsiveMobileWidth(widget.screenWidth, 10),
-                    responsiveMobileHeight(widget.screenHeight, 5),
-                  ),
-                  child: Text(
-                    buttonText,
-                    style: headerSmallMobile(buttonTextColor, context),
-                  ),
-                ),
+            SizedBox(height: responsiveMobileHeight(widget.screenHeight, 15)),
+            Text(
+              description,
+              style: bodyMobile(AppColors.lightTan, context),
+            ),
+            SizedBox(height: responsiveMobileHeight(widget.screenHeight, 13)),
+            techGroup(
+                tech1, tech2, tech3, boxColor, boxShadowColor, buttonTextColor),
+            SizedBox(height: responsiveMobileHeight(widget.screenHeight, 20)),
+            _cardFooter(
+              _detailsButton(detailIndex, buttonText, boxColor, boxShadowColor,
+                  buttonTextColor),
+              logoAsset,
+              backgroundShadowColor,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _detailsButton(int detailIndex, String buttonText, Color boxColor,
+          Color boxShadowColor, Color buttonTextColor) =>
+      InkWell(
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) =>
+                DetailPage(detail: AppStrings.experienceDetails[detailIndex]),
+          ),
+        ),
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: CustomContainer(
+            boxColor: boxColor,
+            boxShadowColor: boxShadowColor,
+            borderRadius: 10,
+            offset: min(responsiveMobileHeight(widget.screenHeight, 2),
+                responsiveMobileWidth(widget.screenWidth, 2)),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                responsiveMobileWidth(widget.screenWidth, 10),
+                responsiveMobileHeight(widget.screenHeight, 5),
+                responsiveMobileWidth(widget.screenWidth, 10),
+                responsiveMobileHeight(widget.screenHeight, 5),
+              ),
+              child: Text(
+                buttonText,
+                style: headerSmallMobile(buttonTextColor, context),
               ),
             ),
           ),
         ),
-        if (logoAsset != null)
-          Positioned(
-            right: responsiveMobileWidth(widget.screenWidth, 12),
-            bottom: responsiveMobileHeight(widget.screenHeight, 13),
-            child: _logoPanel(logoAsset, backgroundShadowColor),
-          ),
-      ]),
+      );
+
+  Widget _cardFooter(
+      Widget action, String? logoAsset, Color backgroundShadowColor) {
+    if (logoAsset == null) return action;
+
+    return Wrap(
+      alignment: WrapAlignment.spaceBetween,
+      crossAxisAlignment: WrapCrossAlignment.end,
+      runSpacing: responsiveMobileHeight(widget.screenHeight, 16),
+      children: [
+        action,
+        _logoPanel(logoAsset, backgroundShadowColor),
+      ],
     );
   }
 
