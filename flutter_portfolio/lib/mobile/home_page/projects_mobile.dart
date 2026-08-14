@@ -140,9 +140,12 @@ class _ProjectsMobile extends State<ProjectsMobile> {
               style: headerMediumMobile(AppColors.lightTan, context),
             ),
             SizedBox(height: responsiveMobileHeight(widget.screenHeight, 15)),
-            Text(
-              description,
-              style: bodyMobile(AppColors.lightTan, context),
+            SizedBox(
+              width: double.infinity,
+              child: Text(
+                description,
+                style: bodyMobile(AppColors.lightTan, context),
+              ),
             ),
             SizedBox(height: responsiveMobileHeight(widget.screenHeight, 13)),
             techGroup(
@@ -200,6 +203,7 @@ class _ProjectsMobile extends State<ProjectsMobile> {
     return Wrap(
       alignment: WrapAlignment.spaceBetween,
       crossAxisAlignment: WrapCrossAlignment.end,
+      spacing: responsiveMobileWidth(widget.screenWidth, 14),
       runSpacing: responsiveMobileHeight(widget.screenHeight, 16),
       children: [
         action,

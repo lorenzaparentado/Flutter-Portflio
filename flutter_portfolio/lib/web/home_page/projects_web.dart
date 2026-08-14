@@ -153,9 +153,12 @@ class _ProjectsWeb extends State<ProjectsWeb> {
           children: [
             Text(title, style: headerMediumWeb(AppColors.lightTan, context)),
             SizedBox(height: responsiveWebHeight(widget.screenHeight, 30)),
-            Text(
-              description,
-              style: bodyMediumWeb(AppColors.lightTan, context),
+            SizedBox(
+              width: double.infinity,
+              child: Text(
+                description,
+                style: bodyMediumWeb(AppColors.lightTan, context),
+              ),
             ),
             SizedBox(height: responsiveWebHeight(widget.screenHeight, 20)),
             techGroup(
@@ -213,6 +216,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
     return Wrap(
       alignment: WrapAlignment.spaceBetween,
       crossAxisAlignment: WrapCrossAlignment.end,
+      spacing: responsiveWebWidth(widget.screenWidth, 24),
       runSpacing: 20,
       children: [
         action,
