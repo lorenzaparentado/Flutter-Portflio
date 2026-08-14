@@ -164,11 +164,14 @@ class _ProjectsWeb extends State<ProjectsWeb> {
             techGroup(
                 tech1, tech2, tech3, boxColor, boxShadowColor, buttonTextColor),
             SizedBox(height: responsiveWebHeight(widget.screenHeight, 30)),
-            _cardFooter(
-              _detailsButton(detailIndex, buttonText, boxColor, boxShadowColor,
-                  buttonTextColor),
-              logoAsset,
-              backgroundShadowColor,
+            SizedBox(
+              width: double.infinity,
+              child: _cardFooter(
+                _detailsButton(detailIndex, buttonText, boxColor,
+                    boxShadowColor, buttonTextColor),
+                logoAsset,
+                backgroundShadowColor,
+              ),
             ),
           ],
         ),

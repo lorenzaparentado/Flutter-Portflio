@@ -151,11 +151,14 @@ class _ProjectsMobile extends State<ProjectsMobile> {
             techGroup(
                 tech1, tech2, tech3, boxColor, boxShadowColor, buttonTextColor),
             SizedBox(height: responsiveMobileHeight(widget.screenHeight, 20)),
-            _cardFooter(
-              _detailsButton(detailIndex, buttonText, boxColor, boxShadowColor,
-                  buttonTextColor),
-              logoAsset,
-              backgroundShadowColor,
+            SizedBox(
+              width: double.infinity,
+              child: _cardFooter(
+                _detailsButton(detailIndex, buttonText, boxColor,
+                    boxShadowColor, buttonTextColor),
+                logoAsset,
+                backgroundShadowColor,
+              ),
             ),
           ],
         ),
