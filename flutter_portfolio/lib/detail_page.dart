@@ -82,6 +82,14 @@ class DetailPage extends StatelessWidget {
     final details = _details(context);
     final illustration = _illustration(context);
 
+    if (detail.imageAsset == null) {
+      return Container(
+        constraints: const BoxConstraints(maxWidth: 940),
+        alignment: Alignment.centerLeft,
+        child: details,
+      );
+    }
+
     return Container(
       constraints: const BoxConstraints(maxWidth: 1200),
       alignment: Alignment.center,
