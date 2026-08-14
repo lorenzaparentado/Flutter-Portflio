@@ -51,7 +51,7 @@ class _AboutMeWeb extends State<AboutMeWeb> {
                 CustomContainer(
                   height: responsiveWebHeight(widget.screenHeight, 500),
                   width: responsiveWebWidth(widget.screenWidth, 400),
-                  child: Center(child: Text('Image')),
+                  child: const SizedBox.expand(),
                   boxColor: AppColors.mediumGreen,
                   boxShadowColor: AppColors.shadowGreen,
                   offset: min(responsiveWebHeight(widget.screenHeight, 10),
@@ -70,23 +70,26 @@ class _AboutMeWeb extends State<AboutMeWeb> {
             ),
             SizedBox(height: responsiveWebHeight(widget.screenHeight, 40)),
             InkWell(
-              onTap: () {_openResume();},
+              onTap: () {
+                _openResume();
+              },
               child: MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: CustomContainer(
-                    height: responsiveWebHeight(widget.screenHeight, 56),
-                    width: responsiveWebWidth(widget.screenWidth, 400),
-                    child: Center(
-                      child: Text(
-                    AppStrings.aboutMeResumeButton,
-                    style: headerSmallWeb(AppColors.lightTan, context),
-                  ),),
-                    boxColor: AppColors.mediumGreen,
-                    boxShadowColor: AppColors.shadowGreen,
-                    offset: min(responsiveWebHeight(widget.screenHeight, 10),
-                        responsiveWebWidth(widget.screenWidth, 10)),
-                    borderRadius: 15,
+                  height: responsiveWebHeight(widget.screenHeight, 56),
+                  width: responsiveWebWidth(widget.screenWidth, 400),
+                  child: Center(
+                    child: Text(
+                      AppStrings.aboutMeResumeButton,
+                      style: headerSmallWeb(AppColors.lightTan, context),
+                    ),
                   ),
+                  boxColor: AppColors.mediumGreen,
+                  boxShadowColor: AppColors.shadowGreen,
+                  offset: min(responsiveWebHeight(widget.screenHeight, 10),
+                      responsiveWebWidth(widget.screenWidth, 10)),
+                  borderRadius: 15,
+                ),
               ),
             ),
             Padding(
@@ -103,13 +106,10 @@ class _AboutMeWeb extends State<AboutMeWeb> {
     );
   }
 
-  void _openResume() async {
-    const url =
-        'https://drive.google.com/file/d/1gQWW-SPIzdRrfiK8DQmMy3cWoXPgAVbj/view?usp=sharing'; // Replace with your resume URL
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
+  Future<void> _openResume() async {
+    final resumeUri = Uri.base.resolve(AppStrings.resumeAssetUrl);
+    if (!await launchUrl(resumeUri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $resumeUri');
     }
   }
 }

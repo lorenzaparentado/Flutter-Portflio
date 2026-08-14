@@ -11,8 +11,6 @@ import 'package:flutter_portfolio/mobile/home_page/landing_mobile.dart';
 import 'package:flutter_portfolio/mobile/home_page/projects_mobile.dart';
 import 'package:flutter_portfolio/mobile/home_page/stats_mobile.dart';
 import 'package:flutter_portfolio/mobile/home_page/work_mobile.dart';
-import 'package:flutter_portfolio/strings.dart';
-import 'package:flutter_portfolio/styles/text_style_mobile.dart';
 import '../../styles/app_colors.dart';
 
 class HomePageMobile extends StatefulWidget {
@@ -24,59 +22,12 @@ class HomePageMobile extends StatefulWidget {
 
 class _HomePageMobile extends State<HomePageMobile> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final ScrollController _scrollController = ScrollController();
   final GlobalKey _landingMobileKey = GlobalKey();
   final GlobalKey _aboutMeMobileKey = GlobalKey();
   final GlobalKey _workMobileKey = GlobalKey();
   final GlobalKey _projectsMobileKey = GlobalKey();
   final GlobalKey _contactMobileKey = GlobalKey();
   late DrawerBloc drawerBloc;
-
-  @override
-  void initState() {
-    super.initState();
-    drawerBloc = DrawerBloc();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _showDialog(context, AppStrings.welcome, AppStrings.wip);
-    });
-  }
-
-  void _showDialog(BuildContext context, String title, String content) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-          child: AlertDialog(
-            elevation: 50,
-            backgroundColor: AppColors.mediumGreen,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            title: Text(
-              title,
-              style: headerBigMobile(AppColors.lightTan, context),
-            ),
-            content: Text(
-              content,
-              style: bodyMobile(AppColors.lightTan, context),
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: Text(AppStrings.ok,
-                        style: bodyMobile(AppColors.lightTan, context))),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
 
   void _scrollToSection(GlobalKey key) {
     final context = key.currentContext;
@@ -111,12 +62,12 @@ class _HomePageMobile extends State<HomePageMobile> {
                     aboutKey: _aboutMeMobileKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
-                WorkMobile(
-                    workKey: _workMobileKey,
-                    screenWidth: screenWidth,
-                    screenHeight: screenHeight),
                 ProjectsMobile(
                     projectsKey: _projectsMobileKey,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight),
+                WorkMobile(
+                    workKey: _workMobileKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
                 FooterMobile(
@@ -141,7 +92,7 @@ class _HomePageMobile extends State<HomePageMobile> {
           BlocProvider(
             create: (context) => drawerBloc,
             child: BlocConsumer<DrawerBloc, DrawerState>(
-                listener: (context, state) => state.maybeWhen(orElse: () {}),
+                listener: (context, state) {},
                 buildWhen: (previousState, currentState) {
                   return currentState is Opened || currentState is Closed;
                 },
@@ -187,6 +138,12 @@ class _HomePageMobile extends State<HomePageMobile> {
   void openDrawer() {
     _scaffoldKey.currentState?.openEndDrawer();
     drawerBloc.add(DrawerEvent.open());
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    drawerBloc = DrawerBloc();
   }
 
   void closeDrawer() {

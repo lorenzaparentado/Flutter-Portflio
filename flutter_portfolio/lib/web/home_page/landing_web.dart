@@ -28,36 +28,40 @@ class _LandingWeb extends State<LandingWeb> {
     double imageHeight = 567 * (imageWidth / 434);
     return Container(
       key: widget.landingKey,
-      height:
-          imageHeight * 1.5,
+      height: imageHeight * 1.5,
       child: Stack(
         children: [
           Positioned(
             bottom: 0,
             left: responsiveWebWidth(widget.screenWidth, 100),
             right: responsiveWebWidth(widget.screenWidth, 100),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(bottom: imageHeight * .5),
-                  child: Text(
-                    AppStrings.headerFullName,
-                    style: headerBiggestWeb(AppColors.darkestBrown, context),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: imageHeight * .5),
+                    child: Text(
+                      AppStrings.headerFullName,
+                      style: headerBiggestWeb(AppColors.darkestBrown, context),
+                    ),
                   ),
-                ),
-                Image.asset(
-                  'assets/images/lorenz.png',
-                  height: imageHeight,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: imageHeight * .5),
-                  child: Text(
-                    AppStrings.landingText,
-                    style: bodyBigWeb(AppColors.darkestBrown, context),
+                  Image.asset(
+                    'assets/images/lorenz.png',
+                    height: imageHeight,
+                    width: imageWidth,
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: EdgeInsets.only(bottom: imageHeight * .5),
+                    child: Text(
+                      AppStrings.landingText,
+                      style: bodyBigWeb(AppColors.darkestBrown, context),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

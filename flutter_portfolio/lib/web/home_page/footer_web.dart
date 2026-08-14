@@ -1,9 +1,9 @@
-import 'dart:html' as html;
 import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
+import 'package:flutter_portfolio/platform/platform_info.dart';
 import 'package:flutter_portfolio/strings.dart';
 import '../../styles/app_colors.dart';
 import '../../styles/text_styles_web.dart';
@@ -56,40 +56,43 @@ class _FooterWeb extends State<FooterWeb> {
               SizedBox(
                 height: responsiveWebHeight(widget.screenHeight, 50),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  contactButton(AppStrings.email, 'assets/images/mailIcon.png',
-                      () {
-                    launchEmail(
-                      toEmail: AppStrings.email,
-                      subject: AppStrings.emailSubject,
-                      body: AppStrings.emailBody,
-                    );
-                  }),
-                  SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
-                  contactButton(
-                      AppStrings.phoneNumber, 'assets/images/phoneIcon.png',
-                      () {
-                    if (isWindows()) {
-                      showAlert(
-                          context, AppStrings.alert, AppStrings.smsWindows);
-                    } else {
-                      _sendingSMS();
-                    }
-                  }),
-                  SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
-                  contactButton(
-                      AppStrings.linkedIn, 'assets/images/linkedinIcon.png',
-                      () {
-                    _launchURL(AppStrings.linkedInLink);
-                  }),
-                  SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
-                  contactButton(
-                      AppStrings.gitHub, 'assets/images/githubIcon.png', () {
-                    _launchURL(AppStrings.gitHubLink);
-                  }),
-                ],
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    contactButton(
+                        AppStrings.email, 'assets/images/mailIcon.png', () {
+                      launchEmail(
+                        toEmail: AppStrings.email,
+                        subject: AppStrings.emailSubject,
+                        body: AppStrings.emailBody,
+                      );
+                    }),
+                    SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
+                    contactButton(
+                        AppStrings.phoneNumber, 'assets/images/phoneIcon.png',
+                        () {
+                      if (isWindows()) {
+                        showAlert(
+                            context, AppStrings.alert, AppStrings.smsWindows);
+                      } else {
+                        _sendingSMS();
+                      }
+                    }),
+                    SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
+                    contactButton(
+                        AppStrings.linkedIn, 'assets/images/linkedinIcon.png',
+                        () {
+                      _launchURL(AppStrings.linkedInLink);
+                    }),
+                    SizedBox(width: responsiveWebWidth(widget.screenWidth, 50)),
+                    contactButton(
+                        AppStrings.gitHub, 'assets/images/githubIcon.png', () {
+                      _launchURL(AppStrings.gitHubLink);
+                    }),
+                  ],
+                ),
               ),
               SizedBox(
                 height: responsiveWebHeight(widget.screenHeight, 50),
@@ -156,33 +159,27 @@ class _FooterWeb extends State<FooterWeb> {
           'subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}',
     );
 
-    if (await canLaunch(emailUri.toString())) {
-      await launchUrl(emailUri);
-    } else {
-      throw 'Could not launch $emailUri';
+    if (!await launchUrl(emailUri)) {
+      throw Exception('Could not launch $emailUri');
     }
   }
 
   void _sendingSMS() async {
     var url = Uri.parse("sms:4843508039");
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launch $url';
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
     }
   }
 
   void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
+    final uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $uri');
     }
   }
 
   bool isWindows() {
-    return html.window.navigator.platform?.toLowerCase().contains('win') ??
-        false;
+    return isWindowsPlatform;
   }
 
   void showAlert(BuildContext context, String title, String content) {

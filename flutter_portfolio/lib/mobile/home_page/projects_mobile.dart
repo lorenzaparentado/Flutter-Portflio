@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
+import 'package:flutter_portfolio/detail_page.dart';
 import 'package:flutter_portfolio/strings.dart';
 import 'package:flutter_portfolio/styles/text_style_mobile.dart';
 import '../../styles/app_colors.dart';
@@ -12,7 +13,10 @@ class ProjectsMobile extends StatefulWidget {
   final double screenHeight;
   final GlobalKey projectsKey;
 
-  ProjectsMobile({required this.projectsKey,required this.screenWidth, required this.screenHeight});
+  ProjectsMobile(
+      {required this.projectsKey,
+      required this.screenWidth,
+      required this.screenHeight});
 
   @override
   _ProjectsMobile createState() => _ProjectsMobile();
@@ -43,6 +47,8 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                   AppStrings.project1Tech1,
                   AppStrings.project1Tech2,
                   AppStrings.project1Tech3,
+                  0,
+                  AppStrings.projectOpen,
                   AppColors.lightBrown,
                   AppColors.mediumBrown,
                   AppColors.mediumGreen,
@@ -56,6 +62,8 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                   AppStrings.project2Tech1,
                   AppStrings.project2Tech2,
                   AppStrings.project2Tech3,
+                  1,
+                  AppStrings.projectOpen,
                   AppColors.mediumGreen,
                   AppColors.darkestGreen,
                   AppColors.darkTan,
@@ -69,6 +77,8 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                   AppStrings.project3Tech1,
                   AppStrings.project3Tech2,
                   AppStrings.project3Tech3,
+                  2,
+                  AppStrings.projectOpen,
                   AppColors.lightBrown,
                   AppColors.mediumBrown,
                   AppColors.mediumGreen,
@@ -82,6 +92,8 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                   AppStrings.project4Tech1,
                   AppStrings.project4Tech2,
                   AppStrings.project4Tech3,
+                  3,
+                  AppStrings.projectOpen,
                   AppColors.mediumGreen,
                   AppColors.darkestGreen,
                   AppColors.darkTan,
@@ -99,6 +111,8 @@ class _ProjectsMobile extends State<ProjectsMobile> {
       String tech1,
       String tech2,
       String tech3,
+      int detailIndex,
+      String buttonText,
       Color backgroundColor,
       Color backgroundShadowColor,
       Color boxColor,
@@ -106,7 +120,7 @@ class _ProjectsMobile extends State<ProjectsMobile> {
       Color buttonTextColor,
       Color imageColor) {
     return CustomContainer(
-      height: responsiveMobileHeight(widget.screenHeight, 233),
+      height: max(250, responsiveMobileHeight(widget.screenHeight, 243)),
       width: responsiveMobileWidth(widget.screenWidth, 280),
       boxColor: backgroundColor,
       boxShadowColor: backgroundShadowColor,
@@ -144,49 +158,44 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                       child: techGroup(tech1, tech2, tech3, boxColor,
                           boxShadowColor, buttonTextColor),
                     ),
-                    SizedBox(
-                      height: responsiveMobileHeight(widget.screenHeight, 25),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: CustomContainer(
-                          boxColor: boxColor,
-                          boxShadowColor: boxShadowColor,
-                          borderRadius: 10,
-                          offset: min(
-                              responsiveMobileHeight(widget.screenHeight, 2),
-                              responsiveMobileWidth(widget.screenWidth, 2)),
-                          child: Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  responsiveMobileWidth(widget.screenWidth, 10),
-                                  responsiveMobileHeight(widget.screenHeight, 5),
-                                  responsiveMobileWidth(widget.screenWidth, 10),
-                                  responsiveMobileHeight(widget.screenHeight, 5)),
-                              child: Text(
-                                AppStrings.projectOpen,
-                                style:
-                                    headerSmallMobile(buttonTextColor, context),
-                              )),
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ]),
         ),
         Positioned(
-            right: 0,
-            bottom: 0,
-            child: Container(
-              height: responsiveMobileHeight(widget.screenHeight, 125),
-              width: responsiveMobileWidth(widget.screenWidth, 125),
-              decoration: BoxDecoration(
-                color: imageColor,
-                borderRadius: BorderRadius.circular(10),
+          left: responsiveMobileWidth(widget.screenWidth, 16),
+          bottom: responsiveMobileHeight(widget.screenHeight, 15),
+          child: InkWell(
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => DetailPage(
+                    detail: AppStrings.experienceDetails[detailIndex]),
               ),
-            ))
+            ),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: CustomContainer(
+                boxColor: boxColor,
+                boxShadowColor: boxShadowColor,
+                borderRadius: 10,
+                offset: min(responsiveMobileHeight(widget.screenHeight, 2),
+                    responsiveMobileWidth(widget.screenWidth, 2)),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    responsiveMobileWidth(widget.screenWidth, 10),
+                    responsiveMobileHeight(widget.screenHeight, 5),
+                    responsiveMobileWidth(widget.screenWidth, 10),
+                    responsiveMobileHeight(widget.screenHeight, 5),
+                  ),
+                  child: Text(
+                    buttonText,
+                    style: headerSmallMobile(buttonTextColor, context),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
       ]),
     );
   }
@@ -217,16 +226,20 @@ class _ProjectsMobile extends State<ProjectsMobile> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            tech(tech1, boxColor, boxShadowColor, buttonTextColor),
-            SizedBox(
-              width: responsiveMobileWidth(widget.screenWidth, 10),
-            ),
-            tech(tech2, boxColor, boxShadowColor, buttonTextColor),
-          ],
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          alignment: Alignment.centerLeft,
+          child: Row(
+            children: [
+              tech(tech1, boxColor, boxShadowColor, buttonTextColor),
+              SizedBox(
+                width: responsiveMobileWidth(widget.screenWidth, 10),
+              ),
+              tech(tech2, boxColor, boxShadowColor, buttonTextColor),
+            ],
+          ),
         ),
-        SizedBox(height: responsiveMobileHeight(widget.screenHeight, 10)),
+        SizedBox(height: responsiveMobileHeight(widget.screenHeight, 9.9)),
         tech(tech3, boxColor, boxShadowColor, buttonTextColor),
       ],
     );

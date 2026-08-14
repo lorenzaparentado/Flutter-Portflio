@@ -1,9 +1,9 @@
-import 'dart:html' as html;
 import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
+import 'package:flutter_portfolio/platform/platform_info.dart';
 import 'package:flutter_portfolio/strings.dart';
 import 'package:flutter_portfolio/styles/text_style_mobile.dart';
 import '../../styles/app_colors.dart';
@@ -112,25 +112,30 @@ class _FooterMobile extends State<FooterMobile> {
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: CustomContainer(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: responsiveMobileHeight(widget.screenHeight, 10),
-                horizontal: responsiveMobileWidth(widget.screenWidth, 10)),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Image.asset(
-                  icon,
-                  height: responsiveMobileHeight(widget.screenHeight, 20),
+          child: LayoutBuilder(
+            builder: (context, constraints) => FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: responsiveMobileHeight(widget.screenHeight, 10),
+                    horizontal: responsiveMobileWidth(widget.screenWidth, 10)),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(
+                      icon,
+                      height: responsiveMobileHeight(widget.screenHeight, 20),
+                    ),
+                    SizedBox(
+                      width: responsiveMobileWidth(widget.screenWidth, 5),
+                    ),
+                    Text(
+                      text,
+                      style: bodySmallMobile(AppColors.darkestBrown, context),
+                    )
+                  ],
                 ),
-                SizedBox(
-                  width: responsiveMobileWidth(widget.screenWidth, 5),
-                ),
-                Text(
-                  text,
-                  style: bodySmallMobile(AppColors.darkestBrown, context),
-                )
-              ],
+              ),
             ),
           ),
           boxColor: AppColors.lightGreen,
@@ -154,33 +159,27 @@ class _FooterMobile extends State<FooterMobile> {
           'subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}',
     );
 
-    if (await canLaunch(emailUri.toString())) {
-      await launchUrl(emailUri);
-    } else {
-      throw 'Could not launch $emailUri';
+    if (!await launchUrl(emailUri)) {
+      throw Exception('Could not launch $emailUri');
     }
   }
 
   void _sendingSMS() async {
     var url = Uri.parse("sms:4843508039");
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launch $url';
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
     }
   }
 
   void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
+    final uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $uri');
     }
   }
 
   bool isWindows() {
-    return html.window.navigator.platform?.toLowerCase().contains('win') ??
-        false;
+    return isWindowsPlatform;
   }
 
   void showAlert(BuildContext context, String title, String content) {

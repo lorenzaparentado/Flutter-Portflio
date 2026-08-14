@@ -1,10 +1,10 @@
 import 'dart:math';
-import 'dart:html' as html;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common_widgets.dart';
 import 'package:flutter_portfolio/strings.dart';
+import 'package:flutter_portfolio/platform/platform_info.dart';
 import 'package:flutter_portfolio/styles/app_colors.dart';
 import 'package:flutter_portfolio/styles/text_style_mobile.dart';
 import 'package:flutter_svg/svg.dart';
@@ -98,7 +98,7 @@ class _DrawerMobile extends State<DrawerMobile> {
           InkWell(
             onTap: () {
               widget.onClose();
-              widget.scrollToSection(widget.workKey);
+              widget.scrollToSection(widget.projectsKey);
             },
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
@@ -108,7 +108,7 @@ class _DrawerMobile extends State<DrawerMobile> {
                   padding: EdgeInsets.symmetric(
                     vertical: responsiveMobileHeight(widget.screenHeight, 15),
                   ),
-                  child: Text(AppStrings.work,
+                  child: Text(AppStrings.projects,
                       style: headerMediumMobile(AppColors.lightTan, context)),
                 )),
                 boxColor: AppColors.mediumGreen,
@@ -125,7 +125,7 @@ class _DrawerMobile extends State<DrawerMobile> {
           InkWell(
             onTap: () {
               widget.onClose();
-              widget.scrollToSection(widget.projectsKey);
+              widget.scrollToSection(widget.workKey);
             },
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
@@ -135,7 +135,7 @@ class _DrawerMobile extends State<DrawerMobile> {
                   padding: EdgeInsets.symmetric(
                     vertical: responsiveMobileHeight(widget.screenHeight, 15),
                   ),
-                  child: Text(AppStrings.projects,
+                  child: Text(AppStrings.work,
                       style: headerMediumMobile(AppColors.lightTan, context)),
                 )),
                 boxColor: AppColors.mediumGreen,
@@ -331,33 +331,27 @@ class _DrawerMobile extends State<DrawerMobile> {
           'subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}',
     );
 
-    if (await canLaunch(emailUri.toString())) {
-      await launchUrl(emailUri);
-    } else {
-      throw 'Could not launch $emailUri';
+    if (!await launchUrl(emailUri)) {
+      throw Exception('Could not launch $emailUri');
     }
   }
 
   void _sendingSMS() async {
     var url = Uri.parse("sms:4843508039");
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launch $url';
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
     }
   }
 
   void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
+    final uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $uri');
     }
   }
 
   bool isWindows() {
-    return html.window.navigator.platform?.toLowerCase().contains('win') ??
-        false;
+    return isWindowsPlatform;
   }
 
   void showAlert(BuildContext context, String title, String content) {

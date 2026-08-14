@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_portfolio/responsive.dart';
+import 'package:flutter_portfolio/strings.dart';
 import 'package:flutter_portfolio/styles/app_colors.dart';
 
 void main() {
@@ -17,12 +18,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Lorenz Aparentado Portfolio',
+      title: AppStrings.appTitle,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.lightTan),
         useMaterial3: true,
       ),
-      home: const Responsive(),
+      home: const SelectionArea(child: Responsive()),
     );
   }
 }

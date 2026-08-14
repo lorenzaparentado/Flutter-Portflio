@@ -37,7 +37,7 @@ class _HeaderWeb extends State<HeaderWeb> {
         color: AppColors.lightTan,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withValues(alpha: 0.5),
             spreadRadius: 5,
             blurRadius: 10,
             offset: Offset(0, 5),
@@ -48,78 +48,83 @@ class _HeaderWeb extends State<HeaderWeb> {
         SizedBox(
           height: responsiveWebHeight(widget.screenHeight, 50),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.baseline,
-          textBaseline: TextBaseline.alphabetic,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                  right: responsiveWebWidth(widget.screenWidth, 75)),
-              child: InkWell(
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                    right: responsiveWebWidth(widget.screenWidth, 75)),
+                child: InkWell(
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Text(
+                      AppStrings.aboutMe,
+                      style: headerSmallestWeb(AppColors.darkestBrown, context),
+                    ),
+                  ),
+                  onTap: () => widget.scrollToSection(widget.aboutMeKey),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    right: responsiveWebWidth(widget.screenWidth, 75)),
+                child: InkWell(
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Text(
+                      AppStrings.projects,
+                      style: headerSmallestWeb(AppColors.darkestBrown, context),
+                    ),
+                  ),
+                  onTap: () => widget.scrollToSection(widget.projectsKey),
+                ),
+              ),
+              InkWell(
                 child: MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: Text(
-                    AppStrings.aboutMe,
-                    style: headerSmallestWeb(AppColors.darkestBrown, context),
+                    AppStrings.headerName,
+                    style: headerMediumWeb(AppColors.darkestBrown, context),
                   ),
                 ),
-                onTap: () => widget.scrollToSection(widget.aboutMeKey),
+                onTap: () => widget.scrollToSection(widget.landingKey),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  right: responsiveWebWidth(widget.screenWidth, 75)),
-              child: InkWell(
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: Text(
-                    AppStrings.work,
-                    style: headerSmallestWeb(AppColors.darkestBrown, context),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: responsiveWebWidth(widget.screenWidth, 75)),
+                child: InkWell(
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Text(
+                      AppStrings.work,
+                      style: headerSmallestWeb(AppColors.darkestBrown, context),
+                    ),
+                  ),
+                  onTap: () => widget.scrollToSection(widget.workKey),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: responsiveWebWidth(widget.screenWidth, 75)),
+                child: InkWell(
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Text(
+                      AppStrings.contactMe,
+                      style: headerSmallestWeb(AppColors.darkestBrown, context),
+                    ),
+                  ),
+                  onTap: () => widget.scrollToSection(
+                    widget.contactKey,
                   ),
                 ),
-                onTap: () => widget.scrollToSection(widget.workKey),
               ),
-            ),
-            InkWell(
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: Text(
-                  AppStrings.headerName,
-                  style: headerMediumWeb(AppColors.darkestBrown, context),
-                ),
-              ),
-              onTap: () => widget.scrollToSection(widget.landingKey),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: responsiveWebWidth(widget.screenWidth, 75)),
-              child: InkWell(
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: Text(
-                    AppStrings.projects,
-                    style: headerSmallestWeb(AppColors.darkestBrown, context),
-                  ),
-                ),
-                onTap: () => widget.scrollToSection(widget.projectsKey),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: responsiveWebWidth(widget.screenWidth, 75)),
-              child: InkWell(
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: Text(
-                    AppStrings.contactMe,
-                    style: headerSmallestWeb(AppColors.darkestBrown, context),
-                  ),
-                ),
-                onTap: () => widget.scrollToSection(widget.contactKey, ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
         SizedBox(
           height: responsiveWebHeight(widget.screenHeight, 25),

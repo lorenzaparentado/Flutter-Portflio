@@ -36,8 +36,8 @@ class _StatsMobile extends State<StatsMobile> {
                 SizedBox(
                   height: responsiveMobileHeight(widget.screenHeight, 24),
                 ),
-                statBoxes(AppStrings.stat2Num, AppStrings.stat2Text, AppColors.darkTan,
-                    AppColors.lightBrown),
+                statBoxes(AppStrings.stat2Num, AppStrings.stat2Text,
+                    AppColors.darkTan, AppColors.lightBrown),
               ],
             ),
             SizedBox(
@@ -45,8 +45,8 @@ class _StatsMobile extends State<StatsMobile> {
             ),
             Column(
               children: [
-                statBoxes(AppStrings.stat3Num, AppStrings.stat3Text, AppColors.darkTan,
-                    AppColors.lightBrown),
+                statBoxes(AppStrings.stat3Num, AppStrings.stat3Text,
+                    AppColors.darkTan, AppColors.lightBrown),
                 SizedBox(
                   height: responsiveMobileHeight(widget.screenHeight, 24),
                 ),
@@ -63,7 +63,7 @@ class _StatsMobile extends State<StatsMobile> {
   Widget statBoxes(
       String num, String description, Color boxColor, Color shadowColor) {
     return CustomContainer(
-      height: responsiveMobileHeight(widget.screenHeight, 100),
+      height: max(92, responsiveMobileHeight(widget.screenHeight, 100)),
       width: responsiveMobileWidth(widget.screenWidth, 130),
       boxColor: boxColor,
       boxShadowColor: shadowColor,
@@ -73,7 +73,7 @@ class _StatsMobile extends State<StatsMobile> {
       child: Padding(
         padding: EdgeInsets.fromLTRB(
             responsiveMobileWidth(widget.screenWidth, 14),
-            responsiveMobileHeight(widget.screenHeight, 26),
+            responsiveMobileHeight(widget.screenHeight, 12),
             responsiveMobileWidth(widget.screenWidth, 14),
             responsiveMobileHeight(widget.screenHeight, 6)),
         child: Column(
@@ -81,10 +81,15 @@ class _StatsMobile extends State<StatsMobile> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(num, style: headerBigMobile(AppColors.darkestBrown, context)),
-            Text(
-              description,
-              style: bodyMobile(AppColors.darkestBrown, context),
-              textAlign: TextAlign.center,
+            Expanded(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  description,
+                  style: bodyMobile(AppColors.darkestBrown, context),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
           ],
         ),

@@ -49,7 +49,7 @@ class _AboutMeMobile extends State<AboutMeMobile> {
             CustomContainer(
               height: responsiveMobileHeight(widget.screenHeight, 160),
               width: responsiveMobileWidth(widget.screenWidth, 200),
-              child: Center(child: Text('Image')),
+              child: const SizedBox.expand(),
               boxColor: AppColors.mediumGreen,
               boxShadowColor: AppColors.shadowGreen,
               offset: min(responsiveMobileHeight(widget.screenHeight, 5),
@@ -103,13 +103,10 @@ class _AboutMeMobile extends State<AboutMeMobile> {
     );
   }
 
-  void _openResume() async {
-    const url =
-        'https://drive.google.com/file/d/1gQWW-SPIzdRrfiK8DQmMy3cWoXPgAVbj/view?usp=sharing'; // Replace with your resume URL
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
+  Future<void> _openResume() async {
+    final resumeUri = Uri.base.resolve(AppStrings.resumeAssetUrl);
+    if (!await launchUrl(resumeUri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $resumeUri');
     }
   }
 }

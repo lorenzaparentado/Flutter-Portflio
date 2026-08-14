@@ -1,9 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter_portfolio/strings.dart';
-import 'package:flutter_portfolio/styles/text_styles_web.dart';
-import 'package:flutter_portfolio/tools.dart';
-
 import 'header_web.dart';
 import 'landing_web.dart';
 import 'stats_web.dart';
@@ -29,55 +23,6 @@ class _HomePageWeb extends State<HomePageWeb> {
   final GlobalKey _workWebKey = GlobalKey();
   final GlobalKey _projectsWebKey = GlobalKey();
   final GlobalKey _contactWebKey = GlobalKey();
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _showDialog(context, AppStrings.welcome, AppStrings.wip);
-    });
-  }
-
-  void _showDialog(BuildContext context, String title, String content) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-          child: AlertDialog(
-            elevation: 50,
-            backgroundColor: AppColors.mediumGreen,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            title: Text(
-              title,
-              style: headerSmallWeb(AppColors.lightTan, context),
-            ),
-            content: SizedBox(
-              width: responsiveWebWidth(MediaQuery.of(context).size.width, 500),
-              child: Text(
-                content,
-                style: bodyMediumWeb(AppColors.lightTan, context),
-              ),
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: Text(AppStrings.ok,
-                      style: bodyMediumWeb(AppColors.lightTan, context)),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
 
   void _scrollToSection(GlobalKey key) {
     final context = key.currentContext;
@@ -112,12 +57,12 @@ class _HomePageWeb extends State<HomePageWeb> {
                     aboutKey: _aboutMeWebKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
-                WorkWeb(
-                    workKey: _workWebKey,
-                    screenWidth: screenWidth,
-                    screenHeight: screenHeight),
                 ProjectsWeb(
                     projectsKey: _projectsWebKey,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight),
+                WorkWeb(
+                    workKey: _workWebKey,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight),
                 FooterWeb(

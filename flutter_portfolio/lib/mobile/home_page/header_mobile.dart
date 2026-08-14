@@ -31,7 +31,7 @@ class _HeaderMobile extends State<HeaderMobile> {
           color: AppColors.lightTan,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.5),
+              color: Colors.black.withValues(alpha: 0.5),
               spreadRadius: 5,
               blurRadius: 10,
               offset: Offset(0, 5),
@@ -47,26 +47,36 @@ class _HeaderMobile extends State<HeaderMobile> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: responsiveMobileHeight(widget.screenHeight, 4)),
-                child: InkWell(
-                  onTap: () => widget.scrollToSection(widget.landingKey),
-                  child: Text(AppStrings.headerFullName,
-                      style: headerBigMobile(AppColors.darkestBrown, context)),
-                ),
-              ),
-              InkWell(
-                  child: MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: Image.asset(
-                      "assets/images/hamburgerIcon.png",
-                      width: responsiveMobileWidth(widget.screenWidth, 70),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: responsiveMobileHeight(widget.screenHeight, 4)),
+                  child: InkWell(
+                    onTap: () => widget.scrollToSection(widget.landingKey),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerLeft,
+                        child: Text(AppStrings.headerFullName,
+                            style: headerBigMobile(
+                                AppColors.darkestBrown, context)),
+                      ),
                     ),
                   ),
-                  onTap: () {
-                    widget.onHeaderPress();
-                  }),
+                ),
+              ),
+              SizedBox(
+                width: responsiveMobileWidth(widget.screenWidth, 70),
+                child: InkWell(
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: Image.asset("assets/images/hamburgerIcon.png"),
+                    ),
+                    onTap: () {
+                      widget.onHeaderPress();
+                    }),
+              ),
             ],
           ),
         ));

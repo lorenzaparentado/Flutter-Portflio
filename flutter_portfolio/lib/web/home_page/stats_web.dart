@@ -29,23 +29,23 @@ class _StatsWeb extends State<StatsWeb> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            statBoxes(AppStrings.stat1Num, AppStrings.stat1Text, AppColors.lightGreen,
-                AppColors.mediumGreen),
+            statBoxes(AppStrings.stat1Num, AppStrings.stat1Text,
+                AppColors.lightGreen, AppColors.mediumGreen),
             SizedBox(
               width: responsiveWebWidth(widget.screenWidth, 46),
             ),
-            statBoxes(AppStrings.stat2Num, AppStrings.stat2Text, AppColors.darkTan,
-                AppColors.lightBrown),
+            statBoxes(AppStrings.stat2Num, AppStrings.stat2Text,
+                AppColors.darkTan, AppColors.lightBrown),
             SizedBox(
               width: responsiveWebWidth(widget.screenWidth, 46),
             ),
-            statBoxes(AppStrings.stat3Num, AppStrings.stat3Text, AppColors.lightGreen,
-                AppColors.mediumGreen),
+            statBoxes(AppStrings.stat3Num, AppStrings.stat3Text,
+                AppColors.lightGreen, AppColors.mediumGreen),
             SizedBox(
               width: responsiveWebWidth(widget.screenWidth, 46),
             ),
-            statBoxes(AppStrings.stat4Num, AppStrings.stat4Text, AppColors.darkTan,
-                AppColors.lightBrown),
+            statBoxes(AppStrings.stat4Num, AppStrings.stat4Text,
+                AppColors.darkTan, AppColors.lightBrown),
           ],
         ),
       ),
@@ -60,12 +60,12 @@ class _StatsWeb extends State<StatsWeb> {
       boxColor: boxColor,
       boxShadowColor: shadowColor,
       offset: min(responsiveWebHeight(widget.screenHeight, 10),
-                      responsiveWebWidth(widget.screenWidth, 10)),
+          responsiveWebWidth(widget.screenWidth, 10)),
       borderRadius: 10,
       child: Padding(
         padding: EdgeInsets.fromLTRB(
             responsiveWebWidth(widget.screenWidth, 37),
-            responsiveWebHeight(widget.screenHeight, 20),
+            responsiveWebHeight(widget.screenHeight, 10),
             responsiveWebWidth(widget.screenWidth, 37),
             responsiveWebHeight(widget.screenHeight, 10)),
         child: Column(
@@ -74,8 +74,18 @@ class _StatsWeb extends State<StatsWeb> {
           children: [
             Text(num, style: headerBigWeb(AppColors.darkestBrown, context)),
             SizedBox(height: responsiveWebHeight(widget.screenHeight, 3)),
-            Text(description,
-                style: bodyMediumWeb(AppColors.darkestBrown, context), textAlign: TextAlign.center,),
+            SizedBox(
+              width: double.infinity,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  description,
+                  maxLines: 1,
+                  style: bodyMediumWeb(AppColors.darkestBrown, context),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
           ],
         ),
       ),
