@@ -26,7 +26,7 @@ class _ProjectsMobile extends State<ProjectsMobile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: AppColors.lightTan,
+        color: AppColors.darkestBrown,
         child: Padding(
           padding: EdgeInsets.symmetric(
               horizontal: responsiveMobileWidth(widget.screenWidth, 20),
@@ -37,7 +37,7 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                 Text(
                   AppStrings.projects,
                   key: widget.projectsKey,
-                  style: headerBigMobile(AppColors.darkestBrown, context),
+                  style: headerBigMobile(AppColors.lightTan, context),
                 ),
               ]),
               SizedBox(height: responsiveMobileHeight(widget.screenHeight, 10)),
@@ -54,7 +54,7 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                   AppColors.mediumGreen,
                   AppColors.darkestGreen,
                   AppColors.lightTan,
-                  AppColors.darkestGreen),
+                  AppAssets.sigLogo),
               SizedBox(height: responsiveMobileHeight(widget.screenHeight, 10)),
               singleProject(
                   AppStrings.project2Title,
@@ -69,7 +69,7 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                   AppColors.darkTan,
                   AppColors.lightBrown,
                   AppColors.darkestBrown,
-                  AppColors.darkestBrown),
+                  AppAssets.comcastLogo),
               SizedBox(height: responsiveMobileHeight(widget.screenHeight, 10)),
               singleProject(
                   AppStrings.project3Title,
@@ -84,7 +84,7 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                   AppColors.mediumGreen,
                   AppColors.darkestGreen,
                   AppColors.lightTan,
-                  AppColors.darkestGreen),
+                  AppAssets.neuroFlowLogo),
               SizedBox(height: responsiveMobileHeight(widget.screenHeight, 10)),
               singleProject(
                   AppStrings.project4Title,
@@ -99,7 +99,7 @@ class _ProjectsMobile extends State<ProjectsMobile> {
                   AppColors.darkTan,
                   AppColors.lightBrown,
                   AppColors.darkestBrown,
-                  AppColors.darkestBrown),
+                  null),
             ],
           ),
         ));
@@ -118,9 +118,9 @@ class _ProjectsMobile extends State<ProjectsMobile> {
       Color boxColor,
       Color boxShadowColor,
       Color buttonTextColor,
-      Color imageColor) {
+      String? logoAsset) {
     return CustomContainer(
-      height: max(250, responsiveMobileHeight(widget.screenHeight, 243)),
+      height: max(290, responsiveMobileHeight(widget.screenHeight, 255)),
       width: responsiveMobileWidth(widget.screenWidth, 280),
       boxColor: backgroundColor,
       boxShadowColor: backgroundShadowColor,
@@ -132,7 +132,9 @@ class _ProjectsMobile extends State<ProjectsMobile> {
           padding: EdgeInsets.fromLTRB(
               responsiveMobileWidth(widget.screenWidth, 16),
               responsiveMobileHeight(widget.screenHeight, 15),
-              0,
+              logoAsset == null
+                  ? 0
+                  : responsiveMobileWidth(widget.screenWidth, 98),
               0),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -196,9 +198,29 @@ class _ProjectsMobile extends State<ProjectsMobile> {
             ),
           ),
         ),
+        if (logoAsset != null)
+          Positioned(
+            right: responsiveMobileWidth(widget.screenWidth, 12),
+            bottom: responsiveMobileHeight(widget.screenHeight, 13),
+            child: _logoPanel(logoAsset, backgroundShadowColor),
+          ),
       ]),
     );
   }
+
+  Widget _logoPanel(String logoAsset, Color shadowColor) => CustomContainer(
+        height: max(58, responsiveMobileHeight(widget.screenHeight, 62)),
+        width: max(82, responsiveMobileWidth(widget.screenWidth, 84)),
+        boxColor: AppColors.lightTan,
+        boxShadowColor: shadowColor,
+        offset: min(responsiveMobileHeight(widget.screenHeight, 2),
+            responsiveMobileWidth(widget.screenWidth, 2)),
+        borderRadius: 8,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Image.asset(logoAsset, fit: BoxFit.contain),
+        ),
+      );
 
   Widget tech(String techName, Color boxColor, Color boxShadowColor,
       Color buttonTextColor) {

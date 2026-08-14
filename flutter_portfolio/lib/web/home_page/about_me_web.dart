@@ -51,7 +51,10 @@ class _AboutMeWeb extends State<AboutMeWeb> {
                 CustomContainer(
                   height: responsiveWebHeight(widget.screenHeight, 500),
                   width: responsiveWebWidth(widget.screenWidth, 400),
-                  child: const SizedBox.expand(),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(25),
+                    child: Image.asset(AppAssets.headshot, fit: BoxFit.cover),
+                  ),
                   boxColor: AppColors.mediumGreen,
                   boxShadowColor: AppColors.shadowGreen,
                   offset: min(responsiveWebHeight(widget.screenHeight, 10),

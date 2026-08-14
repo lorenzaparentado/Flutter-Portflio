@@ -26,7 +26,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: AppColors.lightTan,
+        color: AppColors.darkestBrown,
         child: Padding(
           padding: EdgeInsets.symmetric(
               horizontal: responsiveWebWidth(widget.screenWidth, 100),
@@ -36,7 +36,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
               Text(
                 AppStrings.projects,
                 key: widget.projectsKey,
-                style: headerBigWeb(AppColors.darkestBrown, context),
+                style: headerBigWeb(AppColors.lightTan, context),
               ),
             ]),
             SizedBox(height: responsiveWebHeight(widget.screenHeight, 79)),
@@ -60,7 +60,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                         AppColors.mediumGreen,
                         AppColors.darkestGreen,
                         AppColors.lightTan,
-                        AppColors.darkestGreen),
+                        AppAssets.sigLogo),
                     SizedBox(
                       height: responsiveWebHeight(widget.screenHeight, 40),
                     ),
@@ -77,7 +77,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                         AppColors.darkTan,
                         AppColors.lightBrown,
                         AppColors.darkestBrown,
-                        AppColors.darkestBrown),
+                        AppAssets.comcastLogo),
                   ],
                 ),
                 Column(
@@ -95,7 +95,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                         AppColors.darkTan,
                         AppColors.lightBrown,
                         AppColors.darkestBrown,
-                        AppColors.darkestBrown),
+                        AppAssets.neuroFlowLogo),
                     SizedBox(
                       height: responsiveWebHeight(widget.screenHeight, 40),
                     ),
@@ -112,7 +112,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                         AppColors.mediumGreen,
                         AppColors.darkestGreen,
                         AppColors.lightTan,
-                        AppColors.darkestGreen),
+                        null),
                   ],
                 ),
               ],
@@ -134,7 +134,7 @@ class _ProjectsWeb extends State<ProjectsWeb> {
       Color boxColor,
       Color boxShadowColor,
       Color buttonTextColor,
-      Color imageColor) {
+      String? logoAsset) {
     return CustomContainer(
       height: max(550, responsiveWebHeight(widget.screenHeight, 500)),
       width: responsiveWebWidth(widget.screenWidth, 600),
@@ -148,7 +148,9 @@ class _ProjectsWeb extends State<ProjectsWeb> {
           padding: EdgeInsets.fromLTRB(
               responsiveWebWidth(widget.screenWidth, 50),
               responsiveWebHeight(widget.screenHeight, 35),
-              responsiveWebWidth(widget.screenWidth, 280),
+              logoAsset == null
+                  ? 0
+                  : responsiveWebWidth(widget.screenWidth, 280),
               0),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -176,17 +178,12 @@ class _ProjectsWeb extends State<ProjectsWeb> {
                 ),
               ]),
         ),
-        Positioned(
-            right: 0,
-            bottom: 0,
-            child: Container(
-              height: responsiveWebHeight(widget.screenHeight, 300),
-              width: responsiveWebWidth(widget.screenWidth, 300),
-              decoration: BoxDecoration(
-                color: imageColor,
-                borderRadius: BorderRadius.circular(25),
-              ),
-            )),
+        if (logoAsset != null)
+          Positioned(
+            right: responsiveWebWidth(widget.screenWidth, 28),
+            bottom: max(28, responsiveWebHeight(widget.screenHeight, 30)),
+            child: _logoPanel(logoAsset, backgroundShadowColor),
+          ),
         Positioned(
           left: responsiveWebWidth(widget.screenWidth, 50),
           bottom: responsiveWebHeight(widget.screenHeight, 35),
@@ -224,6 +221,20 @@ class _ProjectsWeb extends State<ProjectsWeb> {
       ]),
     );
   }
+
+  Widget _logoPanel(String logoAsset, Color shadowColor) => CustomContainer(
+        height: max(90, responsiveWebHeight(widget.screenHeight, 120)),
+        width: max(160, responsiveWebWidth(widget.screenWidth, 220)),
+        boxColor: AppColors.lightTan,
+        boxShadowColor: shadowColor,
+        offset: min(responsiveWebHeight(widget.screenHeight, 5),
+            responsiveWebWidth(widget.screenWidth, 5)),
+        borderRadius: 16,
+        child: Padding(
+          padding: const EdgeInsets.all(18),
+          child: Image.asset(logoAsset, fit: BoxFit.contain),
+        ),
+      );
 
   Widget tech(String techName, Color boxColor, Color boxShadowColor,
       Color buttonTextColor) {

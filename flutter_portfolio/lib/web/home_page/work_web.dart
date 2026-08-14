@@ -24,7 +24,7 @@ class WorkWeb extends StatelessWidget {
     final horizontal = responsiveWebWidth(screenWidth, 100);
     final vertical = responsiveWebHeight(screenHeight, 90);
     return Container(
-      color: AppColors.darkestBrown,
+      color: AppColors.lightTan,
       child: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: horizontal, vertical: vertical),
@@ -35,7 +35,7 @@ class WorkWeb extends StatelessWidget {
               AppStrings.work,
               key: workKey,
               textAlign: TextAlign.center,
-              style: headerBigWeb(AppColors.lightTan, context),
+              style: headerBigWeb(AppColors.darkestBrown, context),
             ),
             SizedBox(height: responsiveWebHeight(screenHeight, 56)),
             _intro(context),

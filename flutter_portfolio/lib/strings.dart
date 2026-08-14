@@ -214,3 +214,11 @@ class AppStrings {
     ),
   ];
 }
+
+class AppAssets {
+  static const String headshot = 'assets/images/headshot.jpg';
+  static const String sigLogo = 'assets/images/company_logos/sig.png';
+  static const String comcastLogo = 'assets/images/company_logos/comcast.png';
+  static const String neuroFlowLogo =
+      'assets/images/company_logos/neuroflow.png';
+}

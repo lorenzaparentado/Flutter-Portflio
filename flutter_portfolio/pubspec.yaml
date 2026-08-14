@@ -76,6 +76,8 @@ flutter:
     - assets/images/phoneIcon.png
     - assets/images/hamburgerIcon.png
     - assets/images/close.svg
+    - assets/images/headshot.jpg
+    - assets/images/company_logos/
     - assets/resume/Lorenz_Aparentado_Resume.pdf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

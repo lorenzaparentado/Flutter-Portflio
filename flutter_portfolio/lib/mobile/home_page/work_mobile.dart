@@ -22,7 +22,7 @@ class WorkMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.darkestBrown,
+      color: AppColors.lightTan,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: responsiveMobileWidth(screenWidth, 20),
@@ -35,7 +35,7 @@ class WorkMobile extends StatelessWidget {
               AppStrings.work,
               key: workKey,
               textAlign: TextAlign.center,
-              style: headerBigMobile(AppColors.lightTan, context),
+              style: headerBigMobile(AppColors.darkestBrown, context),
             ),
             const SizedBox(height: 26),
             _card(context, AppStrings.educationSchool, [

@@ -47,9 +47,13 @@ class _AboutMeMobile extends State<AboutMeMobile> {
               height: responsiveMobileHeight(widget.screenHeight, 6),
             ),
             CustomContainer(
-              height: responsiveMobileHeight(widget.screenHeight, 160),
+              height:
+                  max(200, responsiveMobileHeight(widget.screenHeight, 160)),
               width: responsiveMobileWidth(widget.screenWidth, 200),
-              child: const SizedBox.expand(),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(AppAssets.headshot, fit: BoxFit.cover),
+              ),
               boxColor: AppColors.mediumGreen,
               boxShadowColor: AppColors.shadowGreen,
               offset: min(responsiveMobileHeight(widget.screenHeight, 5),
